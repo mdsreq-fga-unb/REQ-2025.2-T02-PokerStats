@@ -26,4 +26,4 @@ jobs:
 
       - name: Deploy documentation
         run: |
-          mkdocs gh-deploy --force
+          mkdocs gh-deploy --force --config-file pokerstats/mkdocs.yml 
