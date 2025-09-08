@@ -12,7 +12,7 @@ markdown_extensions:
 
 # Configura a navegação do site
 nav:
-  - Introdução: index.md
+  - Início: index.md
 
 # Tema do MkDocs
 theme:
@@ -21,13 +21,13 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: claro
       toggle:
-        icon: material/circle-half-full
+        icon: material/toggle-switch-off-outline
         name: Mudar para o modo escuro
 
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
-        icon: material/circle-half-full
+        icon: material/toggle-switch
         name: Mudar para o modo claro
 
   language: pt-BR
