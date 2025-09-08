@@ -1,0 +1,41 @@
+# Nome do site
+site_name: "Poker Stats"
+
+# Descrição
+site_description: "Repositório de documentos de Requisitos de Software"
+repo_name: "REQ-2025.2-T02-PokerStats"
+repo_url: "https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats"
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+
+# Configura a navegação do site
+nav:
+  - Introdução: index.md
+
+# Tema do MkDocs
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: claro
+      toggle:
+        icon: material/circle-half-full
+        name: Mudar para o modo escuro
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/circle-half-full
+        name: Mudar para o modo claro
+
+  language: pt-BR
+  favicon: 
+  logo: 
+
+extra:
+  version:
+    provider: felipe
+
+extra_css: [stylesheets/extra.css]
