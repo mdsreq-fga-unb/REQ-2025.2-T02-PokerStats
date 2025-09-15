@@ -1,10 +1,10 @@
 # Poker Stats
 
-<font size="3"><p style="text-align: left">**Figura 1** - Logo do Poker Stats.</p></font>
+<!-- <font size="3"><p style="text-align: left">**Figura 1** - Logo do Poker Stats.</p></font>
 
 <div align="center">
     <img src="<path>" width="200px">
-</div>
+</div> -->
 
 Este projeto está sendo desenvolvido como parte da disciplina de Requisitos de Software, oferecida pela Universidade de Brasília (UnB), ministrada pelo Professor Dr. George Marsicano.
 
