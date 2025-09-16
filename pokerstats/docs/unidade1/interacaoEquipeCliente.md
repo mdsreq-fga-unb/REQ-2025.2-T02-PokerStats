@@ -2,6 +2,8 @@
 
 ## Composição da Equipe
 
+<font size="3"><p style="text-align: left">**Tabela 1** - Composição da Equipe.</p></font>
+
 | Papel                  | Descrição                                                                                                     | Responsável      | Participantes                                  |
 |------------------------|---------------------------------------------------------------------------------------------------------------|------------------|-----------------------------------------------|
 | Gerente de Projetos    | Coordena o projeto, garante a comunicação entre cliente e equipe, controla prazos e entregas.                 | Ricardo          | Renan                                         |
@@ -32,3 +34,11 @@
 
 - **Validação de protótipo (Prototype Validation)**: o cliente analisa o protótipo inicial ou wireframe da solução, verificando se atende aos requisitos funcionais e às expectativas de usabilidade. O objetivo é aprovar o design e fluxo antes de iniciar o desenvolvimento completo.  
 - **Validação de entrega (Delivery Validation)**: o cliente revisa e aprova a entrega final de cada incremento ou funcionalidade implementada. Essa validação garante que o produto atende aos requisitos especificados, está funcionalmente correto e pronto para implantação ou uso.  
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 2** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Felipe Junior](https://github.com/Felipej3ds)          | 15/09/2025 | 

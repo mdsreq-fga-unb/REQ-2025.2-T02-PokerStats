@@ -19,6 +19,8 @@ O problema central que o projeto "Poker Stats" visa resolver é a "cegueira" do 
 
 O "Poker Stats" surge para iluminar esse cenário, oferecendo uma plataforma personalizada, minimalista e focada nas métricas de interesse do usuário. A oportunidade é informar o cliente com o conhecimento necessário para gerenciar sua banca de forma inteligente, aprimorar sua visão geral sobre a performance do grupo e, em última instância, transformar uma atividade baseada em intuição em uma prática baseada em dados relevantes e acessíveis.
 
+<font size="3"><p style="text-align: left">**Figura 1** - Diagrama de Ishikawa.</p></font>
+
 ![alt text](../imagens/DiagramaIshikawa.jpg)
 
 ## Desafios do Projeto
@@ -60,3 +62,12 @@ O público-alvo do "Poker Stats" é composto pelo grupo de jogadores e o cliente
 
 ### Por Necessidade de Análise
 - **Jogadores em Busca de Métricas:** O segmento central são jogadores que reconhecem a lacuna existente nos sites de poker e desejam ter acesso consolidado a estatísticas de desempenho (lucro, ROI, transações, porcentagem de vitória, etc.) para sair do "jogo no escuro" e basear suas decisões em dados concretos.  
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 1** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Renan Pereira](https://github.com/renanpr7)     | 15/09/2025 | 
+|  2.0   | Ajustes do documento | [Renan Pereira](https://github.com/renanpr7)     | 15/09/2025 | 

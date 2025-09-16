@@ -19,3 +19,12 @@ O **Poker Stats** é uma plataforma digital desenvolvida para jogadores de poker
 | <img src="https://github.com/Depaiiva.png" width="150px">   | <img src="https://github.com/Felipej3ds.png" width="150px"> | <img src="https://github.com/felipeJRdev.png" width="150px"> | <img src="https://github.com/renanpr7.png" width="150px"> | <img src="https://github.com/R1K4S.png" width="150px"> | <img src="https://github.com/Thales-Duarte.png" width="150px"> |
 | :-------------------------------------------------------: | :-------------------------------------------------------: | :----------------------------------------------------------: | :-------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
 |  [Carlos Henrique](https://github.com/Depaiiva)     |  [Felipe Junior](https://github.com/Felipej3ds)             |      [Felipe Rodrigues](https://github.com/felipeJRdev)      |  [Renan Pereira](https://github.com/renanpr7)      | [Ricardo Henrique](https://github.com/R1K4S)    |[Thales Duarte](https://github.com/Thales-Duarte) |
+
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 1** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Felipe Rodrigues](https://github.com/felipeJRdev)  | 08/09/2025 | 

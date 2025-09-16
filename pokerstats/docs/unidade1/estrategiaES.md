@@ -8,7 +8,7 @@
 ## Quadro Comparativo
 Apresenta-se um quadro comparando o processo RAD + Kanban escolhido com o processo XP + Scrum.
 
-### Tabela
+<font size="3"><p style="text-align: left">**Tabela 1** - Quadro compartivo RAD + Kanban e XP + Scrum.</p></font>
 
 | Característica | RAD + Kanban | XP + Scrum |
 |----------------|--------------|------------|
@@ -34,3 +34,11 @@ Considerando que a equipe pode ter horários de trabalho variados, o Kanban é i
 
 5. Rapidez na Entrega de Valor
 A combinação de RAD e Kanban possibilita que funcionalidades prioritárias sejam prototipadas e entregues em ciclos curtos, garantindo que o cliente receba valor desde as primeiras etapas do desenvolvimento e que o produto seja constantemente validado.
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 2** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Ricardo Henrique](https://github.com/R1K4S), [Thales Duarte](https://github.com/Thales-Duarte) | 15/09/2025 | 

@@ -4,6 +4,8 @@
 
 O principal objetivo do “Poker Stats” é transformar a experiência de jogadores de poker online, eliminando a tomada de decisão baseada exclusivamente em intuição por meio da consolidação e análise de dados de desempenho (lucro, ROI, % de vitórias, entre outros). O produto tem como propósito fornecer uma solução acessível, intuitiva e confiável que permita ao jogador identificar padrões, avaliar estratégias, gerenciar sua banca e acompanhar sua evolução de forma contínua.
 
+<font size="3"><p style="text-align: left">**Tabela 1** - Objetivos Específicos.</p></font>
+
 | Código | Objetivo Específico                                                                                                   | Indicador de Sucesso                                                                                                                                                             |
 | ------ | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | OE1    | Eliminar a “cegueira estatística” dos jogadores, consolidando históricos de diferentes torneios em um único ambiente. | Usuário deve consolidar seus históricos de pelo menos 50 torneios e acessar suas métricas principais (ROI, lucros, taxa de vitórias) em menos de 2 minutos dentro da ferramenta. |
@@ -78,3 +80,13 @@ Espera-se que o “Poker Stats” traga benefícios diretos e indiretos para o g
 - **Aprimoramento Contínuo do Jogo:** O acompanhamento histórico da evolução das métricas dará aos jogadores feedback objetivo sobre seus avanços, permitindo que cada integrante do grupo visualize sua progressão ao longo do tempo e corrija pontos fracos de forma direcionada.  
 - **Eficiência Operacional e Redução de Erros:** A automação do processamento de arquivos e a padronização dos dados minimizam inconsistências, duplicações ou falhas manuais, aumentando a confiabilidade das estatísticas apresentadas.  
 - **Diferenciação e Adequação ao Contexto do Cliente:** Ao contrário das ferramentas genéricas disponíveis no mercado, o “Poker Stats” é personalizado para as métricas de maior interesse do grupo, oferecendo simplicidade, foco e relevância, sem sobrecarga de informações desnecessárias.  
+
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 2** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Carlos Henrique](https://github.com/Depaiiva), [Felipe Rodrigues](https://github.com/felipeJRdev)                | 15/09/2025 | 
+|  2.0   | Ajustes do documento | [Renan Pereira](https://github.com/renanpr7)               | 15/09/2025 | 

@@ -21,6 +21,8 @@ nav:
       - Interação entre Equipe e Cliente: unidade1/interacaoEquipeCliente.md
       - Lições Aprendidas:
           - Unidade 1: unidade1/licoesAprendidas.md
+  - Entregas:
+    - Unidade 1: entregas/videoApresentacao.md
 
 # Tema do MkDocs
 theme:

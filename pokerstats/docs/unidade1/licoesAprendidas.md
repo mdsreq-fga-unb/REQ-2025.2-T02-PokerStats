@@ -17,3 +17,13 @@
 **Desafio:** No início do projeto, havia incerteza sobre quais tecnologias e ferramentas seriam mais adequadas para atender as necessidades do PokerStats e do cliente. Isso gerou retrabalho e atrasou algumas etapas do desenvolvimento.  
 
 **Ação de Melhoria:** A equipe se dedicou a estudar em profundidade as tecnologias potenciais antes de adotá-las. Com isso, conseguimos selecionar ferramentas mais adequadas e preparar os membros para utilizá-las de forma eficiente, reduzindo riscos e aumentando a qualidade das entregas.  
+
+
+## Histórico de Versões
+
+<font size="3"><p style="text-align: left">**Tabela 1** - Histórico de versões.</p></font>
+
+| Versão |        Descrição         |                      Autor(es)                      |    Data    |
+| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
+|  1.0   | Criação do documento | [Thales Duarte](https://github.com/Thales-Duarte)         | 15/09/2025 | 
+
