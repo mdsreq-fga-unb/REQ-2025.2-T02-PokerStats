@@ -36,6 +36,31 @@ Essa abordagem garante flexibilidade na escolha das ferramentas durante o desenv
 
 ## Pesquisa de Mercado e Análise Competitiva
 
+O mercado de poker online, avaliado em **US$ 57,01 bilhões em 2024** e com projeção de crescimento para **US$ 141,1 bilhões até 2033**, demonstra um cenário robusto e em expansão.  
+No Brasil, o poker é reconhecido como *"esporte da mente"* desde 2010, indicando um ambiente favorável ao desenvolvimento de ferramentas de apoio aos jogadores.
+
+A principal oportunidade identificada reside na lacuna de ferramentas de análise de desempenho personalizadas para jogadores casuais, como Eduardo, que buscam métricas claras e consolidadas sem a complexidade de soluções profissionais.
+
+O mercado oferece diversas ferramentas de rastreamento e análise de poker, que podem ser classificadas em:
+
+### Concorrentes Diretos
+- **Softwares Profissionais** (e.g., PokerTracker 4, Hold'em Manager 3, Hand2Note):  
+  Oferecem funcionalidades avançadas (HUDs, relatórios detalhados), mas são complexos, caros (a partir de US$ 60) e podem sobrecarregar jogadores casuais com informações excessivas.  
+  O PokerTracker 4 funciona em Mac ou Windows, enquanto o Hold'em Manager 3 é apenas para Windows.
+- **Ferramentas Específicas** (e.g., ICMizer, GTOWizard, Equilab, Holdem Notes):  
+  Focam em aspectos pontuais do jogo (cálculos de EV, estudo de ranges, anotações ao vivo), mas não oferecem uma visão consolidada de desempenho geral.
+
+### Concorrentes Indiretos
+- **Planilhas Manuais**: Solução comum, mas trabalhosa, propensa a erros e limitada na geração de métricas complexas.
+- **Ausência de Análise**: Muitos jogadores casuais não utilizam ferramentas, baseando-se apenas na intuição.
+
+### Diferenciais Competitivos do *Poker Stats*
+O *Poker Stats* se posiciona de forma única ao oferecer:
+- **Personalização e Minimalismo**: Foco exclusivo nas métricas essenciais para o perfil de Eduardo, evitando sobrecarga de informações.
+- **Acessibilidade e Usabilidade**: Interface simples e intuitiva, desenvolvida para jogadores casuais com familiaridade tecnológica básica, sem a complexidade de softwares profissionais.
+- **Foco na Plataforma Bodog**: Otimizado para a coleta e análise de dados da plataforma Bodog, atendendo a uma necessidade específica do público-alvo.
+
+
 ## Análise de Viabilidade
 A viabilidade técnica do projeto é alta, uma vez que a equipe de desenvolvimento possui experiência comprovada nas tecnologias que serão utilizadas, principalmente Python e SQLite. O aplicativo será entregue em formato executável (.exe), garantindo facilidade de instalação e uso no ambiente do cliente.
 

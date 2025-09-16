@@ -19,7 +19,8 @@ nav:
       - Estratégias de Engenharia de Software: unidade1/estrategiaES.md
       - Cronograma e Entregas: unidade1/cronogramaEntregas.md
       - Interação entre Equipe e Cliente: unidade1/interacaoEquipeCliente.md
-      - Lições Aprendidas: unidade1/licoesAprendidas.md
+      - Lições Aprendidas:
+          - Unidade 1: unidade1/licoesAprendidas.md
 
 # Tema do MkDocs
 theme:
