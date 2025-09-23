@@ -23,6 +23,8 @@ nav:
           - Unidade 1: unidade1/licoesAprendidas.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
+  - Requisitos:
+      - Requisitos Funcionais: Requisitos/requisitos.md
 
 # Tema do MkDocs
 theme:
