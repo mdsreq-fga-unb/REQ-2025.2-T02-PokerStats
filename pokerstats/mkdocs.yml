@@ -19,12 +19,14 @@ nav:
       - Estratégias de Engenharia de Software: unidade1/estrategiaES.md
       - Cronograma e Entregas: unidade1/cronogramaEntregas.md
       - Interação entre Equipe e Cliente: unidade1/interacaoEquipeCliente.md
+      - Engenharia de Requisitos: unidade2/EngenhariaDeRequisitos.md
+      - Requisitos de Software: unidade2/RequisitosDeSoftware.md
+      - DoR&DoD: unidade2/DoR&DoD.md
       - Lições Aprendidas:
           - Unidade 1: unidade1/licoesAprendidas.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
-  - Requisitos:
-      - Requisitos Funcionais: Requisitos/requisitos.md
+  - Backlog do Produto: backlog/BacklogDoProduto.md
 
 # Tema do MkDocs
 theme:
