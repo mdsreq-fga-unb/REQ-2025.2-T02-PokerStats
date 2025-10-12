@@ -1,26 +1,20 @@
-# Cronograma
+cat > 5_cronograma_e_entregas.md << 'EOF'
+# 5. CRONOGRAMA E ENTREGAS
 
-Temos a seguinte proposta de cronograma, a partir da estratégia de desenvolvimento definida:
+O projeto segue um **Cronograma Adaptativo Kanban**, priorizando movimentar tarefas rapidamente e ajustar previsões conforme o desempenho real da equipe.
 
-<font size="3"><p style="text-align: left">**Tabela 1** - Cronograma do Projeto.</p></font>
+## Cadência e Eventos
 
-| Ciclo   | Início      | Fim        | Objetivo Principal                                     | Entregas Esperadas                                                 | Validação do Cliente                                     |
-|---------|------------|-----------|--------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------|
-| Ciclo 1 | 22/09/2025 | 03/10/2025 | Planejamento Detalhado e Validação de Requisitos      | Documento de Requisitos Refinado, Protótipos de UI (Wireframes/Mockups) | Reunião de Validação de Protótipo e Requisitos       |
-| Ciclo 2 | 06/10/2025 | 24/10/2025 | Desenvolvimento do Core de Importação e Cálculo de Métricas | Módulo de Importação de Dados Funcional, Cálculos de Métricas Essenciais (Versão Alpha) | Demonstração do Módulo de Importação e Cálculos de Métricas |
-| Ciclo 3 | 27/10/2025 | 14/11/2025 | Implementação de Relatórios e Visualizações          | Relatórios Básicos de Desempenho, Gráficos Iniciais (Versão Beta) | Reunião de Feedback sobre Relatórios e Visualizações |
-| Ciclo 4 | 15/11/2025 | 01/12/2025 | Testes, Refinamento Final e Documentação             | Produto Final (Versão Estável), Documentação Técnica e de Usuário | Reunião de Validação de Entrega (Final)             |
+| Frequência | Evento | Foco | Métricas |
+|-------------|---------|------|-----------|
+| Contínuo | Gestão do Board (visual) | Acompanhamento em tempo real do fluxo | WIP |
+| Semanal | Reunião de Prioridades & Fluxo | Revisão do backlog e bloqueios | % de bloqueios |
+| 1-2 semanas | Revisão de Entrega (Review) | Validação com o cliente | Throughput |
+| 2 semanas | Retrospectiva | Análise de processo e Lead Time | Lead Time médio |
 
-## Considerações Importantes
+## Notas sobre Funcionamento sem Daily
 
-- **Datas de Início e Fim:** Cada ciclo tem a duração de duas a três semanas, começando em 22/09/2025 e finalizando em 02/12/2025, distribuindo as entregas parciais ao longo do tempo. Esta duração total de aproximadamente 10 semanas (pouco mais de dois meses) está alinhada com a estimativa do projeto.  
-- **Validações ao Final de Cada Ciclo:** Em cada ciclo, haverá uma reunião de revisão com o cliente (Eduardo) para validar as funcionalidades entregues, coletar feedback e ajustar o planejamento para os próximos ciclos.  
-- **Flexibilidade:** Este cronograma é um guia e será gerenciado de forma flexível utilizando Kanban, permitindo adaptações conforme o progresso da equipe, o feedback do cliente e eventuais mudanças nos requisitos ou desafios técnicos.  
+- **Disciplina Visual:** o board é a fonte de verdade sobre o status do trabalho.
+- **Gestão de Impedimentos:** comunicação assíncrona via canal de mensagens.
+- **Reforço Semanal:** reunião de prioridades atua como checkpoint de fluxo.
 
-## Histórico de Versões
-
-<font size="3"><p style="text-align: left">**Tabela 2** - Histórico de versões.</p></font>
-
-| Versão |        Descrição         |                      Autor(es)                      |    Data    |
-| :----: | :----------------------: | :-------------------------------------------------: | :--------:  
-|  1.0   | Criação do documento | [Ricardo Henrique](https://github.com/R1K4S)        | 15/09/2025 | 
