@@ -23,3 +23,4 @@ Uma User Story é considerada Done quando:
 - Testes automatizados e de integração aprovados (TDD);
 - Integração contínua concluída sem falhas;
 - Validação com o cliente (demonstração e feedback aplicados).
+    

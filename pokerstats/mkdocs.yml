@@ -22,12 +22,11 @@ nav:
       - Engenharia de Requisitos: unidade2/EngenhariaDeRequisitos.md
       - Requisitos de Software: unidade2/RequisitosDeSoftware.md
       - DoR&DoD: unidade2/DoR&DoD.md
-      - Lições Aprendidas:
+  - Backlog do Produto: backlog/BacklogDoProduto.md
+  - Lições Aprendidas:
           - Unidade 1: unidade1/licoesAprendidas.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
-  - Backlog do Produto: backlog/BacklogDoProduto.md
-
 # Tema do MkDocs
 theme:
   name: material
