@@ -13,6 +13,7 @@ markdown_extensions:
 # Configura a navegação do site
 nav:
   - Início: index.md
+  - Guia de Contribuição: GuiaDeContribuicao.md
   - Visão do Produto e Projeto: 
       - Cenário Atual do Cliente e do Negócio: unidade1/cenarioAtual.md
       - Solução Proposta: unidade1/solucaoProposta.md
@@ -24,7 +25,7 @@ nav:
       - DoR&DoD: unidade2/DoR&DoD.md
   - Backlog do Produto: backlog/BacklogDoProduto.md
   - Lições Aprendidas:
-          - Unidade 1: unidade1/licoesAprendidas.md
+      - Unidade 1: unidade1/licoesAprendidas.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
 # Tema do MkDocs
