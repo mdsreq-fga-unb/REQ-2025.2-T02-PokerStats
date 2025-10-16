@@ -42,8 +42,8 @@ A tabela a seguir apresenta a priorização, mostrando a relação entre expecta
 | **US02** | **Calcular automaticamente o lucro obtido a partir dos dados das partidas.** | RF02 | P | Must have | ✅ |
 | **US03** | **Calcular automaticamente o ROI geral e por modalidade.** | RF03 | P | Must have | ✅ |
 | US04 | Calcular taxa de vitórias por modalidade e geral. | RF04 | P | Should have |  |
-| US05 | Exibir métricas (ROI, Lucro, % vitórias) em gráficos fáceis de visualizar. | RF07 | M | Could have |  |
-| US06 | Visualizar análises de diferentes jogos/torneios e comparar resultados. | RF05, RF06 | G | Must have | ✅ |
+| US05 | Eu, como usuário, quero filtrar as métricas de desempenho por cada jogador individualmente, para que eu possa avaliar a performance de cada jogador e tomar decisões mais informadas sobre a gestão da equipe. | RF05 | G | Should have |  |
+| US06 | Eu, como usuário, quero filtrar as análises de desempenho por tipo de torneio, para que eu possa identificar em quais modalidades sou mais lucrativo e tomar decisões mais informadas sobre onde focar meu jogo. | RF06 | G | Must have | ✅ |
 | US07 | Exibir evolução ao longo do tempo em gráfico de linha. | RF07 | M | Could have |  |
 | US08 | Ver histórico de importações realizadas. | RF08 | M | Could have |  |
 | US09 | Ver histórico de transações financeiras (investimentos). | RF09 | P | Should have |  |
