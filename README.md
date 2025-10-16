@@ -58,7 +58,7 @@ Para manter a organização, cada nova funcionalidade deve ser criada na pasta c
 ```
 poker-stats/
 |
-├── main.py              # Ponto de entrada da aplicação. Inicia a GUI.
+├── main.py              # Ponto de entrada da aplicação. Inicia a GUI e o BD.
 |
 └── src/poker_stats/     # Código fonte principal
     ├── ui/              # Camada de Apresentação: Código da interface gráfica
