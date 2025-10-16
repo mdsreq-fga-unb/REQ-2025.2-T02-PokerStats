@@ -24,21 +24,23 @@ cat > 9_backlog_de_produto.md << 'EOF'
 
 ---
 
-## 9.2 Priorização do Backlog
+## 9.2 Priorização do Backlog Geral
 
-| ID | Descrição | Esforço | Prioridade | MVP |
-|----|------------|----------|-------------|-----|
-| US01 | Importar histórico | M | Must Have | ✅ |
-| US02 | Calcular Lucro Total | P | Must Have | ✅ |
-| US06 | Resumo de Desempenho | P | Must Have | ✅ |
-| US11 | Distribuir .exe | M | Must Have | ✅ |
-| US03 | Taxa de Vitórias | P | Should Have |  |
-| US04 | ROI | M | Should Have |  |
-| US07 | Filtros de relatório | M | Should Have |  |
-| US09 | Interface minimalista | P | Should Have |  |
-| US05 | Histórico de transações | P | Could Have |  |
-| US10 | Processamento otimizado | G | Could Have |  |
-| US08 | Relatórios comparativos | G | Won't Have |  |
+**Priorização dos Requisitos Funcionais do Poker Stats**  
+A tabela a seguir apresenta a priorização dos requisitos com base no valor de negócio (MoSCoW) e na complexidade técnica. Os requisitos do MVP (“Must Have”) aparecem destacados.
+
+| **ID**   | **Descrição**                                 | **Esforço** | **Prioridade** | **MVP** |
+|:--------:|:----------------------------------------------|:-----------:|:--------------:|:-------:|
+| **RF01** | **Importar histórico de torneios**            |     G       |   Must have    |   ✅    |
+| **RF02** | **Calcular Lucro Total**                      |     P       |   Must have    |   ✅    |
+| **RF03** | **Calcular ROI**                              |     P       |   Must have    |   ✅    |
+|  RF04    | Calcular Taxa de Vitória                      |     P       |  Should have   |         |
+|  RF05    | Segmentar Análises por jogador                |     G       |  Should have   |         |
+| **RF06** | **Segmentar Análises por tipo de torneio**    |     G       |   Must have    |   ✅    |
+|  RF07    | Visualizar Gráfico de Linha de Evolução        |     M       |  Could have    |         |
+|  RF08    | Listar Histórico de Importações               |     M       |  Could have    |         |
+|  RF09    | Exibir Histórico de Transações                |     P       |  Should have   |         |
+| **RF10** | **Calcular ITM (In The Money)**               |     P       |   Must have    |   ✅    |
 
 ---
 
