@@ -1,5 +1,13 @@
-cat > 9_backlog_de_produto.md << 'EOF'
 # 9. BACKLOG DE PRODUTO
+
+## Histórico de Versão:
+
+| **Data**   | **Versão** | **Descrição**                                               | **Autor**            |
+| ---------- | ---------- | ----------------------------------------------------------- | -------------------- |
+| 07/10/2025 | 1.0        | Criação do documento e atualização com conteúdo da etapa um | Felipe Júnior Duarte |
+
+O backlog é uma lista organizada e priorizada de todas as tarefas, funcionalidades, melhorias e correções que precisam ser desenvolvidas em um projeto. Ele funciona como um repositório central de demandas, onde cada item representa um trabalho a ser realizado para agregar valor ao produto. No contexto ágil, o backlog é constantemente revisado e ajustado conforme surgem novas necessidades ou mudanças de prioridade, garantindo que a equipe foque sempre nas atividades mais importantes e alinhadas aos objetivos do projeto."
+
 
 ## 9.1 Backlog Geral
 
