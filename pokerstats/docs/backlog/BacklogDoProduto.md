@@ -12,43 +12,42 @@ O backlog é uma lista organizada e priorizada de todas as tarefas, funcionalida
 ## 9.1 Backlog Geral
 
 ### ÉPICO 1 — Importação e Consolidação de Dados
-- **US01:** Importar arquivos de histórico (evitar duplicações e erros).
+- **US01** - Eu como usuário quero importar histórico de partidas extraídos da plataforma Bodog para que seja possível consolidar dados de diversar partidas em um único lugar.
 
 ### ÉPICO 2 — Análise e Métricas de Desempenho
-- **US02:** Calcular Lucro Total.
-- **US03:** Calcular Taxa de Vitórias.
-- **US04:** Calcular ROI.
-- **US05:** Visualizar histórico de transações.
+- **US02** - Eu como usuário quero que o sistema calcule automaticamente o lucro obtido a partir dos dados de partidas para que eu possa ter transparência de investimento.
+- **US03** - Eu como usuário quero que o sistema calcule automaticamente o ROI geral e também para tipos diferentes de jogos para que eu possa analisar em quais modalidades eu estou me saindo melhor.
+- **US04** - Eu como usuário quero que o sistema calcule automaticamente a taxa de vitórias para cada modalidade e também a taxa de vitórias geral para que eu consiga visualizar melhor o meu desempenho em diferentes segmentos.
 
 ### ÉPICO 3 — Visualização e Relatórios
-- **US06:** Apresentar resumo de desempenho.
-- **US07:** Filtrar relatórios e análises.
-- **US08:** Gerar relatórios comparativos.
-- **US09:** Garantir interface minimalista.
+- **US05** - Eu como usuário quero que as métricas obtidas (ROI, Lucro, % de vitórias) sejam exibidas em gráficos de forma clara e fácil de visualizar para que eu consiga analisar rapidamente os diversos dados coletados.
+- **US06** - Eu como usuário quero visualizar análises de diferentes tipos de jogos e de diferentes torneios para que eu possa comparar os resultados e tomar um plano para maximizar os ganhos.
+- **US07** - Eu como usuário quero que a minha evolução ao longo do tempo seja exibida em um gráfico de linha para que eu possa ter noção de progresso.
+- **US08** - Eu como usuário quero ver o histórico de importações realizados para que eu possa rastrear dados que já foram ou não importados.
 
 ### ÉPICO 4 — Desempenho e Distribuição
-- **US10:** Otimizar processamento de grandes volumes.
-- **US11:** Distribuir como executável (.exe).
+- **US09** - Eu como usuário quero ver o meu histórico de transações para que eu tenha um controle sobre o valor que está sendo investido.
+- **US10** - Eu como usuário quero ver o número de vezes que terminei em uma posição premiada para que eu possa ter uma visão ampla do meu desempenho.
 
 ---
 
 ## 9.2 Priorização do Backlog Geral
 
-**Priorização dos Requisitos Funcionais do Poker Stats**  
-A tabela a seguir apresenta a priorização dos requisitos com base no valor de negócio (MoSCoW) e na complexidade técnica. Os requisitos do MVP (“Must Have”) aparecem destacados.
+**Priorização das User Stories e Requisitos Funcionais do Poker Stats**  
+A tabela a seguir apresenta a priorização, mostrando a relação entre expectativas do usuário (US) e requisitos do sistema (RF), alinhando ambos com esforço, prioridade MoSCoW e inclusão no MVP.
 
-| **ID**   | **Descrição**                                 | **Esforço** | **Prioridade** | **MVP** |
-|:--------:|:----------------------------------------------|:-----------:|:--------------:|:-------:|
-| **RF01** | **Importar histórico de torneios**            |     G       |   Must have    |   ✅    |
-| **RF02** | **Calcular Lucro Total**                      |     P       |   Must have    |   ✅    |
-| **RF03** | **Calcular ROI**                              |     P       |   Must have    |   ✅    |
-|  RF04    | Calcular Taxa de Vitória                      |     P       |  Should have   |         |
-|  RF05    | Segmentar Análises por jogador                |     G       |  Should have   |         |
-| **RF06** | **Segmentar Análises por tipo de torneio**    |     G       |   Must have    |   ✅    |
-|  RF07    | Visualizar Gráfico de Linha de Evolução        |     M       |  Could have    |         |
-|  RF08    | Listar Histórico de Importações               |     M       |  Could have    |         |
-|  RF09    | Exibir Histórico de Transações                |     P       |  Should have   |         |
-| **RF10** | **Calcular ITM (In The Money)**               |     P       |   Must have    |   ✅    |
+| **ID (US)** | **Descrição** | **Requisito Relacionado** | **Esforço** | **Prioridade** | **MVP** |
+|:-----:|:-------------------------------------------------------------------------------------------------------------------------------------|:---------------------:|:-----------:|:---------------:|:-------:|
+| **US01** | **Importar histórico da Bodog para consolidar dados de diversas partidas.** | RF01 | G | Must have | ✅ |
+| **US02** | **Calcular automaticamente o lucro obtido a partir dos dados das partidas.** | RF02 | P | Must have | ✅ |
+| **US03** | **Calcular automaticamente o ROI geral e por modalidade.** | RF03 | P | Must have | ✅ |
+| US04 | Calcular taxa de vitórias por modalidade e geral. | RF04 | P | Should have |  |
+| US05 | Exibir métricas (ROI, Lucro, % vitórias) em gráficos fáceis de visualizar. | RF07 | M | Could have |  |
+| US06 | Visualizar análises de diferentes jogos/torneios e comparar resultados. | RF05, RF06 | G | Must have | ✅ |
+| US07 | Exibir evolução ao longo do tempo em gráfico de linha. | RF07 | M | Could have |  |
+| US08 | Ver histórico de importações realizadas. | RF08 | M | Could have |  |
+| US09 | Ver histórico de transações financeiras (investimentos). | RF09 | P | Should have |  |
+| **US10** | **Ver o número de vezes em posições premiadas (ITM) para avaliar desempenho.** | RF10 | P | Must have | ✅ |
 
 ---
 
