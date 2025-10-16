@@ -20,8 +20,8 @@ O backlog é uma lista organizada e priorizada de todas as tarefas, funcionalida
 - **US04** - Eu como usuário quero que o sistema calcule automaticamente a taxa de vitórias para cada modalidade e também a taxa de vitórias geral para que eu consiga visualizar melhor o meu desempenho em diferentes segmentos.
 
 ### ÉPICO 3 — Visualização e Relatórios
-- **US05** - Eu como usuário quero que as métricas obtidas (ROI, Lucro, % de vitórias) sejam exibidas em gráficos de forma clara e fácil de visualizar para que eu consiga analisar rapidamente os diversos dados coletados.
-- **US06** - Eu como usuário quero visualizar análises de diferentes tipos de jogos e de diferentes torneios para que eu possa comparar os resultados e tomar um plano para maximizar os ganhos.
+- **US05** - Eu, como usuário, quero filtrar as métricas de desempenho por cada jogador individualmente, para que eu possa avaliar a performance de cada jogador e tomar decisões mais informadas sobre a gestão da equipe.
+- **US06** - Eu, como usuário, quero filtrar as análises de desempenho por tipo de torneio, para que eu possa identificar em quais modalidades sou mais lucrativo e tomar decisões mais informadas sobre onde focar meu jogo.
 - **US07** - Eu como usuário quero que a minha evolução ao longo do tempo seja exibida em um gráfico de linha para que eu possa ter noção de progresso.
 - **US08** - Eu como usuário quero ver o histórico de importações realizados para que eu possa rastrear dados que já foram ou não importados.
 
