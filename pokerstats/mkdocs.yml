@@ -26,9 +26,10 @@ nav:
   - Backlog do Produto: backlog/BacklogDoProduto.md
   - Lições Aprendidas:
       - Unidade 1: unidade1/licoesAprendidas.md
+  - Evidencias: Evidencias/Evidencias.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
-# Tema do MkDocs
+
 theme:
   name: material
   palette:
