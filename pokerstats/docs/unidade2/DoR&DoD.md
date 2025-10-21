@@ -1,6 +1,6 @@
-# 8. Definition of Ready (DoR) e Definition of Done (DoD)
+# Definition of Ready (DoR) e Definition of Done (DoD)
 
-## 8.1 Definition of Ready (DoR)
+## Definition of Ready (DoR)
 
 O **DoR (Definition of Ready)** é um acordo da equipe que define quando um requisito está preparado para ser puxado para o desenvolvimento.  
 Garante que a equipe tenha as informações necessárias antes de iniciar.
