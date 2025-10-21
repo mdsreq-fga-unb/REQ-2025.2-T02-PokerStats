@@ -54,3 +54,4 @@ Os requisitos não funcionais especificam as qualidades e restrições do sistem
 | Versão |        Descrição         |                      Autor(es)                      |    Data    |
 | :----: | :----------------------: | :-------------------------------------------------: | :--------:  
 |  1.0   | Criação do documento |  [Felipe Rodrigues](https://github.com/felipeJRdev)      | 15/10/2025 | 
+|  2.0   | Ajustes no documento |  [Felipe Rodrigues](https://github.com/felipeJRdev)      | 20/10/2025 | 
