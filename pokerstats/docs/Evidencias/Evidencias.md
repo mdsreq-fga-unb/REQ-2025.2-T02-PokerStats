@@ -4,7 +4,7 @@
 - **Entrevistas:**
   - **Evidência:** registros, atas, prints ou gravações de reuniões (ou evidências simuladas baseadas nas discussões realizadas).
   - Entrevista - 22/09
-![22_09](../../img/Evidencias/1_Licitação%20e%20Descoberta/1Entrevistas/22_09.png)
+![22_09](../img/Evidencias/1_Licitação%20e%20Descoberta/1Entrevistas/22_09.png)
   - Entrevista - 04/10
   - Entrevista - 12/10
 
