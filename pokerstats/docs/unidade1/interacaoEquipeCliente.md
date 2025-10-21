@@ -32,7 +32,6 @@
 
 ## Processo de Validação
 
-- **Validação de protótipo (Prototype Validation)**: o cliente analisa o protótipo inicial ou wireframe da solução, verificando se atende aos requisitos funcionais e às expectativas de usabilidade. O objetivo é aprovar o design e fluxo antes de iniciar o desenvolvimento completo.  
 - **Validação de entrega (Delivery Validation)**: o cliente revisa e aprova a entrega final de cada incremento ou funcionalidade implementada. Essa validação garante que o produto atende aos requisitos especificados, está funcionalmente correto e pronto para implantação ou uso.  
 
 ## Histórico de Versões

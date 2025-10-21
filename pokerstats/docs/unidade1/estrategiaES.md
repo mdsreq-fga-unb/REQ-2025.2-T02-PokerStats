@@ -1,39 +1,40 @@
-# Estratégias de Engenharia de Software
+# **ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE**
 
-## Estratégia Priorizada
-- **Abordagem:** Ágil  
-- **Ciclo de Vida:** Ágil  
-- **Processo:** RAD + Kanban  
+## **Estratégia Priorizada**
 
-## Quadro Comparativo
-Apresenta-se um quadro comparando o processo RAD + Kanban escolhido com o processo XP + Scrum.
+**Abordagem:** Ágil  
+	**Ciclo de Vida:** Ágil  
+	**Processo:** Kanban \+ Práticas XP
 
-<font size="3"><p style="text-align: left">**Tabela 1** - Quadro compartivo RAD + Kanban e XP + Scrum.</p></font>
+## **Quadro Comparativo**
 
-| Característica | RAD + Kanban | XP + Scrum |
-|----------------|--------------|------------|
-| Flexibilidade a Mudanças | Alta. O fluxo do Kanban e a prototipagem do RAD são projetados para incorporar mudanças e feedback de forma contínua e com baixo custo. | Alta. A iteração curta do Scrum e as práticas adaptativas do XP permitem incorporar mudanças frequentes sem comprometer a qualidade. |
-| Envolvimento do Cliente | Contínuo e prático. O cliente participa ativamente na validação de protótipos da interface e pode acompanhar o progresso visualmente no quadro Kanban. | Contínuo e colaborativo. O cliente (Product Owner ou representante) participa a cada sprint, revisa entregas incrementais e influencia o backlog. |
-| Gestão de Riscos | Proativa. Riscos técnicos, como a qualidade dos dados do Bodog, podem ser priorizados e investigados no início do fluxo para mitigar seu impacto. | Iterativa. Riscos são tratados a cada sprint, reduzindo incertezas gradualmente com entregas frequentes e testes constantes. |
-| Adequação para Equipes com Horários Variados | Alta. O Kanban é, por natureza, um método assíncrono que não depende de reuniões diárias ou ciclos de trabalho sincronizados, ideal para a realidade da equipe. | Moderada. Scrum e XP favorecem sincronização com cerimônias e práticas colaborativas, mas ainda permitem ajustes de horários desde que haja disciplina no cumprimento das iterações. |
+Apresenta-se um quadro comparando o processo Kanban \+ Práticas XP escolhido com o processo RAD  \+  Scrum.
 
-## Justificativa
-Com base nas características do projeto e nos desafios enfrentados, o RAD + Kanban é o processo mais adequado pelos seguintes motivos:
+<font size="3"><p style="text-align: left">**Tabela 1** - Quadro comparativo de processos.</p></font>
 
-1. Flexibilidade e Iterações Contínuas
-O uso do RAD, com foco em prototipação rápida, aliado ao fluxo visual do Kanban, permite incorporar mudanças frequentes e feedback imediato do cliente sem grandes custos de retrabalho. Isso garante que o produto evolua de forma contínua e alinhada às necessidades reais.
+| Característica | Kanban \+ Práticas XP | RAD \+ Scrum |
+| :---- | :---- | :---- |
+| Flexibilidade a Mudanças | **Altíssima.** O fluxo contínuo do Kanban permite absorver novas prioridades em tempo real. A alta qualidade do código, garantida pelas práticas do XP, assegura que as mudanças sejam implementadas com baixo custo e segurança. | Alta, mas controlada. Mudanças de prioridade são incorporadas entre os Sprints (ciclos), enquanto a prototipagem do RAD permite ajustes rápidos dentro de um Sprint. |
+| Envolvimento do Cliente | **Contínuo e visual.** O cliente acompanha o progresso diretamente no board (Kanban) e participa no refinamento dos requisitos e na validação das entregas conforme a necessidade, sem depender de cerimônias fixas. | Intenso e formal. O cliente participa ativamente na validação de protótipos (RAD) e nas cerimônias de revisão ao final de cada Sprint (Scrum). |
+| Gestão de Riscos | **Proativa.** Riscos de fluxo e gargalos tornam-se visíveis imediatamente no board (Kanban). Riscos técnicos são mitigados na origem através da disciplina de engenharia e testes constantes (XP). | Iterativa. Os riscos são diluídos em ciclos curtos (Sprints), e a validação constante de protótipos (RAD) reduz o risco de construir a funcionalidade errada. |
+| Adequação para Equipes com Horários Variados | **Ideal.** O Kanban é um método inerentemente assíncrono, perfeito para horários flexíveis. As práticas do XP garantem a disciplina técnica sem exigir rituais de sincronização diários.. | Baixa. A abordagem depende de rituais que exigem sincronia, como as reuniões diárias do Scrum e os workshops do RAD, sendo pouco eficiente para equipes assíncronas. |
+| Foco Principal: | Eficiência do fluxo e qualidade técnica. O Kanban otimiza a velocidade e a previsibilidade da entrega, enquanto as práticas do XP garantem que o produto construído seja tecnicamente robusto, seguro e de alta qualidade. | Velocidade na entrega de valor em ciclos. O Scrum organiza o trabalho em Sprints para garantir entregas de valor previsíveis e periódicas, enquanto o RAD acelera a construção e validação dessas entregas através de prototipagem rápida e intensa colaboração com o cliente. |
 
-2. Entrega Visual e Acompanhamento do Cliente
-O Kanban possibilita que o cliente acompanhe o progresso em tempo real e valide incrementos por meio dos protótipos construídos no RAD. Essa transparência facilita o engajamento e reduz riscos de desalinhamento entre expectativas e entregas.
+## **Justificativa**
 
-3. Gestão Proativa de Riscos
-A natureza iterativa do RAD permite que riscos técnicos sejam explorados logo nos protótipos iniciais, enquanto o Kanban prioriza o trabalho mais crítico no fluxo. Isso ajuda a identificar e mitigar incertezas ainda nas fases iniciais, antes que se tornem impeditivos.
+Com base nas características do projeto e nos desafios enfrentados, a combinação de **Kanban e Práticas XP** é o processo mais adequado pelos seguintes motivos:
 
-4. Adequação à Realidade da Equipe
-Considerando que a equipe pode ter horários de trabalho variados, o Kanban é ideal por não exigir forte sincronização ou rituais fixos. O processo se adapta bem a um modelo mais assíncrono, sem perder a visibilidade do progresso.
+**1\. Qualidade Técnica e Mitigação de Riscos**   
+O foco do projeto é a robustez no tratamento de dados, um desafio técnico. As práticas do XP, como o **Desenvolvimento Orientado a Testes (TDD)** e a **Integração Contínua**, garantem a qualidade do código desde o início, mitigando riscos técnicos e reduzindo o débito técnico de forma proativa. A qualidade é construída durante o processo, não verificada apenas no final.
 
-5. Rapidez na Entrega de Valor
-A combinação de RAD e Kanban possibilita que funcionalidades prioritárias sejam prototipadas e entregues em ciclos curtos, garantindo que o cliente receba valor desde as primeiras etapas do desenvolvimento e que o produto seja constantemente validado.
+**2\. Flexibilidade Contínua e Fluxo Otimizado**   
+O Kanban permite uma gestão de fluxo contínua e visual. Novas prioridades e mudanças podem ser incorporadas ao trabalho a qualquer momento sem interromper um ciclo, o que é ideal para um projeto que evolui com o feedback do cliente. A limitação do **Trabalho em Progresso (WIP)** garante que a equipe foque em concluir tarefas, otimizando a velocidade da entrega de valor.
+
+**3\. Adequação ao Trabalho Assíncrono da Equipe**   
+A natureza do Kanban, focada no fluxo de trabalho e não em cerimônias fixas, é perfeitamente adequada para uma equipe universitária com horários variados. A abordagem assíncrona permite que os membros contribuem de forma flexível, enquanto a disciplina de engenharia do XP garante que os padrões de qualidade sejam mantidos sem a necessidade de uma sincronização diária rígida.
+
+**4\. Transparência e Entrega de Valor Focada**   
+O quadro Kanban oferece total transparência sobre o andamento do projeto para todos os envolvidos, incluindo o cliente e o professor. A combinação de um fluxo eficiente (Kanban) com entregas de alta qualidade (XP) assegura que a equipe esteja sempre trabalhando no item de maior valor, aumentando a confiança no progresso e no produto final.
 
 ## Histórico de Versões
 
@@ -42,3 +43,4 @@ A combinação de RAD e Kanban possibilita que funcionalidades prioritárias sej
 | Versão |        Descrição         |                      Autor(es)                      |    Data    |
 | :----: | :----------------------: | :-------------------------------------------------: | :--------:  
 |  1.0   | Criação do documento | [Ricardo Henrique](https://github.com/R1K4S), [Thales Duarte](https://github.com/Thales-Duarte) | 15/09/2025 | 
+|  2.0   | Reescolha dos processos | [Thales Duarte](https://github.com/Thales-Duarte) | 04/10/2025 | 
