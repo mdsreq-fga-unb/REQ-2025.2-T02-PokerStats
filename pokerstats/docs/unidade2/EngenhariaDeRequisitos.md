@@ -1,94 +1,76 @@
 # Engenharia de Requisitos
 
-## Atividades e Técnicas da ER em Kanban + Práticas XP
-
-No projeto **Poker Stats**, o trabalho é organizado em um **fluxo contínuo**, focado em entregar valor rapidamente e com alta qualidade técnica.
-
-As técnicas utilizadas foram baseadas no livro *eXtreme Programming: práticas para o dia a dia no desenvolvimento ágil de software* (WILDT et al., 2013).
+## Atividades e Técnicas da ER 
 
 ---
 
-### 1. Gestão do Backlog (O Fluxo de Descoberta)
+### Planejamento
 
-Atividades que ocorrem antes e durante o desenvolvimento:
+#### Elicitação e descoberta
 
-- **Elicitação e Descoberta:**  
-  - **Entrevistas:** Realizadas com o cliente (Eduardo) para entender métricas importantes (lucro, ROI, etc.) e dificuldades com relatórios manuais.
+- **Brainstorm**: É uma técnica de criatividade coletiva que visa gerar o máximo de ideias e soluções possíveis em grupo, em um ambiente livre de críticas. No projeto "Poker Stats", o brainstorm foi empregado pela equipe para idealizar as funcionalidades e as características do produto (minimalismo, foco em Bodog ) e para gerar a proposta inicial de solução, focada em resolver o problema da falta de dados consolidados de desempenho.
+   Evidência: Proposta de solução.
 
-- **Análise e Consenso:**  
-  - **Priorização Contínua:** Uso de ranking no backlog para garantir foco nas funcionalidades de maior valor.  
-  - **Discussões em Equipe (Refinamento):** Reuniões técnicas para definir fórmulas e viabilidade da extração de dados da Bodog.  
-  - **Visualizar o Fluxo de Trabalho:** Tornar o processo visível (Kanban) para detectar gargalos e promover decisões baseadas em dados reais.  
-  - **Gerenciamento de Fluxo:** Acompanhamento de métricas (tempo de ciclo, gargalos) para garantir fluxo eficiente.  
-  - **Implementar Ciclos de Feedback:** Reuniões de revisão e melhoria contínua para ajustar produto e processo.  
+- **Entrevista**: Consiste em sessões de perguntas e respostas, formais ou informais, com o cliente ou usuários-chave para obter uma compreensão profunda de suas necessidades. No "Poker Stats", as entrevistas com Eduardo foram o método primário para entender o cenário atual , a dificuldade de consolidação manual e identificar as métricas-chave que ele realmente valorizava, como o lucro por torneio e o ROI.
+  Evidência: Prints de reuniões com o cliente.
 
-- **Declaração:**  
-  - **Criação de Épicos e User Stories:** Exemplo: “Como Eduardo, quero calcular o ROI de cada torneio para saber onde sou mais lucrativo.”  
-  - **Tornar as Políticas Explícitas:** Definição clara de critérios, prioridades e práticas (como TDD e padrões de código).
+- **Análise de concorrentes**: É o estudo de produtos ou sistemas existentes no mercado para identificar lacunas, melhores práticas e definir como o novo produto deve se diferenciar e agregar valor. Esta análise no "Poker Stats" revelou que as soluções profissionais (como PokerTracker) eram complexas e caras , permitindo que o projeto se posicionasse como uma alternativa personalizada, minimalista e acessível, focada na plataforma Bodog e nas métricas essenciais de Eduardo. 
+  Evidência: Tópico 2.4 do documento de visão.
 
----
+#### Análise e consenso
 
-### 2. Fluxo de Desenvolvimento (O Fluxo de Entrega)
+- **Priorização MOSCOW**: uma técnica usada para priorização e classificação dos requisitos em Must have (essencial), Should have (importante), Could have (desejável) e Won't have , baseada no valor de negócio para o cliente. Foi fundamental para definir o escopo do Produto Mínimo Viável (MVP) do "Poker Stats", garantindo que funcionalidades essenciais (como Importação de Histórico e Cálculo de ROI ) fossem entregues na primeira iteração. 
+	Evidência: O próprio MoSCoW (gráfico e tabela).
 
-Atividades que ocorrem quando um item é puxado para desenvolvimento:
+- **User points**: É uma técnica de estimativa relativa (não baseada em horas) que mede o esforço, a complexidade, a incerteza e o risco envolvidos na implementação de uma User Story. No "Poker Stats", a equipe utilizou essa escala (MB, B, M, A, MA ) para ponderar o valor de negócio (MoSCoW) com o custo de desenvolvimento, subsidiando a decisão de quais requisitos incluir no MVP. 
+  Evidência: A avaliação técnica no backlog e a coluna "Nível de Esforço" na tabela de priorização.
 
-- **Representação:**  
-  - **TDD (Test-Driven Development):** Escrever testes antes do código, garantindo validação contínua e documentação viva.  
-  - **Protótipos Rápidos:** Wireframes e mockups do dashboard para alinhar visualmente as métricas com o cliente.  
-  - **Refatoração:** Melhoria contínua do código sem alterar seu comportamento, assegurando legibilidade e manutenção.  
+- **Análise de custo / benefício**: Sendo utilizada para avaliar o valor de um requisito em relação ao custo ou esforço de implementá-lo. No "Poker Stats", esta análise, combinada com o MoSCoW e Story Points, ajudou a equipe a justificar a inclusão ou exclusão de requisitos no MVP, garantindo que o tempo fosse investido nas funcionalidades que maximizam o impacto na gestão da banca de Eduardo. 
+  Evidência: O gráfico de MoSCoW e análise de Complexidade Técnica (Story Points - Custo).
 
-- **Verificação e Validação:**  
-  - **DoR e DoD:** Verificar se os critérios estão prontos e concluídos corretamente.  
-  - **Checklists de Validação:** Garantir que os requisitos atendam aos critérios de aceitação.  
-  - **Propriedade Coletiva do Código:** Todos os desenvolvedores têm acesso e responsabilidade sobre o código.  
-  - **Integração Contínua:** Garantir builds e testes automáticos frequentes, mantendo o sistema sempre funcional.  
+- **Discussão em equipe**:  Realização de encontros (formais ou informais) onde os membros do time analisam requisitos, resolvem problemas técnicos e compartilham conhecimento. No contexto de Kanban + XP, essas discussões (Refinamento) são cruciais para manter a disciplina de engenharia e garantir que as Histórias de Usuário atendam ao DoR (Definition of Ready) antes de entrar no fluxo de desenvolvimento. 
+  Evidência: Prints ou gravações de reuniões de refinamento (Discussões em Equipe)
 
-- **Organização e Atualização:**  
-  - **Quadro Kanban:** Visualização contínua do status de cada tarefa.  
-  - **Limitação de WIP:** Foco em poucas tarefas simultâneas para manter fluxo previsível.  
-  - **Pequenas Entregas:** Publicações frequentes para obter feedback rápido.  
-  - **Mapa de Rastreabilidade:** Relação entre histórias, requisitos e objetivos do negócio.  
+#### Declaração
 
----
+- **Documentação de visão**: O Documento de Visão começa com uma declaração de propósito, uma narrativa concisa que articula por que o projeto é necessário e como ele se alinha aos objetivos estratégicos da organização. Esta declaração estabelece o contexto para todo o empreendimento e fornece uma âncora para as decisões futuras. 
+	Evidência: O próprio documento de Visão
 
-### 3. Melhoria Contínua do Processo
+### Execução
 
-Atividades periódicas de análise e refinamento do processo:
+#### Representação:
 
-- **Análise e Organização:**  
-  - **Métricas de Fluxo (Lead Time, Cycle Time):** Medição do tempo total e por fase das tarefas.  
-  - **Reuniões de Cadência:** Discussão dos gargalos e melhorias possíveis com base em dados reais.  
+- **Protótipos**:São modelos ou representações visuais rápidos das telas ou funcionalidades do sistema, utilizados para obter feedback precoce do cliente sobre a interface (Representação). No "Poker Stats", eles garantiram que a visualização de dados complexos (gráficos de linha, painéis de métricas ) fosse clara, intuitiva e agradasse o usuário casual Eduardo.
+ Evidência: Os próprios protótipos.
 
-- **Atualização do Processo:**  
-  - **Ajustes no Quadro Kanban:** Exemplo — adicionar coluna “Validação de Dados” para checar consistência dos arquivos Bodog.  
-  - **Refinamento das Políticas Explícitas:** Atualização do DoR e DoD para incluir novos critérios, como validações de ROI e Lucro.  
-  - **Ritmo Sustentável:** Garantir equilíbrio entre produtividade e qualidade, evitando sobrecarga da equipe.  
+#### **Verificação e validação**:
 
----
+- **Dor e Dod**: O DoR é o acordo da equipe que define quando um requisito está apto para o desenvolvimento, garantindo que a História de Usuário esteja clara, o valor de negócio compreendido e que os Critérios de Aceitação estejam definidos e testáveis, evitando que o time comece a trabalhar em requisitos ambíguos. Já o DoD é o acordo que define quando uma funcionalidade está verdadeiramente concluída, agregando valor utilizável ao produto. No projeto, o DoD reforça as Práticas XP, exigindo que o código siga padrões, que os Testes estejam passando (seguindo a abordagem TDD) e que o código seja revisado e validado pelo cliente, assegurando a robustez necessária para o tratamento de dados .
+	Evidência: O próprio Dor e DoD
 
-## Engenharia de Requisitos e o Kanban/XP
+### Review
 
-A seguir, apresenta-se a relação entre as **áreas da Engenharia de Requisitos** e as **práticas aplicadas** no contexto do projeto *Poker Stats*, combinando **Kanban** e **Extreme Programming (XP)**.  
-O objetivo é evidenciar como as atividades da ER foram incorporadas ao fluxo ágil e à cultura de qualidade contínua da equipe.
+#### Verificação e validação
 
----
+- **Feedback**:  O processo contínuo de obtenção de retorno sobre as entregas do produto, essencial em metodologias Ágeis. No "Poker Stats", o feedback formal do cliente ocorria em Validation Meetings após a conclusão de incrementos (validação funcional ), permitindo ajustes rápidos e garantindo que o produto permanecesse alinhado com suas métricas de interesse. 
+  Evidência: Registros de reuniões de feedback (implícito nas reuniões de validação e nos registros de entrevistas).
 
-| **Área de Atividades** | **Atividades de ER** | **Práticas Técnicas (Kanban + XP)** | **Resultado Esperado** |
-|------------------------|----------------------|--------------------------------------|-------------------------|
-| **Gestão do Backlog (Descoberta)** | Elicitação e Análise de Domínio | Entrevistas com o cliente, análise dos arquivos Bodog, identificação de métricas prioritárias (lucro, ROI, ITM) | Entendimento profundo das necessidades do cliente e das restrições técnicas dos dados. |
-| **Gestão do Backlog (Análise e Consenso)** | Priorização e Refinamento Contínuos | Técnica MoSCoW, Discussões em Equipe, Visualização do Fluxo, Gestão de Gargalos | Backlog vivo, priorizado por valor de negócio e viabilidade técnica, com visibilidade total do progresso. |
-| **Declaração** | Criação de Épicos e User Stories | Formato padrão (“Como..., quero..., para que...”), Critérios de Aceitação, Definition of Ready (DoR) | Requisitos claros, testáveis e alinhados com os objetivos de valor para o cliente. |
-| **Fluxo de Desenvolvimento (Representação)** | Tradução dos Requisitos em Código | Desenvolvimento Orientado a Testes (TDD), Protótipos Rápidos, Refatoração Contínua | Código limpo, testável e validado continuamente; interfaces alinhadas às expectativas do cliente. |
-| **Fluxo de Desenvolvimento (Validação)** | Verificação e Validação dos Requisitos | Checklists de Aceitação, Definition of Done (DoD), Propriedade Coletiva do Código, Integração Contínua (CI) | Qualidade técnica e funcional garantidas; código revisado e testado por toda a equipe. |
-| **Organização e Atualização do Fluxo** | Visualização e Controle do Trabalho | Quadro Kanban, Limitação de WIP, Pequenas Entregas, Mapa de Rastreabilidade | Fluxo de trabalho previsível, transparente e rastreável entre requisitos, código e produto. |
-| **Melhoria Contínua** | Análise e Evolução do Processo | Métricas de Fluxo (Lead Time, Cycle Time), Reuniões de Cadência, Ajustes no Quadro, Refinamento das Políticas Explícitas | Processos aprimorados com base em dados reais e feedback coletivo. |
-| **Sustentabilidade do Processo** | Gestão de Ritmo e Equilíbrio | Ritmo Sustentável, Revisão de Políticas (DoR/DoD), Feedback Contínuo com o Cliente | Entregas frequentes, previsíveis e de alta qualidade, mantendo o bem-estar e o desempenho da equipe. |
+#### **Organização e atualização**
 
----
-## Histórico de Versões
+- Revisão do backlog: a atividade contínua de inspeção e adaptação do backlog de requisitos, onde as Histórias de Usuário são refinadas, reavaliadas quanto à prioridade (MoSCoW) e estimativa (Story Points), e organizadas. No "Poker Stats", esta prática garante que a equipe, operando em um fluxo Kanban, esteja sempre pronta para trabalhar no item de maior valor. 
+  Evidência: O próprio backlog e o quadro Kanban atualizado.
+
+
+
+
+
+
+
+
 
 <font size="3"><p style="text-align: left">**Tabela 2** - Histórico de versões.</p></font>
 
 | Versão |        Descrição         |                      Autor(es)                      |    Data    |
 | :----: | :----------------------: | :-------------------------------------------------: | :--------:  
-|  1.0   | Criação do documento | [Felipe Junior](https://github.com/Felipej3ds)          | 19/10/2025 | 
+|  1.0   | Criação do documento no pages | [Felipe Junior](https://github.com/Felipej3ds)          | 19/10/2025 | 
+| 1.1   | Atualizar o documento no pages |[Felipe Junior](https://github.com/Felipej3ds)          | 05/11/2025 | 
