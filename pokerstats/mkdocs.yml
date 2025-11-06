@@ -18,12 +18,11 @@ nav:
       - Cenário Atual do Cliente e do Negócio: unidade1/cenarioAtual.md
       - Solução Proposta: unidade1/solucaoProposta.md
       - Estratégias de Engenharia de Software: unidade1/estrategiaES.md
+      - Engenharia de Requisitos: unidade2/EngenhariaDeRequisitos.md
       - Cronograma e Entregas: unidade1/cronogramaEntregas.md
       - Interação entre Equipe e Cliente: unidade1/interacaoEquipeCliente.md
-      - Engenharia de Requisitos: unidade2/EngenhariaDeRequisitos.md
-      - Requisitos de Software: unidade2/RequisitosDeSoftware.md
+      - Backlog do Produto: unidade2/Backlog.md
       - DoR&DoD: unidade2/DoR&DoD.md
-  - Backlog do Produto: backlog/BacklogDoProduto.md
   - Lições Aprendidas:
       - Unidade 1: unidade1/licoesAprendidas.md
       - Unidade 2: unidade2/licoesAprendidas.md
