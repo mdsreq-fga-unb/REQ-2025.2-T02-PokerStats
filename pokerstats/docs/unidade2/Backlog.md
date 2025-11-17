@@ -73,4 +73,35 @@ Os requisitos não funcionais especificam as qualidades e restrições do sistem
 
 - A definição do escopo e da ordem de desenvolvimento do Poker Stats partiu de uma priorização baseada em duas análises complementares: **Valor de Negócio** e **Complexidade Técnica.**
 
+1. Análise de Valor de Negócio: Primeiramente, a importância de cada requisito foi classificada em conjunto com o cliente (Eduardo), utilizando a técnica MoSCoW. Esta etapa focou exclusivamente no valor para o negócio, tendo como critério principal o objetivo de gerar inteligência estratégica para o jogador.
+2. Análise de Complexidade Técnica: Em paralelo, a complexidade de cada requisito foi estimada pela equipe de desenvolvimento, utilizando uma escala de Story Points que representa o esforço, a incerteza e o risco envolvidos na implementação.
+
+
+### Legenda de Prioridade (Valor de Negócio):
+- Must have: Requisitos essenciais sem os quais o produto não funciona ou não entrega seu valor principal.
+- Should have: Requisitos importantes que agregam valor significativo, mas não são vitais para a primeira entrega.
+- Could have: Requisitos desejáveis, que podem ser incluídos se o tempo e os recursos permitirem.
+
+### Legenda de Complexidade (Story Points):
+
+- MB (Muito Baixo - 1 pt): Funcionalidade idêntica ou extremamente semelhante a algo já feito pela equipe.
+- B (Baixo - 2 pts): Funcionalidade simples e bem compreendida.
+- M (Médio - 3 pts): Funcionalidade nova, mas com semelhanças a trabalhos anteriores, exigindo planejamento moderado.
+- A (Alto - 5 pts): Funcionalidade nova e com incertezas técnicas, exigindo mais planejamento e pesquisa.
+- MA (Muito Alto - 7+ pts): Funcionalidade com alta incerteza, envolvendo tecnologias desconhecidas ou problemas sem solução óbvia. Recomenda-se quebrar em partes menores.
+
+A partir da análise combinada, o Produto Mínimo Viável (MVP) foi definido como o conjunto de todos os requisitos classificados como "Must have"
+
+| ID   | Descrição                           | Nível de Esforço | Prioridade   | MVP |
+|------|--------------------------------------|------------------|--------------|-----|
+| US01 | Importar histórico de torneios       | A                | Must have    | X   |
+| US02 | Calcular Lucro Total                 | MB               | Must have    | X   |
+| US03 | Calcular ROI                         | B                | Must have    | X   |
+| US04 | Calcular Taxa de Vitória             | MB               | Should have  |     |
+| US05 | Segmentar Análises por jogador       | MA               | Should have  |     |
+| US06 | Segmentar Análises por tipo de torneio | A              | Must have    | X   |
+| US07 | Visualizar Gráfico de Linha de Evolução | M             | Could Have   |     |
+| US08 | Listar Histórico de Importações      | M                | Could Have   |     |
+| US09 | Exibir Histórico de Transações       | B                | Should Have  |     |
+| US10 | Calcular ITM (In The Money)          | B                | Must have    | X   |
 
