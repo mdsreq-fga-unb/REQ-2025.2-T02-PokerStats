@@ -105,3 +105,4 @@ A partir da análise combinada, o Produto Mínimo Viável (MVP) foi definido com
 | US09 | Exibir Histórico de Transações       | B                | Should Have  |     |
 | US10 | Calcular ITM (In The Money)          | B                | Must have    | X   |
 
+ 
