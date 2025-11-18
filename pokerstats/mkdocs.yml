@@ -24,6 +24,9 @@ nav:
       - REQUISITOS DE SOFTWARE: unidade2/REQUISITOS_DE_SOFTWARE.md
       - DoR&DoD: unidade2/DoR&DoD.md
       - Backlog: unidade2/Backlog.md
+  - Estudo de Caso:
+      - Estudo de caso PBB: unidade3/PBB.md
+      - Estudo de caso USM: unidade3/USM.md
   - Lições Aprendidas:
       - Unidade 1: unidade1/licoesAprendidas.md
       - Unidade 2: unidade2/licoesAprendidas.md
