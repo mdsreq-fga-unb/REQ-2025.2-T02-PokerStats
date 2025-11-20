@@ -36,13 +36,11 @@ class TorneioConsolidado:
     @property
     def resumo(self):
         nome = self.dados_hh.nome_torneio if self.dados_hh else "Desconhecido"
-        # Prioridade para o valor financeiro real, senão usa o estimado do TXT
         buy_in = self.dados_financeiros.buy_in if self.dados_financeiros else (self.dados_hh.buy_in_estimado if self.dados_hh else 0.0)
         premio = self.dados_financeiros.premio if self.dados_financeiros else 0.0
         
-        roi = 0.0
-        if buy_in > 0:
-            roi = ((premio - buy_in) / buy_in) * 100
+        lucro = premio - buy_in
+        roi = ((premio - buy_in) / buy_in * 100) if buy_in > 0 else 0.0
         
         return {
             "Status": self.status,
@@ -51,6 +49,6 @@ class TorneioConsolidado:
             "Data": self.dados_financeiros.data_inicio if self.dados_financeiros else self.dados_hh.data_hh,
             "BuyIn": buy_in,
             "Premio": premio,
-            "Lucro": premio - buy_in,
+            "Lucro": lucro,
             "ROI": roi
         }

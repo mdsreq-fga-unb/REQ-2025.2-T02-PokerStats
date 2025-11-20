@@ -2,8 +2,13 @@ from typing import List
 from .models import TransacaoDTO, HandHistoryDTO, TorneioConsolidado, RelatorioProcessamento
 from .readers.transactions import ler_transacoes_excel
 from .readers.hand_history import processar_lote_hhs
+from ..database.config import SessionLocal
+from ..database.repository import TorneioRepository
 
 class BodogService:
+    def __init__(self):
+        self.db = SessionLocal()
+        self.repo = TorneioRepository(self.db)
 
     def ler_transacoes(self, caminho_arquivo: str) -> List[TransacaoDTO]:
         return ler_transacoes_excel(caminho_arquivo)
@@ -39,3 +44,9 @@ class BodogService:
             consolidados.append(TorneioConsolidado("PENDENTE_FINANCEIRO", None, hh_restante))
             
         return consolidados
+    
+    def salvar_no_banco(self, lista_consolidados: List[TorneioConsolidado]):
+            return self.repo.salvar_consolidacao(lista_consolidados)
+        
+    def obter_historico_banco(self):
+        return self.repo.listar_todos()    
