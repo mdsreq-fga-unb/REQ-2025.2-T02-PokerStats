@@ -14,6 +14,8 @@ A **HealthConnect** é uma empresa no setor de saúde que busca unificar e trans
 
 ## Explicação da Estrutura do User Story Mapping (USM)
 
+![Personas](../img/USM/USM.png)
+
 O User Story Mapping transforma uma lista plana de requisitos em uma estrutura visual hierárquica para facilitar o entendimento e a priorização:
 
 * **Eixo Horizontal (Backbone / Fluxo da Narrativa):** Representa o tempo e a sequência lógica das atividades do usuário.
