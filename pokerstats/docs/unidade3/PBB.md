@@ -59,7 +59,7 @@ Esta seção descreve os principais desafios e dores enfrentados pelo ecossistem
 
 
 
-### Expectativas
+## Expectativas
 
 ![Expectations](../img/PBB/Expectations.png)
 
@@ -71,11 +71,9 @@ Esta seção descreve os principais desafios e dores enfrentados pelo ecossistem
 * **Favorecer o Aprendizado Contínuo, a Transparência e o Compartilhamento de Oportunidades:** A solução deve otimizar a interação entre os parceiros, permitindo o compartilhamento de boas práticas e a visibilidade de oportunidades de fomento e networking.
 * **Sustentar um Ecossistema de Inovação Aberto, Colaborativo e Sustentável:** A plataforma deve fornecer a base tecnológica para transformar os desafios organizacionais atuais em valor social, econômico e tecnológico duradouro.
 
-### Personas
+## Personas
 
 ![Expectations](../img/PBB/Personas.png)
-
-# Personas
 
 - Esta seção identifica os principais atores do ecossistema e detalha seus desafios (o que fazem hoje) e suas expectativas (o que esperam da nova plataforma):
 
@@ -103,7 +101,7 @@ Esta seção descreve os principais desafios e dores enfrentados pelo ecossistem
 * **O que faz:** Gerencia programas de incentivo à inovação e tenta acompanhar o impacto das políticas públicas, mas enfrenta dificuldades para reunir informações confiáveis e tem uma visão sistêmica limitada.
 * **O que espera:** Acompanhar de forma integrada o desempenho do ecossistema, apoiar a formulação de políticas de incentivo, consultar um painel consolidado de indicadores regionais, obter relatórios de impacto e visualizar conexões entre atores.
 
-### Funcionalidades
+## Funcionalidades
 
 ![features](../img/PBB/Features.png)
 
@@ -145,18 +143,18 @@ Esta seção descreve os principais desafios e dores enfrentados pelo ecossistem
 * **Problemas Resolvidos:** Dificuldades para reunir informações confiáveis de diferentes instituições; falta de uma visão sistêmica do ecossistema; obstáculos para mensurar o impacto dos investimentos e das políticas públicas.
 * **Benefícios Entregues:** Obter relatórios de impacto e relatórios comparativos; basear a orientação de novos investimentos e políticas de incentivo em dados consolidados.
 
-### PBIs (Product Backlog Items)
+## PBIs (Product Backlog Items)
 
 ![PBIs](../img/PBB/PBI_ProductBacklogItems.png)
 
 
 
-### Steps Map
+## Steps Map
 
 ![StepsMap](../img/PBB/StepsMap.png)
 
 
-### COORG
+## COORG
 
 ![COORG](../img/PBB/COORG.png)
 
@@ -180,6 +178,6 @@ Esta seção descreve os principais desafios e dores enfrentados pelo ecossistem
 
 A prioridade de cada PBI é calculada somando-se as pontuações dos critérios:
 
-$$Prioridade = Frequência\ de\ Uso + Valor\ de\ Negócio$$
+Prioridade = Frequência\ de\ Uso + Valor\ de\ Negócio
 
 *(Onde a pontuação máxima é 8 e a mínima é 2.)*

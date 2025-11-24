@@ -48,12 +48,9 @@
 - **Dor e Dod**: O DoR é o acordo da equipe que define quando um requisito está apto para o desenvolvimento, garantindo que a História de Usuário esteja clara, o valor de negócio compreendido e que os Critérios de Aceitação estejam definidos e testáveis, evitando que o time comece a trabalhar em requisitos ambíguos. Já o DoD é o acordo que define quando uma funcionalidade está verdadeiramente concluída, agregando valor utilizável ao produto. No projeto, o DoD reforça as Práticas XP, exigindo que o código siga padrões, que os Testes estejam passando (seguindo a abordagem TDD) e que o código seja revisado e validado pelo cliente, assegurando a robustez necessária para o tratamento de dados .
 	Evidência: O próprio Dor e DoD
 
+
 ### Review
 
-#### Verificação e validação
-
-- **Feedback**:  O processo contínuo de obtenção de retorno sobre as entregas do produto, essencial em metodologias Ágeis. No "Poker Stats", o feedback formal do cliente ocorria em Validation Meetings após a conclusão de incrementos (validação funcional ), permitindo ajustes rápidos e garantindo que o produto permanecesse alinhado com suas métricas de interesse. 
-  Evidência: Registros de reuniões de feedback (implícito nas reuniões de validação e nos registros de entrevistas).
 
 #### **Organização e atualização**
 
