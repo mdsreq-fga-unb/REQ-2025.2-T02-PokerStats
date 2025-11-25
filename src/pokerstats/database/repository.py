@@ -93,3 +93,8 @@ class TorneioRepository:
     def listar_todos(self):
         from sqlalchemy.orm import joinedload
         return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).order_by(TransacaoDB.data_inicio.desc()).all()
+    
+    def contar_transacoes_existentes(self, lista_ids: list[str]) -> int:
+        if not lista_ids:
+            return 0
+        return self.db.query(TransacaoDB).filter(TransacaoDB.id_transacao.in_(lista_ids)).count()

@@ -24,5 +24,6 @@ class ResultadoDB(Base):
     transacao_id = Column(Integer, ForeignKey("transacoes.id"), unique=True, nullable=False)
     lucro = Column(Float, default=0.0)
     roi = Column(Float, default=0.0)
+    ITM = Column(Float, default=0.0)
     
     transacao = relationship("TransacaoDB", back_populates="resultado")
