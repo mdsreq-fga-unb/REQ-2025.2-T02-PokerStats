@@ -1,5 +1,5 @@
-from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from sqlalchemy.orm import Session, joinedload
+from sqlalchemy import or_, func
 from sqlalchemy.exc import IntegrityError
 from .schemas import TransacaoDB, ResultadoDB
 from .config import Base, engine
@@ -39,36 +39,52 @@ class TorneioRepository:
                 db_transacao = self.db.query(TransacaoDB).filter(or_(*criteria)).first()
 
             try:
-                                
+                novo_buyin = r['BuyIn']
+                novo_premio = r['Premio']
+                
+                buyin_final = novo_buyin
+                premio_final = novo_premio
+
                 if db_transacao:
+                    if item.dados_financeiros:
+                        buyin_final = max(db_transacao.buy_in, novo_buyin)
+                        premio_final = max(db_transacao.premio, novo_premio)
+                        
+                        db_transacao.buy_in = buyin_final
+                        db_transacao.premio = premio_final
+                        
+                        if r['Data'] < db_transacao.data_inicio:
+                            db_transacao.data_inicio = r['Data']
+
                     if id_hh and not db_transacao.id_hh: db_transacao.id_hh = id_hh
                     if id_transacao and not db_transacao.id_transacao: db_transacao.id_transacao = id_transacao
                     
                     db_transacao.status = r['Status']
                     db_transacao.nome_torneio = r['Torneio']
                     
-                    if item.dados_financeiros:
-                        db_transacao.buy_in = r['BuyIn']
-                        db_transacao.premio = r['Premio']
-                        db_transacao.data_inicio = r['Data']
-                    
+                    lucro_final = premio_final - buyin_final
+                    roi_final = ((premio_final - buyin_final) / buyin_final * 100) if buyin_final > 0 else 0.0
+
                     if db_transacao.resultado:
-                        db_transacao.resultado.lucro = r['Lucro'] 
-                        db_transacao.resultado.roi = r['ROI']     
+                        db_transacao.resultado.lucro = lucro_final
+                        db_transacao.resultado.roi = roi_final
                     else:
-                        db_transacao.resultado = ResultadoDB(lucro=r['Lucro'], roi=r['ROI'])
+                        db_transacao.resultado = ResultadoDB(lucro=lucro_final, roi=roi_final)
 
                     count_atualizados += 1
                 else:
+                    lucro_final = premio_final - buyin_final
+                    roi_final = ((premio_final - buyin_final) / buyin_final * 100) if buyin_final > 0 else 0.0
+                    
                     nova_transacao = TransacaoDB(
                         id_transacao=id_transacao,
                         id_hh=id_hh,
                         data_inicio=r['Data'],
                         nome_torneio=r['Torneio'],
-                        buy_in=r['BuyIn'],
-                        premio=r['Premio'],
+                        buy_in=buyin_final,
+                        premio=premio_final,
                         status=r['Status'],
-                        resultado=ResultadoDB(lucro=r['Lucro'], roi=r['ROI'])
+                        resultado=ResultadoDB(lucro=lucro_final, roi=roi_final)
                     )
                     self.db.add(nova_transacao)
                     count_novos += 1
@@ -91,10 +107,15 @@ class TorneioRepository:
         return count_novos, count_atualizados
 
     def listar_todos(self):
-        from sqlalchemy.orm import joinedload
         return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).order_by(TransacaoDB.data_inicio.desc()).all()
-    
+
     def contar_transacoes_existentes(self, lista_ids: list[str]) -> int:
         if not lista_ids:
             return 0
         return self.db.query(TransacaoDB).filter(TransacaoDB.id_transacao.in_(lista_ids)).count()
+
+    def obter_somas_totais(self):
+        return self.db.query(
+            func.sum(TransacaoDB.buy_in),
+            func.sum(TransacaoDB.premio)
+        ).first()

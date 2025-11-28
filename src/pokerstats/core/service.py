@@ -71,3 +71,17 @@ class BodogService:
     
     def obter_historico_banco(self):
         return self.repo.listar_todos()
+    
+    def obter_resumo_financeiro(self):
+        somas = self.repo.obter_somas_totais()
+        
+        total_buyin = somas[0] if somas[0] else 0.0
+        total_premio = somas[1] if somas[1] else 0.0
+        
+        total_lucro = total_premio - total_buyin
+        
+        return {
+            "total_buyin": total_buyin,
+            "total_premio": total_premio,
+            "total_lucro": total_lucro
+        }

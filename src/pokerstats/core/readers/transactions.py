@@ -33,16 +33,18 @@ def ler_transacoes_excel(caminho_arquivo: str) -> List[TransacaoDTO]:
 
         if not all([col_ref, col_amount, col_date, col_desc]): return []
 
-        df = df[df[col_desc].astype(str).str.contains("Tournament", case=False, na=False)]
+        filtro_poker = df[col_desc].astype(str).str.contains("Tournament|Free Roll", case=False, na=False)
+        
+        df = df[filtro_poker]
         df[col_date] = pd.to_datetime(df[col_date])
 
         for ref, dados in df.groupby(col_ref):
             buyin_rows = dados[dados[col_amount] < 0]
-            if buyin_rows.empty: continue
             
             valor_buyin = abs(dados[dados[col_amount] < 0][col_amount].sum())
-            valor_premio = dados[dados[col_amount] > 0][col_amount].sum()
-            data_inicial = buyin_rows[col_date].min()
+            valor_premio = dados[dados[col_amount] >= 0][col_amount].sum()
+            
+            data_inicial = buyin_rows[col_date].min() if not buyin_rows.empty else dados[col_date].min()
 
             lista_transacoes.append(TransacaoDTO(
                 id_referencia=str(ref),
@@ -50,6 +52,7 @@ def ler_transacoes_excel(caminho_arquivo: str) -> List[TransacaoDTO]:
                 buy_in=float(valor_buyin),
                 premio=float(valor_premio)
             ))
+            
     except Exception as e:
         print(f"Erro leitura transações: {e}")
         
