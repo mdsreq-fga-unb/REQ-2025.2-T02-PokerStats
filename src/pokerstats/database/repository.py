@@ -39,35 +39,52 @@ class TorneioRepository:
                 db_transacao = self.db.query(TransacaoDB).filter(or_(*criteria)).first()
 
             try:
+                novo_buyin = r['BuyIn']
+                novo_premio = r['Premio']
+                
+                buyin_final = novo_buyin
+                premio_final = novo_premio
+
                 if db_transacao:
+                    if item.dados_financeiros:
+                        buyin_final = max(db_transacao.buy_in, novo_buyin)
+                        premio_final = max(db_transacao.premio, novo_premio)
+                        
+                        db_transacao.buy_in = buyin_final
+                        db_transacao.premio = premio_final
+                        
+                        if r['Data'] < db_transacao.data_inicio:
+                            db_transacao.data_inicio = r['Data']
+
                     if id_hh and not db_transacao.id_hh: db_transacao.id_hh = id_hh
                     if id_transacao and not db_transacao.id_transacao: db_transacao.id_transacao = id_transacao
                     
                     db_transacao.status = r['Status']
                     db_transacao.nome_torneio = r['Torneio']
                     
-                    if item.dados_financeiros:
-                        db_transacao.buy_in = r['BuyIn']
-                        db_transacao.premio = r['Premio']
-                        db_transacao.data_inicio = r['Data']
-                    
+                    lucro_final = premio_final - buyin_final
+                    roi_final = ((premio_final - buyin_final) / buyin_final * 100) if buyin_final > 0 else 0.0
+
                     if db_transacao.resultado:
-                        db_transacao.resultado.lucro = r['Lucro']
-                        db_transacao.resultado.roi = r['ROI']
+                        db_transacao.resultado.lucro = lucro_final
+                        db_transacao.resultado.roi = roi_final
                     else:
-                        db_transacao.resultado = ResultadoDB(lucro=r['Lucro'], roi=r['ROI'])
+                        db_transacao.resultado = ResultadoDB(lucro=lucro_final, roi=roi_final)
 
                     count_atualizados += 1
                 else:
+                    lucro_final = premio_final - buyin_final
+                    roi_final = ((premio_final - buyin_final) / buyin_final * 100) if buyin_final > 0 else 0.0
+                    
                     nova_transacao = TransacaoDB(
                         id_transacao=id_transacao,
                         id_hh=id_hh,
                         data_inicio=r['Data'],
                         nome_torneio=r['Torneio'],
-                        buy_in=r['BuyIn'],
-                        premio=r['Premio'],
+                        buy_in=buyin_final,
+                        premio=premio_final,
                         status=r['Status'],
-                        resultado=ResultadoDB(lucro=r['Lucro'], roi=r['ROI'])
+                        resultado=ResultadoDB(lucro=lucro_final, roi=roi_final)
                     )
                     self.db.add(nova_transacao)
                     count_novos += 1
