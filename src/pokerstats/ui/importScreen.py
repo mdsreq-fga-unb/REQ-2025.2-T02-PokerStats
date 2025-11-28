@@ -190,6 +190,19 @@ class BodogApp(ctk.CTk):
             self.log(f"ERRO: {str(e)}")
             messagebox.showerror("Erro Crítico", str(e))
 
+    def _formatar_moeda(self, valor):
+        valor = float(valor)
+        
+        sinal = "- " if valor < 0 else ""
+        
+        valor_abs = abs(valor)
+        
+        texto_us = f"{valor_abs:,.2f}"
+        
+        texto_br = texto_us.replace(",", "X").replace(".", ",").replace("X", ".")
+        
+        return f"{sinal}$ {texto_br}"
+
     def _renderizar_tabela(self, lista_consolidados):
         for widget in self.tabela_frame.winfo_children():
             widget.destroy()
@@ -213,10 +226,21 @@ class BodogApp(ctk.CTk):
             data_str = r['Data'].strftime("%d/%m %H:%M") if r['Data'] else "--"
             nome_limpo = r['Torneio'][:40] + "..." if len(r['Torneio']) > 40 else r['Torneio']
             
+            texto_lucro = self._formatar_moeda(r['Lucro'])
+
             ctk.CTkLabel(self.tabela_frame, text=data_str).grid(row=row_num, column=0, padx=5, sticky="w")
             ctk.CTkLabel(self.tabela_frame, text=nome_limpo).grid(row=row_num, column=1, padx=5, sticky="w")
             ctk.CTkLabel(self.tabela_frame, text="OK", text_color="#3498db").grid(row=row_num, column=2, padx=5, sticky="w")
-            ctk.CTkLabel(self.tabela_frame, text=f"${r['Lucro']:.2f}", text_color=cor_lucro).grid(row=row_num, column=3, padx=5, sticky="w")
+            
+            ctk.CTkLabel(
+                self.tabela_frame, 
+                text=texto_lucro, 
+                text_color=cor_lucro,
+                font=("Consolas", 12, "bold") 
+            ).grid(row=row_num, column=3, padx=5, sticky="w")
+        
+        if not vinculados:
+            ctk.CTkLabel(self.tabela_frame, text="Nenhum dado consolidado para exibir.", text_color="gray").grid(row=1, column=0, columnspan=4, pady=20)
         
         if len(vinculados) > limit:
             ctk.CTkLabel(self.tabela_frame, text=f"... e mais {len(vinculados)-limit} registros").grid(row=limit+1, column=1)
