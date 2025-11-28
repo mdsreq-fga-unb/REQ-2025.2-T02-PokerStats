@@ -12,12 +12,12 @@ class BodogApp(ctk.CTk):
         self.arquivo_transacao_atual = None
 
         self.title("Bodog Manager - Fluxo Guiado")
-        self.geometry("1000x700")
+        self.geometry("1000x750")
         
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=0)
-        self.grid_rowconfigure(2, weight=1)
-        self.grid_rowconfigure(3, weight=0)
+        self.grid_rowconfigure(3, weight=1) 
+        self.grid_rowconfigure(4, weight=0) 
 
         self.frame_top = ctk.CTkFrame(self)
         self.frame_top.grid(row=0, column=0, padx=20, pady=10, sticky="ew")
@@ -60,8 +60,17 @@ class BodogApp(ctk.CTk):
         self.lbl_status = ctk.CTkLabel(self, text="Aguardando arquivo de Transação...", font=("Arial", 12, "bold"))
         self.lbl_status.grid(row=1, column=0, sticky="w", padx=25, pady=(0, 5))
 
+        self.frame_resumo = ctk.CTkFrame(self, fg_color="transparent")
+        self.frame_resumo.grid(row=2, column=0, padx=20, pady=(5, 10), sticky="ew")
+        
+        self.lbl_titulo_resumo = ctk.CTkLabel(self.frame_resumo, text="RESUMO TOTAL DO BANCO DE DADOS:", font=("Arial", 14, "bold"))
+        self.lbl_titulo_resumo.pack(side="left", padx=(5, 10))
+        
+        self.lbl_lucro_total = ctk.CTkLabel(self.frame_resumo, text="Lucro Líquido: R$ 0,00", font=("Arial", 16, "bold"))
+        self.lbl_lucro_total.pack(side="left")
+
         self.tabela_frame = ctk.CTkScrollableFrame(self, label_text="Prévia da Consolidação")
-        self.tabela_frame.grid(row=2, column=0, padx=20, pady=5, sticky="nsew")
+        self.tabela_frame.grid(row=3, column=0, padx=20, pady=5, sticky="nsew")
         
         self.tabela_frame.grid_columnconfigure(0, weight=1)
         self.tabela_frame.grid_columnconfigure(1, weight=3)
@@ -69,13 +78,34 @@ class BodogApp(ctk.CTk):
         self.tabela_frame.grid_columnconfigure(3, weight=1)
 
         self.log_box = ctk.CTkTextbox(self, height=100, font=("Consolas", 11))
-        self.log_box.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
+        self.log_box.grid(row=4, column=0, padx=20, pady=10, sticky="ew")
         
+        self._atualizar_display_lucro_total()
         self.log("Sistema pronto. Inicie carregando um arquivo de transação.")
 
     def log(self, texto):
         self.log_box.insert("end", texto + "\n")
         self.log_box.see("end")
+
+    def _formatar_moeda(self, valor):
+        valor = float(valor)
+        sinal = "- " if valor < 0 else ""
+        valor_abs = abs(valor)
+        texto_us = f"{valor_abs:,.2f}"
+        texto_br = texto_us.replace(",", "X").replace(".", ",").replace("X", ".")
+        return f"{sinal}$ {texto_br}"
+
+    def _atualizar_display_lucro_total(self):
+        resumo = self.service.obter_resumo_financeiro()
+        lucro = resumo['total_lucro']
+        
+        texto_lucro = self._formatar_moeda(lucro)
+        
+        cor = "white"
+        if lucro > 0: cor = "#2ecc71"
+        elif lucro < 0: cor = "#e74c3c"
+        
+        self.lbl_lucro_total.configure(text=f"Lucro Líquido: {texto_lucro}", text_color=cor)
 
     def reiniciar_fluxo(self):
         self.transacoes_carregadas = []
@@ -93,6 +123,8 @@ class BodogApp(ctk.CTk):
         self.lbl_status.configure(text="Fluxo reiniciado. Aguardando Transação...")
         self.log("-" * 30)
         self.log("Fluxo reiniciado.")
+        
+        self._atualizar_display_lucro_total()
 
     def carregar_transacao(self):
         caminho = filedialog.askopenfilename(
@@ -177,31 +209,17 @@ class BodogApp(ctk.CTk):
             novos, atualizados = self.service.salvar_no_banco(resultado)
             
             msg_final = f"Importação Concluída!\n\n" \
-                        f"Mapeados/Salvos: {novos + atualizados}\n" \
-                        f"HHs Descartados: {descartados}"
+                        f"✅ Mapeados/Salvos: {novos + atualizados}\n" \
+                        f"🗑️ HHs Descartados: {descartados}"
             
             messagebox.showinfo("Sucesso", msg_final)
             self.log(f"Salvo no Banco: {novos} novos, {atualizados} atualizados.")
-            self.log(f"Hand Histories Descartados (Sem Transação): {descartados}")
             
             self.reiniciar_fluxo()
 
         except Exception as e:
             self.log(f"ERRO: {str(e)}")
             messagebox.showerror("Erro Crítico", str(e))
-
-    def _formatar_moeda(self, valor):
-        valor = float(valor)
-        
-        sinal = "- " if valor < 0 else ""
-        
-        valor_abs = abs(valor)
-        
-        texto_us = f"{valor_abs:,.2f}"
-        
-        texto_br = texto_us.replace(",", "X").replace(".", ",").replace("X", ".")
-        
-        return f"{sinal}$ {texto_br}"
 
     def _renderizar_tabela(self, lista_consolidados):
         for widget in self.tabela_frame.winfo_children():
@@ -236,7 +254,7 @@ class BodogApp(ctk.CTk):
                 self.tabela_frame, 
                 text=texto_lucro, 
                 text_color=cor_lucro,
-                font=("Consolas", 12, "bold") 
+                font=("Consolas", 12, "bold")
             ).grid(row=row_num, column=3, padx=5, sticky="w")
         
         if not vinculados:

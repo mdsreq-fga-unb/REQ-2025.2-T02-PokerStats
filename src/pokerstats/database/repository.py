@@ -1,5 +1,5 @@
-from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from sqlalchemy.orm import Session, joinedload
+from sqlalchemy import or_, func
 from sqlalchemy.exc import IntegrityError
 from .schemas import TransacaoDB, ResultadoDB
 from .config import Base, engine
@@ -39,7 +39,6 @@ class TorneioRepository:
                 db_transacao = self.db.query(TransacaoDB).filter(or_(*criteria)).first()
 
             try:
-                                
                 if db_transacao:
                     if id_hh and not db_transacao.id_hh: db_transacao.id_hh = id_hh
                     if id_transacao and not db_transacao.id_transacao: db_transacao.id_transacao = id_transacao
@@ -53,8 +52,8 @@ class TorneioRepository:
                         db_transacao.data_inicio = r['Data']
                     
                     if db_transacao.resultado:
-                        db_transacao.resultado.lucro = r['Lucro'] 
-                        db_transacao.resultado.roi = r['ROI']     
+                        db_transacao.resultado.lucro = r['Lucro']
+                        db_transacao.resultado.roi = r['ROI']
                     else:
                         db_transacao.resultado = ResultadoDB(lucro=r['Lucro'], roi=r['ROI'])
 
@@ -91,10 +90,15 @@ class TorneioRepository:
         return count_novos, count_atualizados
 
     def listar_todos(self):
-        from sqlalchemy.orm import joinedload
         return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).order_by(TransacaoDB.data_inicio.desc()).all()
-    
+
     def contar_transacoes_existentes(self, lista_ids: list[str]) -> int:
         if not lista_ids:
             return 0
         return self.db.query(TransacaoDB).filter(TransacaoDB.id_transacao.in_(lista_ids)).count()
+
+    def obter_somas_totais(self):
+        return self.db.query(
+            func.sum(TransacaoDB.buy_in),
+            func.sum(TransacaoDB.premio)
+        ).first()
