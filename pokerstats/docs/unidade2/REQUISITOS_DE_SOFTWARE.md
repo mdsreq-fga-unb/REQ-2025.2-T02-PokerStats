@@ -41,7 +41,6 @@ Os requisitos não funcionais especificam as qualidades e restrições do sistem
 |----------------|-------------|----------------|----------------------|
 | **Desempenho** | RNF01 | O sistema deve processar um lote de 100 arquivos de histórico e gerar as análises correspondentes em menos de 10 segundos. | C05 |
 | **Usabilidade** | RNF02 | As operações de importação de arquivos e visualização das métricas devem ser concluídas em, no máximo, 3 ações do usuário (cliques) a partir da tela principal. | C05 |
-| **Confiabilidade** | RNF03 | O sistema deve garantir a consistência e a integridade dos dados durante os processos de importação, padronização e cálculo, sem corromper ou perder informações. | C01 |
 | **Suportabilidade** | RNF04 | A aplicação deve ser compatível e executável no sistema operacional Windows. | C05 |
 | **Requisitos de Implementação** | RNF05 | O sistema deve ser desenvolvido em linguagem Python e distribuído como um arquivo executável (.exe), sem a necessidade de um instalador. | C05 |
 | **Requisitos de Interface** | RNF06 | O sistema deve utilizar um banco de dados local para armazenar o histórico de importações e os dados processados, sem depender de um servidor externo. | C05 |
