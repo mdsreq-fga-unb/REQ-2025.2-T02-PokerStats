@@ -13,8 +13,8 @@ Repositório de projeto da disciplina de REQ-T2 - 2025.2.
 1.  **Clone o repositório:**
 
     ```bash
-    git clone https://github.com/seu-usuario/poker-stats.git
-    cd poker-stats
+    git clone https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats.git
+    REQ-2025.2-T02-PokerStats.git
     ```
 
 2.  **Crie o ambiente virtual e instale as dependências:**
