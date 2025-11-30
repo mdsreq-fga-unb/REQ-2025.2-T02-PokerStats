@@ -11,10 +11,8 @@ class BodogService:
         self.db = SessionLocal()
         self.repo = TorneioRepository(self.db)
         
-        # Cache em memória para evitar lentidão
         self._cache_dados = None
 
-    # --- MÉTODOS DE IMPORTAÇÃO ---
     def ler_transacoes(self, caminho_arquivo: str) -> List[TransacaoDTO]:
         return ler_transacoes_excel(caminho_arquivo)
     
@@ -59,7 +57,6 @@ class BodogService:
 
     def salvar_no_banco(self, lista_consolidados: List[TorneioConsolidado]):
         novos, atualizados = self.repo.salvar_consolidacao(lista_consolidados)
-        # Limpa o cache para forçar recarregamento na próxima leitura
         self._cache_dados = None
         return novos, atualizados
 
@@ -69,7 +66,6 @@ class BodogService:
         Usa o cache interno do Service se disponível.
         """
         if self._cache_dados is None:
-            # Busca fresca do banco
             self._cache_dados = self.repo.listar_todos()
         return self._cache_dados
 
@@ -81,17 +77,14 @@ class BodogService:
     def deletar_registro(self, db_id: int):
         sucesso = self.repo.deletar_transacao(db_id)
         if sucesso and self._cache_dados:
-            # Remove da lista em memória (Rápido)
             self._cache_dados = [x for x in self._cache_dados if x.id != db_id]
         return sucesso
 
     def atualizar_registro(self, db_id: int, dados: dict):
         item_atualizado = self.repo.atualizar_transacao(db_id, dados)
-        # Atualiza na memória se necessário
         if item_atualizado and self._cache_dados:
              for i, item in enumerate(self._cache_dados):
                 if item.id == db_id:
-                    # Se repo retornar True, buscamos o objeto.
                     if item_atualizado is True:
                         self._cache_dados[i] = self.repo.buscar_por_id(db_id)
                     else:
@@ -99,9 +92,7 @@ class BodogService:
                     break
         return True
 
-    # --- DASHBOARD (ROI/ITM) ---
     def gerar_relatorio_roi_itm(self) -> Dict:
-        # Usa o cache para calcular o dashboard instantaneamente
         dados = self.obter_historico_banco()
         
         stats = {
@@ -149,3 +140,20 @@ class BodogService:
             }
             
         return relatorio_final
+    
+    def deletar_em_lote(self, lista_ids: List[int]):
+        sucesso = self.repo.deletar_em_lote(lista_ids)
+        if sucesso and self._cache_dados:
+            ids_set = set(lista_ids)
+            self._cache_dados = [x for x in self._cache_dados if x.id not in ids_set]
+        return sucesso
+
+    def limpar_banco_completo(self):
+        sucesso = self.repo.limpar_banco()
+        if sucesso:
+            self._cache_dados = [] 
+        return sucesso
+    
+    def recarregar_cache_banco(self):
+        self._cache_dados = self.repo.listar_todos()
+        return self._cache_dados
