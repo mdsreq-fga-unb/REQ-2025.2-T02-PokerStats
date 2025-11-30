@@ -1,61 +1,75 @@
 # Engenharia de Requisitos
 
+
+- Engenharia de Requisitos alinhada às Fases / Marcos de Execução do XP: A Engenharia de Requisitos, quando aplicada dentro de um processo ágil como o Extreme Programming (XP), distribui suas atividades ao longo dos marcos naturais do ciclo de vida do XP. A seguir, as atividades, técnicas, evidências e artefatos do projeto “Poker Stats” são organizados conforme as fases:
+
 ## Atividades e Técnicas da ER 
 
 ---
 
-### Planejamento
+### 1. Exploration (Exploração)
+
+- Levantamento inicial, descoberta do domínio e entendimento do problema.
 
 #### Elicitação e descoberta
 
-- **Brainstorm**: É uma técnica de criatividade coletiva que visa gerar o máximo de ideias e soluções possíveis em grupo, em um ambiente livre de críticas. No projeto "Poker Stats", o brainstorm foi empregado pela equipe para idealizar as funcionalidades e as características do produto (minimalismo, foco em Bodog ) e para gerar a proposta inicial de solução, focada em resolver o problema da falta de dados consolidados de desempenho.
-   Evidência: Proposta de solução.
+- **Brainstorm**: Técnica coletiva usada para gerar o máximo de ideias sobre funcionalidades e características do produto. No “Poker Stats”, permitiu definir conceitos iniciais como minimalismo, foco na plataforma Bodog e necessidade de consolidação automática de dados.
+Evidência: Proposta de solução.
 
-- **Entrevista**: Consiste em sessões de perguntas e respostas, formais ou informais, com o cliente ou usuários-chave para obter uma compreensão profunda de suas necessidades. No "Poker Stats", as entrevistas com Eduardo foram o método primário para entender o cenário atual , a dificuldade de consolidação manual e identificar as métricas-chave que ele realmente valorizava, como o lucro por torneio e o ROI.
-  Evidência: Prints de reuniões com o cliente.
+- **Entrevista**: Reuniões com o cliente para levantar necessidades reais, contexto de uso e problemas enfrentados. As entrevistas com Eduardo revelaram as principais métricas desejadas (lucro por torneio, ROI, saldo diário).
+Evidência: Prints das reuniões com o cliente.
 
-- **Análise de concorrentes**: É o estudo de produtos ou sistemas existentes no mercado para identificar lacunas, melhores práticas e definir como o novo produto deve se diferenciar e agregar valor. Esta análise no "Poker Stats" revelou que as soluções profissionais (como PokerTracker) eram complexas e caras , permitindo que o projeto se posicionasse como uma alternativa personalizada, minimalista e acessível, focada na plataforma Bodog e nas métricas essenciais de Eduardo. 
-  Evidência: Tópico 2.4 do documento de visão.
+- **Análise de concorrentes**: Avaliação de ferramentas como PokerTracker para identificar lacunas e definir o posicionamento do “Poker Stats” como solução minimalista e acessível.
+Evidência: Tópico 2.4 do Documento de Visão.
+
+### 2. Planning / Commitment (Planejamento e Compromisso)
+
+- Decisão do escopo da próxima Release e definição do MVP.
 
 #### Análise e consenso
 
-- **Priorização MOSCOW**: uma técnica usada para priorização e classificação dos requisitos em Must have (essencial), Should have (importante), Could have (desejável) e Won't have , baseada no valor de negócio para o cliente. Foi fundamental para definir o escopo do Produto Mínimo Viável (MVP) do "Poker Stats", garantindo que funcionalidades essenciais (como Importação de Histórico e Cálculo de ROI ) fossem entregues na primeira iteração. 
-	Evidência: O próprio MoSCoW (gráfico e tabela).
+- **Priorização MOSCOW**: Classificação dos requisitos em Must, Should, Could e Won’t. Essencial para definir o escopo do MVP, garantindo a entrega de funcionalidades críticas como Importação de Histórico e Cálculo de ROI.
+Evidência: Tabela e gráfico MoSCoW.
 
-- **User points**: É uma técnica de estimativa relativa (não baseada em horas) que mede o esforço, a complexidade, a incerteza e o risco envolvidos na implementação de uma User Story. No "Poker Stats", a equipe utilizou essa escala (MB, B, M, A, MA ) para ponderar o valor de negócio (MoSCoW) com o custo de desenvolvimento, subsidiando a decisão de quais requisitos incluir no MVP. 
-  Evidência: A avaliação técnica no backlog e a coluna "Nível de Esforço" na tabela de priorização.
+- **User points**: Estimativa relativa de esforço, complexidade e risco usando a escala (MB, B, M, A, MA). Esse esforço foi cruzado com MoSCoW para montar o MVP equilibrando valor x custo.
+Evidência: Avaliação técnica no backlog (coluna Nível de Esforço).
 
-- **Análise de custo / benefício**: Sendo utilizada para avaliar o valor de um requisito em relação ao custo ou esforço de implementá-lo. No "Poker Stats", esta análise, combinada com o MoSCoW e Story Points, ajudou a equipe a justificar a inclusão ou exclusão de requisitos no MVP, garantindo que o tempo fosse investido nas funcionalidades que maximizam o impacto na gestão da banca de Eduardo. 
-  Evidência: O gráfico de MoSCoW e análise de Complexidade Técnica (Story Points - Custo).
+- **Análise de custo / benefício**: Avalia o retorno esperado em relação ao esforço de implementação. No projeto, ajudou a priorizar funcionalidades de maior impacto na gestão da banca.
+Evidência: Gráfico MoSCoW + análise de complexidade técnica.
 
-- **Discussão em equipe**:  Realização de encontros (formais ou informais) onde os membros do time analisam requisitos, resolvem problemas técnicos e compartilham conhecimento. No contexto de Kanban + XP, essas discussões (Refinamento) são cruciais para manter a disciplina de engenharia e garantir que as Histórias de Usuário atendam ao DoR (Definition of Ready) antes de entrar no fluxo de desenvolvimento. 
-  Evidência: Prints ou gravações de reuniões de refinamento (Discussões em Equipe)
+- **Discussão em equipe**: Reuniões de alinhamento entre os membros do time para debater requisitos, riscos e soluções técnicas. Essenciais no modelo Kanban + XP para garantir que histórias atendam ao DoR antes do desenvolvimento.
+Evidência: Prints ou gravações das reuniões.
 
-#### Declaração
+#### **Declaração**: 
 
-- **Documentação de visão**: O Documento de Visão começa com uma declaração de propósito, uma narrativa concisa que articula por que o projeto é necessário e como ele se alinha aos objetivos estratégicos da organização. Esta declaração estabelece o contexto para todo o empreendimento e fornece uma âncora para as decisões futuras. 
-	Evidência: O próprio documento de Visão
+- **User Story**: Uma User Story (ou “história do usuário”) é uma ferramenta usada em metodologias ágeis (como Scrum ou Kanban) para capturar uma funcionalidade do ponto de vista do usuário final. Ela descreve quem precisa de algo, o que precisa e por quê, ajudando a equipe a entender o valor da funcionalidade antes de desenvolvê-la.
+Evidêcia: As users Story no backlog
 
-### Execução
+### 3. Iterations to Release (Iterações até a Release)
+
+- Desenvolvimento contínuo; requisitos são refinados imediatamente antes da implementação.
 
 #### Representação:
 
-- **Protótipos**:São modelos ou representações visuais rápidos das telas ou funcionalidades do sistema, utilizados para obter feedback precoce do cliente sobre a interface (Representação). No "Poker Stats", eles garantiram que a visualização de dados complexos (gráficos de linha, painéis de métricas ) fosse clara, intuitiva e agradasse o usuário casual Eduardo.
- Evidência: Os próprios protótipos.
+- **Protótipos**: Mockups rápidos usados para validar visualização de dados, gráficos, métricas e fluxo de navegação. Permitiram feedback contínuo de Eduardo durante as iterações.
+Evidência: Protótipos utilizados.
 
 #### **Verificação e validação**:
 
 - **Dor e Dod**: O DoR é o acordo da equipe que define quando um requisito está apto para o desenvolvimento, garantindo que a História de Usuário esteja clara, o valor de negócio compreendido e que os Critérios de Aceitação estejam definidos e testáveis, evitando que o time comece a trabalhar em requisitos ambíguos. Já o DoD é o acordo que define quando uma funcionalidade está verdadeiramente concluída, agregando valor utilizável ao produto. No projeto, o DoD reforça as Práticas XP, exigindo que o código siga padrões, que os Testes estejam passando (seguindo a abordagem TDD) e que o código seja revisado e validado pelo cliente, assegurando a robustez necessária para o tratamento de dados .
-	Evidência: O próprio Dor e DoD
+	Evidência: Documento de DoR e DoD.
 
+- **Feedback**: Um feedback do cliente sobre o sistema, incluindo layout e funcionalidades implementadas, coletado por meio de um formulário no Google Forms.
+	Evidencias: formularios respondido no google formularios.
 
-### Review
+### 4. Productionizing (Preparação para Produção)
 
 
 #### **Organização e atualização**
 
-- Revisão do backlog: a atividade contínua de inspeção e adaptação do backlog de requisitos, onde as Histórias de Usuário são refinadas, reavaliadas quanto à prioridade (MoSCoW) e estimativa (Story Points), e organizadas. No "Poker Stats", esta prática garante que a equipe, operando em um fluxo Kanban, esteja sempre pronta para trabalhar no item de maior valor. 
-  Evidência: O próprio backlog e o quadro Kanban atualizado.
+- Revisão do backlog: Atividade contínua para garantir que o backlog esteja priorizado, atualizado e alinhado com as necessidades do cliente. Inclui reorganização de prioridades (MoSCoW), reestimativas e refinamento.
+No modelo Kanban + XP do projeto, mantém o fluxo sempre pronto para novas entregas.
+Evidência: Backlog organizado e quadro Kanban atualizado.
 
 
 
