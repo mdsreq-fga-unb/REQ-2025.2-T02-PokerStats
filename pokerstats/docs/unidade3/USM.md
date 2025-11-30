@@ -48,7 +48,7 @@ Esta seção relaciona cada ator do sistema com o principal objetivo de negócio
 * **Diretor de Tecnologia**: Supervisiona a infraestrutura tecnológica. Responsável por garantir a disponibilidade, segurança, conformidade e o roadmap tecnológico da rede.
 
 
-### 2. Atividades (Backbone)
+### 2. Ações/Atividades (Backbone)
 
 ![Atividades](../img/USM/Atividades.png)
 
