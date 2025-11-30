@@ -28,17 +28,12 @@ Evidência: Tópico 2.4 do Documento de Visão.
 
 #### Análise e consenso
 
-- **Priorização MOSCOW**: Classificação dos requisitos em Must, Should, Could e Won’t. Essencial para definir o escopo do MVP, garantindo a entrega de funcionalidades críticas como Importação de Histórico e Cálculo de ROI.
-Evidência: Tabela e gráfico MoSCoW.
+- **Análise de custo / benefício**: Sendo utilizada para avaliar o valor de um requisito em relação ao custo ou esforço de implementá-lo. No "Poker Stats", esta análise, combinada com o MoSCoW e Story Points, ajudou a equipe a justificar a inclusão ou exclusão de requisitos no MVP, garantindo que o tempo fosse investido nas funcionalidades que maximizam o impacto na gestão da banca de Eduardo. 
+Evidência: análise de Complexidade Técnica (Story Points - Custo) e tabela de MVP.
 
-- **User points**: Estimativa relativa de esforço, complexidade e risco usando a escala (MB, B, M, A, MA). Esse esforço foi cruzado com MoSCoW para montar o MVP equilibrando valor x custo.
-Evidência: Avaliação técnica no backlog (coluna Nível de Esforço).
 
-- **Análise de custo / benefício**: Avalia o retorno esperado em relação ao esforço de implementação. No projeto, ajudou a priorizar funcionalidades de maior impacto na gestão da banca.
-Evidência: Gráfico MoSCoW + análise de complexidade técnica.
-
-- **Discussão em equipe**: Reuniões de alinhamento entre os membros do time para debater requisitos, riscos e soluções técnicas. Essenciais no modelo Kanban + XP para garantir que histórias atendam ao DoR antes do desenvolvimento.
-Evidência: Prints ou gravações das reuniões.
+- **Resolução de Conflito**: Reuniões de alinhamento entre os membros do time para debater requisitos, riscos e soluções técnicas. Essenciais no modelo Kanban + XP para garantir que histórias atendam ao DoR antes do desenvolvimento.
+Evidência: Prints de conversas.
 
 #### **Declaração**: 
 
@@ -67,9 +62,11 @@ Evidência: Protótipos utilizados.
 
 #### **Organização e atualização**
 
-- Revisão do backlog: Atividade contínua para garantir que o backlog esteja priorizado, atualizado e alinhado com as necessidades do cliente. Inclui reorganização de prioridades (MoSCoW), reestimativas e refinamento.
-No modelo Kanban + XP do projeto, mantém o fluxo sempre pronto para novas entregas.
-Evidência: Backlog organizado e quadro Kanban atualizado.
+- - **Priorização MOSCOW**: Classificação dos requisitos em Must, Should, Could e Won’t. Essencial para definir o escopo do MVP, garantindo a entrega de funcionalidades críticas como Importação de Histórico e Cálculo de ROI.
+Evidência: Tabela e gráfico MoSCoW.
+
+- **User points**: Estimativa relativa de esforço, complexidade e risco usando a escala (MB, B, M, A, MA). Esse esforço foi cruzado com MoSCoW para montar o MVP equilibrando valor x custo.
+Evidência: Avaliação técnica no backlog (coluna Nível de Esforço).
 
 
 
