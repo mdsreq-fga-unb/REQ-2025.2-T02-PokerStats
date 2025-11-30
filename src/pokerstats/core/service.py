@@ -65,17 +65,17 @@ class BodogService:
         total_premio = somas[1] if somas[1] else 0.0
         return {"total_buyin": total_buyin, "total_premio": total_premio, "total_lucro": total_premio - total_buyin}
 
-    def gerar_relatorio_roi(self) -> Dict:
+    def gerar_relatorio_roi_itm(self) -> Dict:
         """
-        Processa todos os dados do banco para gerar ROI Geral e Segmentado.
+        Processa dados para ROI e ITM (In The Money).
         """
         todos_torneios = self.repo.listar_todos()
-
+        
         stats = {
-            "Geral": {"investido": 0.0, "retorno": 0.0},
-            "MTT": {"investido": 0.0, "retorno": 0.0},
-            "Sit & Go": {"investido": 0.0, "retorno": 0.0},
-            "Outros": {"investido": 0.0, "retorno": 0.0}
+            "Geral": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
+            "MTT": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
+            "Sit & Go": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
+            "Outros": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
         }
 
         for t in todos_torneios:
@@ -84,6 +84,9 @@ class BodogService:
             
             stats["Geral"]["investido"] += inv
             stats["Geral"]["retorno"] += ret
+            stats["Geral"]["total"] += 1
+            if ret > 0: 
+                stats["Geral"]["itm"] += 1
             
             nome = (t.nome_torneio or "").upper()
             
@@ -101,15 +104,21 @@ class BodogService:
                 categoria = "MTT" 
 
             if categoria not in stats:
-                stats[categoria] = {"investido": 0.0, "retorno": 0.0}
+                stats[categoria] = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
                 
             stats[categoria]["investido"] += inv
             stats[categoria]["retorno"] += ret
+            stats[categoria]["total"] += 1
+            if ret > 0:
+                stats[categoria]["itm"] += 1
 
         relatorio_final = {}
         for cat, dados in stats.items():
             investido = dados["investido"]
             retorno = dados["retorno"]
+            total = dados["total"]
+            itm_count = dados["itm"]
+            
             lucro = retorno - investido
             
             if investido > 0:
@@ -117,11 +126,19 @@ class BodogService:
             else:
                 roi_pct = 0.0 
             
+            if total > 0:
+                itm_pct = (itm_count / total) * 100
+            else:
+                itm_pct = 0.0
+
             relatorio_final[cat] = {
                 "investido": investido,
                 "retorno": retorno,
                 "lucro": lucro,
-                "roi": roi_pct
+                "roi": roi_pct,
+                "total_count": total,
+                "itm_count": itm_count,
+                "itm_pct": itm_pct
             }
             
         return relatorio_final

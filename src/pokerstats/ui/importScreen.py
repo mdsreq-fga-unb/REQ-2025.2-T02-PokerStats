@@ -15,11 +15,11 @@ class BodogApp(ctk.CTk):
         self.geometry("1100x800")
         
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=0) 
-        self.grid_rowconfigure(1, weight=0) 
-        self.grid_rowconfigure(2, weight=0) 
-        self.grid_rowconfigure(3, weight=1) 
-        self.grid_rowconfigure(4, weight=0) 
+        self.grid_rowconfigure(0, weight=0)
+        self.grid_rowconfigure(1, weight=0)
+        self.grid_rowconfigure(2, weight=0)
+        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(4, weight=0)
 
         self.frame_top = ctk.CTkFrame(self)
         self.frame_top.grid(row=0, column=0, padx=20, pady=10, sticky="ew")
@@ -46,6 +46,7 @@ class BodogApp(ctk.CTk):
         
         self._construir_dashboard_vazio()
 
+        # --- 3. Status e Tabela ---
         self.lbl_status = ctk.CTkLabel(self, text="Aguardando dados...", font=("Arial", 12))
         self.lbl_status.grid(row=2, column=0, sticky="w", padx=25, pady=5)
 
@@ -53,6 +54,7 @@ class BodogApp(ctk.CTk):
         self.tabela_frame.grid(row=3, column=0, padx=20, pady=5, sticky="nsew")
         self.tabela_frame.grid_columnconfigure((0,1,2,3), weight=1)
 
+        # --- 4. Log ---
         self.log_box = ctk.CTkTextbox(self, height=80, font=("Consolas", 11))
         self.log_box.grid(row=4, column=0, padx=20, pady=10, sticky="ew")
         
@@ -70,7 +72,6 @@ class BodogApp(ctk.CTk):
         return f"{sinal}$ {texto}"
 
     def _formatar_pct(self, valor):
-        sinal = "" 
         return f"{valor:.2f}%"
 
     def _construir_dashboard_vazio(self):
@@ -79,8 +80,7 @@ class BodogApp(ctk.CTk):
         ctk.CTkLabel(self.container_stats, text="Nenhum dado registrado.", text_color="gray").pack()
 
     def _atualizar_dashboard(self):
-        """Atualiza a área de ROI e totais (US02)"""
-        relatorio = self.service.gerar_relatorio_roi()
+        relatorio = self.service.gerar_relatorio_roi_itm()
         
         for widget in self.container_stats.winfo_children():
             widget.destroy()
@@ -95,9 +95,11 @@ class BodogApp(ctk.CTk):
             idx += 1
 
     def _criar_card_stat(self, col_idx, titulo, dados):
-        """Cria um bloco visual com ROI, Lucro e Investimento"""
         roi = dados['roi']
         lucro = dados['lucro']
+        itm_pct = dados['itm_pct']
+        itm_count = dados['itm_count']
+        total_count = dados['total_count']
         
         cor_valor = "#2ecc71" if lucro > 0 else ("#e74c3c" if lucro < 0 else "gray")
         
@@ -113,8 +115,11 @@ class BodogApp(ctk.CTk):
         txt_lucro = self._formatar_moeda(lucro)
         ctk.CTkLabel(frame, text=f"Lucro: {txt_lucro}", font=("Arial", 12), text_color=cor_valor).pack(pady=(5,0))
         
+        txt_itm = f"{itm_pct:.2f}% ({itm_count}/{total_count})"
+        ctk.CTkLabel(frame, text=f"ITM: {txt_itm}", font=("Arial", 11, "bold")).pack(pady=(2,0))
+
         txt_inv = self._formatar_moeda(dados['investido'])
-        ctk.CTkLabel(frame, text=f"Investido: {txt_inv}", font=("Arial", 11)).pack(pady=(0,10))
+        ctk.CTkLabel(frame, text=f"Investido: {txt_inv}", font=("Arial", 11)).pack(pady=(2,10))
 
     def reiniciar_fluxo(self):
         self.transacoes_carregadas = []
@@ -126,7 +131,7 @@ class BodogApp(ctk.CTk):
         self.btn_cancelar.configure(state="disabled")
         for w in self.tabela_frame.winfo_children(): w.destroy()
         self.lbl_status.configure(text="Reiniciado.")
-        self._atualizar_dashboard() 
+        self._atualizar_dashboard()
 
     def carregar_transacao(self):
         caminho = filedialog.askopenfilename(parent=self, filetypes=[("Excel/CSV", "*.xlsx *.xls *.csv")])
@@ -171,7 +176,7 @@ class BodogApp(ctk.CTk):
             resultado, descartados = self.service.consolidar_dados(self.transacoes_carregadas, self.hhs_carregados)
             novos, atualizados = self.service.salvar_no_banco(resultado)
             messagebox.showinfo("Sucesso", f"Salvo!\nNovos: {novos}\nAtualizados: {atualizados}\nDescartados: {descartados}")
-            self.reiniciar_fluxo() 
+            self.reiniciar_fluxo()
         except Exception as e:
             messagebox.showerror("Erro", str(e))
 
