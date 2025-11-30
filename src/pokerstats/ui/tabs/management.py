@@ -15,15 +15,14 @@ class ManagementTab(ctk.CTkFrame):
         self.dados_exibidos = []
         
         self.coluna_sort = "ID"
-        self.sort_reverse = True 
+        self.sort_reverse = False 
         self.ja_carregou = False
         
         aplicar_estilo_treeview()
         self._setup_ui()
 
     def ao_exibir_aba(self):
-        if not self.ja_carregou:
-            self.recarregar_dados()
+        self.recarregar_dados()
 
     def _setup_ui(self):
         self.grid_columnconfigure(0, weight=1)
