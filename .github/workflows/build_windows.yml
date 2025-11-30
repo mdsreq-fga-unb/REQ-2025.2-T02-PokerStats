@@ -24,16 +24,13 @@ jobs:
     - name: Build EXE
       shell: pwsh
       run: |
-        # Descobre onde o pip instalou o customtkinter
         $CTK_INFO = pip show customtkinter
         $CTK_LOC = ($CTK_INFO | Select-String "Location:").ToString().Split(": ")[1].Trim()
         $CTK_PATH = Join-Path $CTK_LOC "customtkinter"
         
         echo "CustomTkinter encontrado em: $CTK_PATH"
 
-        # Roda o PyInstaller
-        # Nota: O separador aqui é ';' porque estamos no Windows
-        pyinstaller --noconfirm --onedir --windowed --name "BodogManager" --add-data "$CTK_PATH;customtkinter/" src/pokerstats/ui/main.py
+        pyinstaller --noconfirm --onedir --windowed --name "BodogManager" --add-data "$CTK_PATH;customtkinter/" main.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
