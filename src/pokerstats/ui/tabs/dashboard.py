@@ -19,7 +19,6 @@ class DashboardTab(ctk.CTkFrame):
 
         self._setup_ui()
         
-        # Atualiza view inicial
         self.after(100, self.atualizar_view)
 
     def ao_exibir_aba(self):
@@ -27,10 +26,8 @@ class DashboardTab(ctk.CTkFrame):
 
     def _setup_ui(self):
         self.grid_columnconfigure(0, weight=1)
-        # 0: Botões, 1: Cards (Inclui Combo), 2: Status, 3: Preview
         self.grid_rowconfigure(3, weight=1)
 
-        # --- 1. Painel de Controle ---
         frame_top = ctk.CTkFrame(self)
         frame_top.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
         
@@ -55,25 +52,18 @@ class DashboardTab(ctk.CTkFrame):
         self.btn_limpar = ctk.CTkButton(frame_actions, text="Cancelar", fg_color="#c0392b", width=80, command=self.limpar_fila, state="disabled")
         self.btn_limpar.pack()
 
-        # --- 2. Área de Dashboard (Combo + Cards juntos) ---
-        # Removemos o frame_filter separado. Tudo fica dentro do frame_stats/container_cards
         self.frame_stats = ctk.CTkFrame(self)
         self.frame_stats.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
         
-        # Container principal do Grid de Cards
         self.container_cards = ctk.CTkFrame(self.frame_stats, fg_color="transparent")
         self.container_cards.pack(fill="x", padx=5, pady=10)
 
-        # --- 3. Status ---
         self.lbl_status = ctk.CTkLabel(self, text="Aguardando dados...", font=("Arial", 12))
         self.lbl_status.grid(row=2, column=0, sticky="w", padx=15)
 
-        # --- 4. Preview ---
         self.tabela_preview = ctk.CTkScrollableFrame(self, label_text="Previa do que sera salvo")
         self.tabela_preview.grid(row=3, column=0, padx=10, pady=5, sticky="nsew")
         self.tabela_preview.grid_columnconfigure((0,1,2,3), weight=1)
-
-    # --- Lógica de View ---
 
     def atualizar_view(self):
         relatorio = self.service.gerar_relatorio_roi_itm()
@@ -99,15 +89,12 @@ class DashboardTab(ctk.CTkFrame):
         self.atualizar_view()
 
     def _renderizar_cards_completos(self, relatorio, stats_extra, titulo_extra):
-        # Limpa tudo para redesenhar alinhado
         for w in self.container_cards.winfo_children(): w.destroy()
         
-        # Configura 5 colunas IGUAIS com ESPAÇAMENTO
         cols = 5
         for i in range(cols): 
             self.container_cards.grid_columnconfigure(i, weight=1)
 
-        # --- A. Renderiza o ComboBox (Linha 0, Coluna 4 - Acima do 5º Card) ---
         nomes = self.service.obter_nomes_torneios()
         valores_combo = nomes if nomes else ["Sem dados"]
         
@@ -116,35 +103,28 @@ class DashboardTab(ctk.CTkFrame):
             values=valores_combo,
             command=self._ao_selecionar_torneio,
             height=24,
-            width=140, # Largura reduzida para casar com o card
+            width=140,
             font=("Arial", 11)
         )
-        # Define valor atual
         if self.torneio_selecionado and self.torneio_selecionado in valores_combo:
             self.combo_torneios.set(self.torneio_selecionado)
         else:
             self.combo_torneios.set("Selecione...")
             
-        # Posiciona exatamente na coluna 4
         self.combo_torneios.grid(row=0, column=4, padx=15, pady=(0, 5), sticky="ew")
 
-        # --- B. Renderiza os Cards (Linha 1) ---
         ordem = ["Geral", "MTT", "Sit & Go", "Outros"]
         idx = 0
         
-        # Cards Fixos
         for key in ordem:
             if key in relatorio:
-                # padx=15 garante a separação bem definida
                 self._criar_card(idx, key, relatorio[key], padx=15)
             idx += 1
         
-        # Card Dinâmico (5º Elemento)
         self._criar_card(idx, titulo_extra, stats_extra, destaque_titulo=True, padx=15)
 
     def _criar_card(self, col, titulo, dados, destaque_titulo=False, padx=10):
         frame = ctk.CTkFrame(self.container_cards)
-        # Cards ficam na linha 1 (abaixo do combo que está na linha 0, coluna 4)
         frame.grid(row=1, column=col, padx=padx, sticky="ew")
         
         cor_val = "#2ecc71" if dados['lucro'] > 0 else ("#e74c3c" if dados['lucro'] < 0 else "gray")
@@ -162,7 +142,6 @@ class DashboardTab(ctk.CTkFrame):
         
         ctk.CTkLabel(frame, text=f"Inv: {formatar_moeda(dados['investido'])}", font=("Arial", 10)).pack(pady=(2,10))
 
-    # --- MÉTODOS DE IMPORTAÇÃO (MANTIDOS IGUAIS) ---
     def add_transacoes(self):
         caminhos = filedialog.askopenfilenames(parent=self, title="Transacoes", filetypes=[("Excel/CSV", "*.xlsx *.xls *.csv")])
         if not caminhos: return
