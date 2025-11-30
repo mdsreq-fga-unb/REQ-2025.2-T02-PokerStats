@@ -65,11 +65,14 @@ class BodogService:
         total_premio = somas[1] if somas[1] else 0.0
         return {"total_buyin": total_buyin, "total_premio": total_premio, "total_lucro": total_premio - total_buyin}
 
+    def deletar_registro(self, db_id: int):
+        return self.repo.deletar_transacao(db_id)
+
+    def atualizar_registro(self, db_id: int, dados: dict):
+        return self.repo.atualizar_transacao(db_id, dados)
+
     def gerar_relatorio_roi_itm(self) -> Dict:
-        """
-        Processa dados para ROI e ITM (In The Money).
-        """
-        todos_torneios = self.repo.listar_todos()
+        dados_brutos = self.repo.listar_dados_analiticos()
         
         stats = {
             "Geral": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
@@ -78,17 +81,15 @@ class BodogService:
             "Outros": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
         }
 
-        for t in todos_torneios:
-            inv = t.buy_in or 0.0
-            ret = t.premio or 0.0
+        for t in dados_brutos:
+            nome = (t[0] or "").upper()
+            inv = t[1] or 0.0
+            ret = t[2] or 0.0
             
             stats["Geral"]["investido"] += inv
             stats["Geral"]["retorno"] += ret
             stats["Geral"]["total"] += 1
-            if ret > 0: 
-                stats["Geral"]["itm"] += 1
-            
-            nome = (t.nome_torneio or "").upper()
+            if ret > 0: stats["Geral"]["itm"] += 1
             
             if inv == 0 and ret > 0:
                 categoria = "Outros"
@@ -109,8 +110,7 @@ class BodogService:
             stats[categoria]["investido"] += inv
             stats[categoria]["retorno"] += ret
             stats[categoria]["total"] += 1
-            if ret > 0:
-                stats[categoria]["itm"] += 1
+            if ret > 0: stats[categoria]["itm"] += 1
 
         relatorio_final = {}
         for cat, dados in stats.items():
@@ -118,27 +118,14 @@ class BodogService:
             retorno = dados["retorno"]
             total = dados["total"]
             itm_count = dados["itm"]
-            
             lucro = retorno - investido
             
-            if investido > 0:
-                roi_pct = ((retorno - investido) / investido) * 100
-            else:
-                roi_pct = 0.0 
-            
-            if total > 0:
-                itm_pct = (itm_count / total) * 100
-            else:
-                itm_pct = 0.0
+            roi_pct = ((retorno - investido) / investido) * 100 if investido > 0 else 0.0
+            itm_pct = (itm_count / total) * 100 if total > 0 else 0.0
 
             relatorio_final[cat] = {
-                "investido": investido,
-                "retorno": retorno,
-                "lucro": lucro,
-                "roi": roi_pct,
-                "total_count": total,
-                "itm_count": itm_count,
-                "itm_pct": itm_pct
+                "investido": investido, "retorno": retorno, "lucro": lucro,
+                "roi": roi_pct, "total_count": total, "itm_count": itm_count, "itm_pct": itm_pct
             }
             
         return relatorio_final
