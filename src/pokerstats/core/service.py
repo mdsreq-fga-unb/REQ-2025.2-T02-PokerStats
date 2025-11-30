@@ -10,12 +10,22 @@ class BodogService:
         
         self.db = SessionLocal()
         self.repo = TorneioRepository(self.db)
-        
         self._cache_dados = None
 
     def ler_transacoes(self, caminho_arquivo: str) -> List[TransacaoDTO]:
         return ler_transacoes_excel(caminho_arquivo)
     
+    def ler_lote_transacoes(self, lista_caminhos: List[str]) -> Tuple[List[TransacaoDTO], int]:
+        todas = []
+        erros = 0
+        for c in lista_caminhos:
+            try:
+                res = ler_transacoes_excel(c)
+                if res: todas.extend(res)
+                else: erros += 1
+            except: erros += 1
+        return todas, erros
+
     def verificar_duplicidade(self, transacoes: List[TransacaoDTO]) -> int:
         ids = [t.id_referencia for t in transacoes if t.id_referencia]
         return self.repo.contar_transacoes_existentes(ids)
@@ -23,13 +33,27 @@ class BodogService:
     def processar_hhs(self, lista_caminhos: List[str]): 
         return processar_lote_hhs(lista_caminhos)
 
-    def consolidar_dados(self, transacoes: List[TransacaoDTO], hhs: List[HandHistoryDTO]) -> Tuple[List[TorneioConsolidado], int]:
+    def consolidar_dados(self, transacoes_novas: List[TransacaoDTO], hhs: List[HandHistoryDTO]) -> Tuple[List[TorneioConsolidado], int]:
+        pendentes_db = self.repo.listar_transacoes_sem_hh()
+        
+        pendentes_dtos = []
+        for p in pendentes_db:
+            dto = TransacaoDTO(
+                id_referencia=p.id_transacao,
+                data_inicio=p.data_inicio,
+                buy_in=p.buy_in,
+                premio=p.premio
+            )
+            pendentes_dtos.append(dto)
+        
+        todas_transacoes = transacoes_novas + pendentes_dtos
+
         consolidados = []
         JANELA_HORAS = 0.75
         TOLERANCIA_VALOR = 0.10
         candidatos = []
 
-        for t in transacoes:
+        for t in todas_transacoes:
             for hh in hhs:
                 diff_horas = abs((t.data_inicio - hh.data_hh).total_seconds() / 3600)
                 diff_valor = abs(t.buy_in - hh.buy_in_estimado)
@@ -48,7 +72,7 @@ class BodogService:
                 transacoes_usadas.add(id(t))
                 hhs_usados.add(id(hh))
 
-        for t in transacoes:
+        for t in todas_transacoes:
             if id(t) not in transacoes_usadas:
                 consolidados.append(TorneioConsolidado("PENDENTE_HH", t))
 
@@ -59,18 +83,13 @@ class BodogService:
         novos, atualizados = self.repo.salvar_consolidacao(lista_consolidados)
         self._cache_dados = None
         return novos, atualizados
-
+    
     def obter_historico_banco(self):
-        """
-        Retorna a lista completa para o cache da UI.
-        Usa o cache interno do Service se disponível.
-        """
         if self._cache_dados is None:
             self._cache_dados = self.repo.listar_todos()
         return self._cache_dados
 
     def recarregar_cache_banco(self):
-        """Força a ida ao banco (usado no botão Atualizar)"""
         self._cache_dados = self.repo.listar_todos()
         return self._cache_dados
 
@@ -85,12 +104,25 @@ class BodogService:
         if item_atualizado and self._cache_dados:
              for i, item in enumerate(self._cache_dados):
                 if item.id == db_id:
-                    if item_atualizado is True:
+                    if item_atualizado is True: 
                         self._cache_dados[i] = self.repo.buscar_por_id(db_id)
                     else:
                         self._cache_dados[i] = item_atualizado
                     break
         return True
+
+    def deletar_em_lote(self, lista_ids: List[int]):
+        sucesso = self.repo.deletar_em_lote(lista_ids)
+        if sucesso and self._cache_dados:
+            ids_set = set(lista_ids)
+            self._cache_dados = [x for x in self._cache_dados if x.id not in ids_set]
+        return sucesso
+
+    def limpar_banco_completo(self):
+        sucesso = self.repo.limpar_banco()
+        if sucesso:
+            self._cache_dados = [] 
+        return sucesso
 
     def gerar_relatorio_roi_itm(self) -> Dict:
         dados = self.obter_historico_banco()
@@ -112,7 +144,6 @@ class BodogService:
             if ret > 0: stats["Geral"]["itm"] += 1
             
             nome = (t.nome_torneio or "").upper()
-            
             if inv == 0 and ret > 0: categoria = "Outros"
             elif "SIT" in nome and "GO" in nome: categoria = "Sit & Go"
             elif "SNG" in nome: categoria = "Sit & Go"
@@ -140,20 +171,3 @@ class BodogService:
             }
             
         return relatorio_final
-    
-    def deletar_em_lote(self, lista_ids: List[int]):
-        sucesso = self.repo.deletar_em_lote(lista_ids)
-        if sucesso and self._cache_dados:
-            ids_set = set(lista_ids)
-            self._cache_dados = [x for x in self._cache_dados if x.id not in ids_set]
-        return sucesso
-
-    def limpar_banco_completo(self):
-        sucesso = self.repo.limpar_banco()
-        if sucesso:
-            self._cache_dados = [] 
-        return sucesso
-    
-    def recarregar_cache_banco(self):
-        self._cache_dados = self.repo.listar_todos()
-        return self._cache_dados
