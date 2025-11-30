@@ -171,3 +171,46 @@ class BodogService:
             }
             
         return relatorio_final
+    
+    def obter_nomes_torneios(self) -> List[str]:
+        """Retorna lista única de nomes de torneios para o combobox"""
+        dados = self.obter_historico_banco()
+        nomes = set()
+        for t in dados:
+            if t.nome_torneio:
+                nomes.add(t.nome_torneio)
+        return sorted(list(nomes))
+
+    def calcular_stats_por_nome(self, nome_alvo: str) -> Dict:
+        """Calcula estatísticas específicas para um nome de torneio"""
+        dados = self.obter_historico_banco()
+        
+        stats = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
+        
+        for t in dados:
+            if t.nome_torneio == nome_alvo:
+                inv = t.buy_in or 0.0
+                ret = t.premio or 0.0
+                
+                stats["investido"] += inv
+                stats["retorno"] += ret
+                stats["total"] += 1
+                if ret > 0:
+                    stats["itm"] += 1
+        
+        investido = stats["investido"]
+        retorno = stats["retorno"]
+        lucro = retorno - investido
+        
+        roi = ((retorno - investido) / investido * 100) if investido > 0 else 0.0
+        itm_pct = (stats["itm"] / stats["total"] * 100) if stats["total"] > 0 else 0.0
+        
+        return {
+            "investido": investido,
+            "retorno": retorno,
+            "lucro": lucro,
+            "roi": roi,
+            "total_count": stats["total"],
+            "itm_count": stats["itm"],
+            "itm_pct": itm_pct
+        }
