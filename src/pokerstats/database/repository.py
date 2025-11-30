@@ -15,18 +15,17 @@ class TorneioRepository:
         count_novos = 0
         count_atualizados = 0
         ids_hh_processados = set()
-        ids_trans_processados = set()
 
         for item in lista_consolidados:
             r = item.resumo 
+            
             id_transacao = item.dados_financeiros.id_referencia if item.dados_financeiros else None
             id_hh = item.dados_hh.id_hh if item.dados_hh else None
 
-            if id_hh and id_hh in ids_hh_processados: continue
-            if id_transacao and id_transacao in ids_trans_processados: continue
-
+            if id_hh and id_hh in ids_hh_processados: 
+                continue
+            
             if id_hh: ids_hh_processados.add(id_hh)
-            if id_transacao: ids_trans_processados.add(id_transacao)
 
             db_transacao = None
             criteria = []
@@ -39,6 +38,7 @@ class TorneioRepository:
             try:
                 novo_buyin = float(r['BuyIn'] or 0.0)
                 novo_premio = float(r['Premio'] or 0.0)
+                
                 buyin_final = novo_buyin
                 premio_final = novo_premio
 
@@ -46,6 +46,7 @@ class TorneioRepository:
                     if item.dados_financeiros:
                         buyin_atual = float(db_transacao.buy_in or 0.0)
                         premio_atual = float(db_transacao.premio or 0.0)
+                        
                         buyin_final = max(buyin_atual, novo_buyin)
                         premio_final = max(premio_atual, novo_premio)
                         
@@ -94,9 +95,12 @@ class TorneioRepository:
                 self.db.flush()
 
             except IntegrityError:
-                self.db.rollback(); continue
-            except Exception:
-                self.db.rollback(); continue
+                self.db.rollback()
+                continue
+            except Exception as e:
+                self.db.rollback()
+                print(f"Erro no item {id_transacao}: {e}")
+                continue
         
         try:
             self.db.commit()

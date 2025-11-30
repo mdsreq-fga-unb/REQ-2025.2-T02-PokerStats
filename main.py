@@ -25,24 +25,20 @@ class BodogApp(ctk.CTk):
         self.mgmt_view = ManagementTab(self.tab_data, self.service, self.notificar_mudancas, self)
         self.mgmt_view.pack(fill="both", expand=True)
 
-        self.after(500, self.carregar_dash_inicial)
+        self.after(500, self.boot_load)
 
     def _maximizar(self):
         try: self.attributes('-zoomed', True)
         except: self.state('zoomed')
 
     def _ao_mudar_aba(self):
-        """Chamado quando o usuário clica nas abas"""
-        aba_atual = self.tabview.get()
-        
-        if aba_atual == "Gerenciar Registros":
+        aba = self.tabview.get()
+        if aba == "Gerenciar Registros":
             self.mgmt_view.ao_exibir_aba()
-            
-        elif aba_atual == "Dashboard & Importação":
-            self.dash_view.atualizar_view()
+        elif aba == "Dashboard & Importação":
+            self.dash_view.ao_exibir_aba()
 
-    def carregar_dash_inicial(self):
-        """Hard Refresh ao iniciar o programa"""
+    def boot_load(self):
         def tarefa():
             self.service.recarregar_cache_banco()
         
@@ -55,16 +51,16 @@ class BodogApp(ctk.CTk):
     def notificar_mudancas(self):
         """
         Soft Refresh: Chamado quando uma aba altera os dados.
-        Atualiza a visualização da aba que estiver ativa no momento.
         """
         aba_atual = self.tabview.get()
         
+        # Atualiza o Dashboard visualmente (memória)
         self.dash_view.atualizar_view()
         
-        if aba_atual == "Gerenciar Registros":
-            self.mgmt_view.recarregar_dados()
-        else:
-            self.mgmt_view.ja_carregou = False
+        # Se a gestão já carregou dados antes, atualiza a tabela visualmente
+        if self.mgmt_view.ja_carregou:
+            # Chama o método que acabamos de criar
+            self.mgmt_view.atualizar_tabela_visual()
 
 if __name__ == "__main__":
     app = BodogApp()

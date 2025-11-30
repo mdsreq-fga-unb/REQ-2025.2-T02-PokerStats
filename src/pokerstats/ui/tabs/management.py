@@ -15,7 +15,7 @@ class ManagementTab(ctk.CTkFrame):
         self.dados_exibidos = []
         
         self.coluna_sort = "ID"
-        self.sort_reverse = False
+        self.sort_reverse = True 
         self.ja_carregou = False
         
         aplicar_estilo_treeview()
@@ -28,7 +28,6 @@ class ManagementTab(ctk.CTkFrame):
     def _setup_ui(self):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(2, weight=1) 
-
         frame_header = ctk.CTkFrame(self, fg_color="transparent")
         frame_header.grid(row=0, column=0, sticky="ew", padx=10, pady=(10, 0))
         
@@ -108,7 +107,15 @@ class ManagementTab(ctk.CTkFrame):
                 self.dados_banco = dados
                 self.ja_carregou = True
                 self._filtrar_dados() 
+        
         executar_com_loading(self.app, tarefa, fim)
+
+    def atualizar_tabela_visual(self):
+        """Chamado pelo Main para refresh leve (sem ir ao banco se já tiver cache)"""
+        if self.ja_carregou:
+            self._filtrar_dados()
+        else:
+            self.recarregar_dados()
 
     def _filtrar_dados(self, event=None):
         termo = self.entry_busca.get().lower()
@@ -193,7 +200,6 @@ class ManagementTab(ctk.CTkFrame):
         self.tree.tag_configure("lucro_neg", foreground="#e74c3c")
 
     def _get_ids_selecionados(self):
-        """Retorna LISTA de IDs selecionados"""
         selected_items = self.tree.selection()
         ids = []
         for item in selected_items:
@@ -253,7 +259,7 @@ class ManagementTab(ctk.CTkFrame):
             messagebox.showinfo("Vazio", "O banco já está vazio.")
             return
 
-        if messagebox.askyesno("PERIGO ⚠️", "Tem certeza que deseja apagar TODOS os registros?\n\nIsso excluirá todo o histórico importado."):
+        if messagebox.askyesno("PERIGO ⚠️", "Tem certeza que deseja APAGAR TODO O BANCO DE DADOS?\n\nIsso excluirá todo o histórico importado."):
             if messagebox.askyesno("Confirmação Final", "Apagar TODOS os registros?"):
                 
                 def tarefa():
@@ -289,7 +295,7 @@ class ManagementTab(ctk.CTkFrame):
                     if err: messagebox.showerror("Erro", str(err))
                     else:
                         messagebox.showinfo("Sucesso", "Atualizado!")
-                        self.recarregar_dados()
+                        self._filtrar_dados()
                         if self.on_data_change: self.on_data_change()
                 executar_com_loading(top, tarefa, fim)
             except Exception as e: messagebox.showerror("Erro", str(e))
@@ -297,4 +303,5 @@ class ManagementTab(ctk.CTkFrame):
         try: 
             top.grab_set(); 
             top.focus_force(); 
-        except: pass
+        except: 
+            pass
