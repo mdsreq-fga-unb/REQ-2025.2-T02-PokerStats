@@ -1,8 +1,8 @@
 import customtkinter as ctk
-from tkinter import messagebox
-import math
+from tkinter import ttk, Menu, messagebox
 from ..utils import formatar_moeda
 from ..loading import executar_com_loading
+from ..styles import aplicar_estilo_treeview
 
 class ManagementTab(ctk.CTkFrame):
     def __init__(self, master, service, update_callback, app_instance):
@@ -10,164 +10,143 @@ class ManagementTab(ctk.CTkFrame):
         self.service = service
         self.on_data_change = update_callback
         self.app = app_instance
+        self.dados_cache = []
         
-        self.coluna_sort = "ID"
-        self.sort_reverse = False
-        
-        self.pagina_atual = 1
-        self.itens_por_pagina = 50
-        self.total_paginas = 1
-        self.todos_dados_cache = []
-
+        aplicar_estilo_treeview()
         self._setup_ui()
+        self.ja_carregou = False
+
+    def ao_exibir_aba(self):
+        if not self.ja_carregou:
+            self.recarregar_dados()
 
     def _setup_ui(self):
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=0)
+        self.grid_rowconfigure(0, weight=0) 
+        self.grid_rowconfigure(1, weight=1) 
+        self.grid_rowconfigure(2, weight=0) 
 
         frame_top = ctk.CTkFrame(self, fg_color="transparent")
         frame_top.grid(row=0, column=0, sticky="ew", padx=10, pady=5)
-        ctk.CTkButton(frame_top, text="🔄 Atualizar", width=100, command=self.iniciar_carregamento).pack(side="right")
-
-        self.tabela_full = ctk.CTkScrollableFrame(self, label_text="Gerenciar Registros")
-        self.tabela_full.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
         
-        self.tabela_full.grid_columnconfigure(0, weight=0, minsize=50)
-        self.tabela_full.grid_columnconfigure(1, weight=0, minsize=100)
-        self.tabela_full.grid_columnconfigure(2, weight=1)
-        self.tabela_full.grid_columnconfigure(3, weight=0, minsize=100)
-        self.tabela_full.grid_columnconfigure(4, weight=0, minsize=100)
-        self.tabela_full.grid_columnconfigure(5, weight=0, minsize=120)
-        self.tabela_full.grid_columnconfigure(6, weight=0, minsize=80)
+        ctk.CTkLabel(frame_top, text="Registros Consolidados", font=("Arial", 16, "bold")).pack(side="left")
+        ctk.CTkButton(frame_top, text="Atualizar", width=100, command=self.recarregar_dados).pack(side="right")
 
-        self.frame_footer = ctk.CTkFrame(self, fg_color="transparent")
-        self.frame_footer.grid(row=2, column=0, sticky="ew", padx=10, pady=5)
+        frame_table = ctk.CTkFrame(self, fg_color="transparent")
+        frame_table.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
         
-        self.btn_ant = ctk.CTkButton(self.frame_footer, text="< Anterior", width=80, command=self.pagina_anterior)
-        self.btn_ant.pack(side="left")
-        self.lbl_paginacao = ctk.CTkLabel(self.frame_footer, text="Clique na aba para carregar.", font=("Arial", 12, "bold"))
-        self.lbl_paginacao.pack(side="left", padx=20, expand=True)
-        self.btn_prox = ctk.CTkButton(self.frame_footer, text="Próxima >", width=80, command=self.pagina_proxima)
-        self.btn_prox.pack(side="right")
+        frame_table.grid_columnconfigure(0, weight=1)
+        frame_table.grid_rowconfigure(0, weight=1)
 
-    def ao_exibir_aba(self):
-        if not self.todos_dados_cache:
-            self.iniciar_carregamento()
-
-    def iniciar_carregamento(self):
-        def tarefa():
-            return self.service.obter_historico_banco()
+        cols = ("id", "data", "nome", "buyin", "premio", "lucro")
+        self.tree = ttk.Treeview(frame_table, columns=cols, show="headings", selectmode="browse")
         
-        def fim(resultado, erro):
-            if erro:
-                messagebox.showerror("Erro", str(erro))
-            else:
-                self.todos_dados_cache = resultado
-                self.pagina_atual = 1
-                self.renderizar_pagina_real(self._ordenar_dados(resultado))
+        self.tree.heading("id", text="ID")
+        self.tree.heading("data", text="Data")
+        self.tree.heading("nome", text="Torneio")
+        self.tree.heading("buyin", text="Buy-in")
+        self.tree.heading("premio", text="Prêmio")
+        self.tree.heading("lucro", text="Lucro")
 
-        executar_com_loading(self.app, tarefa, fim, close_early=False)
+        self.tree.column("id", width=50, anchor="center")
+        self.tree.column("data", width=120, anchor="center")
+        self.tree.column("nome", width=300, anchor="w")
+        self.tree.column("buyin", width=100, anchor="e")
+        self.tree.column("premio", width=100, anchor="e")
+        self.tree.column("lucro", width=120, anchor="e")
+
+        scrollbar = ttk.Scrollbar(frame_table, orient="vertical", command=self.tree.yview)
+        self.tree.configure(yscrollcommand=scrollbar.set)
+        
+        self.tree.grid(row=0, column=0, sticky="nsew")
+        scrollbar.grid(row=0, column=1, sticky="ns")
+
+        self.tree.bind("<Double-1>", self._on_double_click)
+        self.tree.bind("<Button-3>", self._on_right_click)
+
+        frame_footer = ctk.CTkFrame(self, height=50) 
+        frame_footer.grid(row=2, column=0, sticky="ew", padx=10, pady=10)
+        
+        frame_footer.grid_propagate(False) 
+
+        ctk.CTkLabel(frame_footer, text="Selecione uma linha para ações:", text_color="gray").pack(side="left", padx=10, pady=10)
+        
+        ctk.CTkButton(frame_footer, text="🗑️ Excluir", fg_color="#e74c3c", width=100, command=self._acao_excluir).pack(side="right", padx=5, pady=10)
+        ctk.CTkButton(frame_footer, text="✏️ Editar", fg_color="#f1c40f", text_color="black", width=100, command=self._acao_editar).pack(side="right", padx=5, pady=10)
+
+        self.menu_contexto = Menu(self, tearoff=0)
+        self.menu_contexto.add_command(label="Editar", command=self._acao_editar)
+        self.menu_contexto.add_separator()
+        self.menu_contexto.add_command(label="Excluir", command=self._acao_excluir)
 
     def recarregar_dados(self):
-        self.todos_dados_cache = self.service.obter_historico_banco()
-        if self.todos_dados_cache:
-             self.renderizar_pagina_real(self._ordenar_dados(self.todos_dados_cache.copy()))
+        def tarefa(): return self.service.obter_historico_banco()
+        def fim(dados, erro):
+            if erro: messagebox.showerror("Erro", str(erro))
+            else: self.dados_cache = dados; self.ja_carregou = True; self._popular_tabela()
+        executar_com_loading(self.app, tarefa, fim)
 
-    def _deletar(self, db_id):
-        if messagebox.askyesno("Confirmar", "Apagar?"):
+    def _popular_tabela(self):
+        for item in self.tree.get_children(): self.tree.delete(item)
+        for item in self.dados_cache:
+            lucro = item.resultado.lucro if item.resultado else 0.0
+            tag_cor = "lucro_pos" if lucro > 0 else ("lucro_neg" if lucro < 0 else "normal")
+            valores = (item.id, item.data_inicio.strftime("%d/%m/%Y %H:%M"), item.nome_torneio, f"${item.buy_in:.2f}", f"${item.premio:.2f}", formatar_moeda(lucro))
+            self.tree.insert("", "end", values=valores, tags=(tag_cor,))
+        self.tree.tag_configure("lucro_pos", foreground="#2ecc71")
+        self.tree.tag_configure("lucro_neg", foreground="#e74c3c")
+
+    def _get_id_selecionado(self):
+        selected_item = self.tree.selection()
+        if not selected_item: return None
+        item_values = self.tree.item(selected_item[0], 'values')
+        return int(item_values[0])
+
+    def _on_double_click(self, event): self._acao_editar()
+    def _on_right_click(self, event):
+        row_id = self.tree.identify_row(event.y)
+        if row_id: self.tree.selection_set(row_id); self.menu_contexto.post(event.x_root, event.y_root)
+
+    def _acao_editar(self):
+        db_id = self._get_id_selecionado()
+        if not db_id: messagebox.showwarning("Aviso", "Selecione um registro."); return
+        self._abrir_popup_edicao(db_id)
+
+    def _acao_excluir(self):
+        db_id = self._get_id_selecionado()
+        if not db_id: messagebox.showwarning("Aviso", "Selecione um registro."); return
+        if messagebox.askyesno("Confirmar", "Apagar este registro?"):
             def tarefa(): return self.service.deletar_registro(db_id)
-            
             def fim(res, err):
                 if err: messagebox.showerror("Erro", str(err))
-                else: 
-                    self.iniciar_carregamento()
-                    if self.on_data_change: self.on_data_change()
-            
-            executar_com_loading(self.app, tarefa, fim, close_early=True)
+                else: self.recarregar_dados(); 
+                if self.on_data_change: self.on_data_change()
+            executar_com_loading(self.app, tarefa, fim)
 
-    def _popup_editar(self, db_id):
-        item = next((x for x in self.todos_dados_cache if x.id == db_id), None)
+    def _abrir_popup_edicao(self, db_id):
+        item = next((x for x in self.dados_cache if x.id == db_id), None)
         if not item: return
-        top = ctk.CTkToplevel(self)
-        top.geometry("400x380")
-        top.after(100, lambda: (top.grab_set(), top.focus_force()))
+        top = ctk.CTkToplevel(self); top.title(f"Editar Registro #{db_id}"); top.geometry("400x380")
+        top.transient(self.app); top.update_idletasks() 
         
-        ctk.CTkLabel(top, text="Nome").pack(); e_nome = ctk.CTkEntry(top, width=300); e_nome.insert(0, item.nome_torneio); e_nome.pack()
-        ctk.CTkLabel(top, text="Buy-in").pack(); e_buy = ctk.CTkEntry(top); e_buy.insert(0, str(item.buy_in)); e_buy.pack()
-        ctk.CTkLabel(top, text="Prêmio").pack(); e_prem = ctk.CTkEntry(top); e_prem.insert(0, str(item.premio)); e_prem.pack()
+        ctk.CTkLabel(top, text="Nome").pack(pady=(15,5)); e_nome = ctk.CTkEntry(top, width=300); e_nome.insert(0, item.nome_torneio); e_nome.pack()
+        ctk.CTkLabel(top, text="Buy-in ($)").pack(pady=5); e_buy = ctk.CTkEntry(top); e_buy.insert(0, str(item.buy_in)); e_buy.pack()
+        ctk.CTkLabel(top, text="Prêmio ($)").pack(pady=5); e_prem = ctk.CTkEntry(top); e_prem.insert(0, str(item.premio)); e_prem.pack()
 
         def salvar():
             try:
                 dados = {"nome": e_nome.get(), "buy_in": float(e_buy.get().replace(",", ".")), "premio": float(e_prem.get().replace(",", "."))}
                 def tarefa(): return self.service.atualizar_registro(db_id, dados)
-                
                 def fim(res, err):
-                    if err: 
-                        messagebox.showerror("Erro", str(err))
-                    else:
-                        top.destroy()
+                    top.destroy()
+                    if err: messagebox.showerror("Erro", str(err))
+                    else: 
                         messagebox.showinfo("Sucesso", "Atualizado!")
-                        self.iniciar_carregamento()
+                        self.recarregar_dados()
                         if self.on_data_change: self.on_data_change()
-
-                executar_com_loading(top, tarefa, fim, close_early=True)
+                executar_com_loading(top, tarefa, fim)
             except Exception as e: messagebox.showerror("Erro", str(e))
+        ctk.CTkButton(top, text="Salvar", fg_color="green", command=salvar).pack(pady=20)
         
-        ctk.CTkButton(top, text="Salvar", command=salvar).pack(pady=20)
-
-    
-    def renderizar_pagina_com_loading(self):
-        def tarefa_fake(): return self._ordenar_dados(self.todos_dados_cache.copy())
-        def fim(dados_ordenados, erro): self.renderizar_pagina_real(dados_ordenados)
-        executar_com_loading(self.app, tarefa_fake, fim, close_early=False)
-
-    def pagina_anterior(self):
-        if self.pagina_atual > 1: self.pagina_atual -= 1; self.renderizar_pagina_com_loading()
-    def pagina_proxima(self):
-        if self.pagina_atual < self.total_paginas: self.pagina_atual += 1; self.renderizar_pagina_com_loading()
-    
-    def _ao_clicar_cabecalho(self, coluna):
-        if self.coluna_sort == coluna: self.sort_reverse = not self.sort_reverse
-        else: self.coluna_sort = coluna; self.sort_reverse = True if coluna in ["Data", "Lucro", "Prêmio"] else False
-        self.renderizar_pagina_com_loading()
-
-    def _ordenar_dados(self, dados):
-        mapa = {"ID": lambda x: x.id, "Data": lambda x: x.data_inicio, "Torneio": lambda x: (x.nome_torneio or "").lower(), "Buy-in": lambda x: x.buy_in, "Prêmio": lambda x: x.premio, "Lucro": lambda x: x.resultado.lucro if x.resultado else 0.0}
-        chave = mapa.get(self.coluna_sort)
-        if chave: dados.sort(key=chave, reverse=self.sort_reverse)
-        return dados
-
-    def renderizar_pagina_real(self, dados_ordenados):
-        self.total_paginas = math.ceil(len(dados_ordenados) / self.itens_por_pagina) or 1
-        if self.pagina_atual > self.total_paginas: self.pagina_atual = self.total_paginas
-        inicio = (self.pagina_atual - 1) * self.itens_por_pagina
-        dados_pagina = dados_ordenados[inicio : inicio + self.itens_por_pagina]
-
-        self.lbl_paginacao.configure(text=f"Página {self.pagina_atual} de {self.total_paginas} (Total: {len(dados_ordenados)})")
-        self.btn_ant.configure(state="normal" if self.pagina_atual > 1 else "disabled")
-        self.btn_prox.configure(state="normal" if self.pagina_atual < self.total_paginas else "disabled")
-
-        for w in self.tabela_full.winfo_children(): w.destroy()
-
-        headers = ["ID", "Data", "Torneio", "Buy-in", "Prêmio", "Lucro", "Ações"]
-        for i, h in enumerate(headers):
-            txt = f"{h} {'▼' if self.sort_reverse else '▲'}" if h == self.coluna_sort else h
-            cmd = lambda c=h: self._ao_clicar_cabecalho(c)
-            if h != "Ações": ctk.CTkButton(self.tabela_full, text=txt, font=("Arial",12,"bold"), fg_color="transparent", hover_color="#404040", command=cmd).grid(row=0, column=i, sticky="ew")
-            else: ctk.CTkLabel(self.tabela_full, text=h, font=("Arial",12,"bold")).grid(row=0, column=i, sticky="ew")
-
-        for idx, item in enumerate(dados_pagina):
-            row = idx + 1
-            lucro = item.resultado.lucro if item.resultado else 0.0
-            cor = "#2ecc71" if lucro > 0 else ("#e74c3c" if lucro < 0 else "white")
-            ctk.CTkLabel(self.tabela_full, text=str(item.id)).grid(row=row, column=0, padx=2, pady=2)
-            ctk.CTkLabel(self.tabela_full, text=item.data_inicio.strftime("%d/%m/%Y")).grid(row=row, column=1, padx=2, pady=2)
-            ctk.CTkLabel(self.tabela_full, text=item.nome_torneio[:40]+"...", anchor="w").grid(row=row, column=2, padx=5, sticky="ew")
-            ctk.CTkLabel(self.tabela_full, text=f"${item.buy_in:.2f}", font=("Consolas",12)).grid(row=row, column=3, padx=5, sticky="e")
-            ctk.CTkLabel(self.tabela_full, text=f"${item.premio:.2f}", font=("Consolas",12)).grid(row=row, column=4, padx=5, sticky="e")
-            ctk.CTkLabel(self.tabela_full, text=formatar_moeda(lucro), text_color=cor, font=("Consolas",12,"bold")).grid(row=row, column=5, padx=5, sticky="e")
-            f_acoes = ctk.CTkFrame(self.tabela_full, fg_color="transparent")
-            f_acoes.grid(row=row, column=6, padx=2)
-            ctk.CTkButton(f_acoes, text="✏️", width=30, fg_color="#f1c40f", text_color="black", command=lambda id=item.id: self._popup_editar(id)).pack(side="left", padx=2)
-            ctk.CTkButton(f_acoes, text="🗑️", width=30, fg_color="#e74c3c", command=lambda id=item.id: self._deletar(id)).pack(side="left", padx=2)
+        try: top.grab_set(); top.focus_force()
+        except: pass

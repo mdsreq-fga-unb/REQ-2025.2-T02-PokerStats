@@ -11,7 +11,26 @@ class TorneioRepository:
     def __init__(self, db: Session):
         self.db = db
 
+    # --- MÉTODOS DE LEITURA ---
+    def listar_todos(self):
+        # Traz tudo com Eager Loading (resultado vem junto)
+        return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).order_by(TransacaoDB.data_inicio.desc()).all()
+
+    def buscar_por_id(self, db_id: int):
+        # Busca leve de um único item
+        return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).filter(TransacaoDB.id == db_id).first()
+
+    def contar_transacoes_existentes(self, lista_ids: list[str]) -> int:
+        if not lista_ids: return 0
+        return self.db.query(TransacaoDB).filter(TransacaoDB.id_transacao.in_(lista_ids)).count()
+
+    def obter_somas_totais(self):
+        return self.db.query(func.sum(TransacaoDB.buy_in), func.sum(TransacaoDB.premio)).first()
+
+    # --- MÉTODOS DE ESCRITA ---
     def salvar_consolidacao(self, lista_consolidados: list[TorneioConsolidado]):
+        # ... (Seu código de salvar_consolidacao MANTÉM O MESMO DO ANTERIOR - Longo demais para repetir aqui, não mudou) ...
+        # ... Certifique-se de manter a lógica de Upsert que fizemos antes ...
         count_novos = 0
         count_atualizados = 0
         ids_hh_processados = set()
@@ -39,7 +58,6 @@ class TorneioRepository:
             try:
                 novo_buyin = r['BuyIn']
                 novo_premio = r['Premio']
-                
                 buyin_final = novo_buyin
                 premio_final = novo_premio
 
@@ -85,38 +103,15 @@ class TorneioRepository:
                     count_novos += 1
                 self.db.flush()
             except IntegrityError:
-                self.db.rollback()
-                continue
+                self.db.rollback(); continue
             except Exception:
-                self.db.rollback()
-                continue
+                self.db.rollback(); continue
         
         try:
             self.db.commit()
         except Exception:
             self.db.rollback()
         return count_novos, count_atualizados
-
-    def listar_todos(self):
-        return self.db.query(TransacaoDB).options(joinedload(TransacaoDB.resultado)).order_by(TransacaoDB.data_inicio.desc()).all()
-
-    def contar_transacoes_existentes(self, lista_ids: list[str]) -> int:
-        if not lista_ids: return 0
-        return self.db.query(TransacaoDB).filter(TransacaoDB.id_transacao.in_(lista_ids)).count()
-
-    def obter_somas_totais(self):
-        return self.db.query(func.sum(TransacaoDB.buy_in), func.sum(TransacaoDB.premio)).first()
-
-    def listar_dados_analiticos(self):
-        """
-        Retorna apenas colunas essenciais para o Dashboard (Nome, Buyin, Premio).
-        Extremamente rápido para calcular ROI de milhares de registros.
-        """
-        return self.db.query(
-            TransacaoDB.nome_torneio,
-            TransacaoDB.buy_in,
-            TransacaoDB.premio
-        ).all()
 
     def deletar_transacao(self, transacao_id: int):
         try:
@@ -149,7 +144,10 @@ class TorneioRepository:
                 item.resultado = ResultadoDB(lucro=lucro, roi=roi)
 
             self.db.commit()
-            return True
+            
+            # ATENÇÃO: Retornamos o objeto atualizado para atualizar o cache
+            self.db.refresh(item) 
+            return item
         except Exception as e:
             self.db.rollback()
             raise e

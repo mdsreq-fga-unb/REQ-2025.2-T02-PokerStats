@@ -1,38 +1,46 @@
 import customtkinter as ctk
 import threading
+import time
 
 class AsyncLoading:
-    def __init__(self, master_window, task_func, callback_func=None, close_early=False):
+    def __init__(self, master_window, task_func, callback_func=None, min_duration=1.0):
         self.master = master_window
         self.task = task_func
         self.callback = callback_func
-        self.close_early = close_early
+        self.min_duration = min_duration
         self.result = None
         self.error = None
         
         self.popup = ctk.CTkToplevel(self.master)
+        self.popup.withdraw() 
+        
         self.popup.title("")
-        self.popup.geometry("300x150")
+        self.popup.geometry("300x120")
         self.popup.resizable(False, False)
+        
+        self.popup.transient(self.master)
+        
         self.popup.overrideredirect(True)
-        self.popup.attributes("-topmost", True)
         
         self.center_popup()
 
         frame = ctk.CTkFrame(self.popup, border_width=2, border_color="#3498db")
         frame.pack(fill="both", expand=True)
         
-        ctk.CTkLabel(frame, text="Processando...", font=("Arial", 16, "bold")).pack(pady=(35, 15))
-        ctk.CTkLabel(frame, text="Aguarde um momento", font=("Arial", 12), text_color="gray").pack(pady=(0, 10))
+        ctk.CTkLabel(frame, text="Processando...", font=("Arial", 16, "bold")).pack(pady=(30, 5))
         
-        self.progress = ctk.CTkProgressBar(frame, width=220, mode="indeterminate")
-        self.progress.pack(pady=10)
+        self.progress = ctk.CTkProgressBar(frame, width=200, mode="indeterminate")
+        self.progress.pack(pady=15)
         self.progress.start()
         
-        self.popup.update_idletasks() 
-        self.popup.deiconify()
+        self.popup.deiconify() 
+        self.popup.lift()      
+        self.popup.update_idletasks()
         
-        self._safe_grab()
+        try:
+            self.popup.grab_set() 
+        except:
+            pass 
         
         thread = threading.Thread(target=self._run_thread, daemon=True)
         thread.start()
@@ -41,59 +49,38 @@ class AsyncLoading:
         try:
             self.master.update_idletasks()
             x = self.master.winfo_rootx() + (self.master.winfo_width() // 2) - 150
-            y = self.master.winfo_rooty() + (self.master.winfo_height() // 2) - 75
+            y = self.master.winfo_rooty() + (self.master.winfo_height() // 2) - 60
             self.popup.geometry(f"+{x}+{y}")
         except:
             pass
 
-    def _safe_grab(self):
-        try:
-            self.popup.grab_set()
-        except Exception:
-            self.master.after(50, self._safe_grab)
-
     def _run_thread(self):
+        start_time = time.time()
+
         try:
             if self.task:
                 self.result = self.task()
         except Exception as e:
             self.error = e
+
+        elapsed_time = time.time() - start_time
+        time_to_wait = self.min_duration - elapsed_time
+
+        if time_to_wait > 0:
+            time.sleep(time_to_wait)
         
         self.master.after(0, self._finish)
 
-    def _close_window(self):
+    def _finish(self):
         try:
             self.popup.grab_release()
             self.popup.destroy()
-            self.master.update_idletasks() 
+            self.master.update_idletasks()
         except:
             pass
 
-    def _finish(self):
-        if self.close_early:
-            self._close_window()
-            if self.callback:
-                try:
-                    self.callback(self.result, self.error)
-                except Exception as e:
-                    print(f"Erro Callback: {e}")
-        else:
-            if self.callback:
-                try:
-                    self.callback(self.result, self.error)
-                except Exception as e:
-                    print(f"Erro Callback: {e}")
-            
-            try:
-                self.master.update_idletasks()
-            except:
-                pass
-            
-            self._close_window()
+        if self.callback:
+            self.callback(self.result, self.error)
 
 def executar_com_loading(master, tarefa, sucesso, close_early=False):
-    """
-    close_early=True: Fecha o loading ANTES do callback (Ideal para Messagebox)
-    close_early=False: Fecha o loading DEPOIS do callback (Ideal para renderizar Tabela)
-    """
-    AsyncLoading(master, tarefa, sucesso, close_early)
+    AsyncLoading(master, tarefa, sucesso, min_duration=1.0)

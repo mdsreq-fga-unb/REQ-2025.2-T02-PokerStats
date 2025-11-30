@@ -10,7 +10,11 @@ class BodogService:
         
         self.db = SessionLocal()
         self.repo = TorneioRepository(self.db)
+        
+        # Cache em memória para evitar lentidão
+        self._cache_dados = None
 
+    # --- MÉTODOS DE IMPORTAÇÃO ---
     def ler_transacoes(self, caminho_arquivo: str) -> List[TransacaoDTO]:
         return ler_transacoes_excel(caminho_arquivo)
     
@@ -54,25 +58,51 @@ class BodogService:
         return consolidados, qtd_descartados
 
     def salvar_no_banco(self, lista_consolidados: List[TorneioConsolidado]):
-        return self.repo.salvar_consolidacao(lista_consolidados)
-    
-    def obter_historico_banco(self):
-        return self.repo.listar_todos()
+        novos, atualizados = self.repo.salvar_consolidacao(lista_consolidados)
+        # Limpa o cache para forçar recarregamento na próxima leitura
+        self._cache_dados = None
+        return novos, atualizados
 
-    def obter_resumo_financeiro(self):
-        somas = self.repo.obter_somas_totais()
-        total_buyin = somas[0] if somas[0] else 0.0
-        total_premio = somas[1] if somas[1] else 0.0
-        return {"total_buyin": total_buyin, "total_premio": total_premio, "total_lucro": total_premio - total_buyin}
+    def obter_historico_banco(self):
+        """
+        Retorna a lista completa para o cache da UI.
+        Usa o cache interno do Service se disponível.
+        """
+        if self._cache_dados is None:
+            # Busca fresca do banco
+            self._cache_dados = self.repo.listar_todos()
+        return self._cache_dados
+
+    def recarregar_cache_banco(self):
+        """Força a ida ao banco (usado no botão Atualizar)"""
+        self._cache_dados = self.repo.listar_todos()
+        return self._cache_dados
 
     def deletar_registro(self, db_id: int):
-        return self.repo.deletar_transacao(db_id)
+        sucesso = self.repo.deletar_transacao(db_id)
+        if sucesso and self._cache_dados:
+            # Remove da lista em memória (Rápido)
+            self._cache_dados = [x for x in self._cache_dados if x.id != db_id]
+        return sucesso
 
     def atualizar_registro(self, db_id: int, dados: dict):
-        return self.repo.atualizar_transacao(db_id, dados)
+        item_atualizado = self.repo.atualizar_transacao(db_id, dados)
+        # Atualiza na memória se necessário
+        if item_atualizado and self._cache_dados:
+             for i, item in enumerate(self._cache_dados):
+                if item.id == db_id:
+                    # Se repo retornar True, buscamos o objeto.
+                    if item_atualizado is True:
+                        self._cache_dados[i] = self.repo.buscar_por_id(db_id)
+                    else:
+                        self._cache_dados[i] = item_atualizado
+                    break
+        return True
 
+    # --- DASHBOARD (ROI/ITM) ---
     def gerar_relatorio_roi_itm(self) -> Dict:
-        dados_brutos = self.repo.listar_dados_analiticos()
+        # Usa o cache para calcular o dashboard instantaneamente
+        dados = self.obter_historico_banco()
         
         stats = {
             "Geral": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
@@ -81,51 +111,41 @@ class BodogService:
             "Outros": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
         }
 
-        for t in dados_brutos:
-            nome = (t[0] or "").upper()
-            inv = t[1] or 0.0
-            ret = t[2] or 0.0
+        for t in dados:
+            inv = t.buy_in or 0.0
+            ret = t.premio or 0.0
             
             stats["Geral"]["investido"] += inv
             stats["Geral"]["retorno"] += ret
             stats["Geral"]["total"] += 1
             if ret > 0: stats["Geral"]["itm"] += 1
             
-            if inv == 0 and ret > 0:
-                categoria = "Outros"
-            elif "SIT" in nome and "GO" in nome:
-                categoria = "Sit & Go"
-            elif "SNG" in nome:
-                categoria = "Sit & Go"
-            elif "MTT" in nome or "GUARANTEED" in nome or "GTD" in nome:
-                categoria = "MTT"
-            elif "CASH" in nome:
-                categoria = "Outros"
-            else:
-                categoria = "MTT" 
+            nome = (t.nome_torneio or "").upper()
+            
+            if inv == 0 and ret > 0: categoria = "Outros"
+            elif "SIT" in nome and "GO" in nome: categoria = "Sit & Go"
+            elif "SNG" in nome: categoria = "Sit & Go"
+            elif "MTT" in nome or "GUARANTEED" in nome or "GTD" in nome: categoria = "MTT"
+            elif "CASH" in nome: categoria = "Outros"
+            else: categoria = "MTT" 
 
-            if categoria not in stats:
-                stats[categoria] = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
-                
+            if categoria not in stats: stats[categoria] = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
             stats[categoria]["investido"] += inv
             stats[categoria]["retorno"] += ret
             stats[categoria]["total"] += 1
             if ret > 0: stats[categoria]["itm"] += 1
 
         relatorio_final = {}
-        for cat, dados in stats.items():
-            investido = dados["investido"]
-            retorno = dados["retorno"]
-            total = dados["total"]
-            itm_count = dados["itm"]
+        for cat, d in stats.items():
+            investido = d["investido"]
+            retorno = d["retorno"]
             lucro = retorno - investido
+            roi = ((retorno - investido) / investido * 100) if investido > 0 else 0.0
+            itm_pct = (d["itm"] / d["total"] * 100) if d["total"] > 0 else 0.0
             
-            roi_pct = ((retorno - investido) / investido) * 100 if investido > 0 else 0.0
-            itm_pct = (itm_count / total) * 100 if total > 0 else 0.0
-
             relatorio_final[cat] = {
                 "investido": investido, "retorno": retorno, "lucro": lucro,
-                "roi": roi_pct, "total_count": total, "itm_count": itm_count, "itm_pct": itm_pct
+                "roi": roi, "total_count": d["total"], "itm_count": d["itm"], "itm_pct": itm_pct
             }
             
         return relatorio_final
