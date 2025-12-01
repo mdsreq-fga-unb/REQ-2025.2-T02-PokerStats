@@ -34,16 +34,13 @@ class DashboardTab(ctk.CTkFrame):
         self.atualizar_view()
 
     def _setup_ui(self):
-        # Grid Principal
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
         
-        # Scrollable Page
         self.scroll_page = ctk.CTkScrollableFrame(self, fg_color="transparent")
         self.scroll_page.grid(row=0, column=0, sticky="nsew")
         self.scroll_page.grid_columnconfigure(0, weight=1)
 
-        # --- 1. Painel de Controle ---
         frame_top = ctk.CTkFrame(self.scroll_page)
         frame_top.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
         
@@ -74,31 +71,26 @@ class DashboardTab(ctk.CTkFrame):
         self.container_cards = ctk.CTkFrame(self.frame_stats, fg_color="transparent")
         self.container_cards.pack(fill="x", padx=5, pady=10)
 
-        # --- 3. Área de Gráficos (Demarcados 50/50) ---
         self.frame_charts_container = ctk.CTkFrame(self.scroll_page, fg_color="transparent")
         self.frame_charts_container.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
         
-        # Grid 2x2 com Row e Col Expandindo
         self.frame_charts_container.grid_columnconfigure(0, weight=1)
         self.frame_charts_container.grid_columnconfigure(1, weight=1)
         self.frame_charts_container.grid_rowconfigure(0, weight=1) 
         self.frame_charts_container.grid_rowconfigure(1, weight=1)
         
-        # Linha 1: Evolução | Rosca
         self.chart_box_evolucao = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
         self.chart_box_evolucao.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
         
         self.chart_box_itm = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
         self.chart_box_itm.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
 
-        # Linha 2: Barras | Scatter
         self.chart_box_modalidade = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
         self.chart_box_modalidade.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
 
         self.chart_box_scatter = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
         self.chart_box_scatter.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
 
-        # --- 4. Status ---
         self.lbl_status = ctk.CTkLabel(self.scroll_page, text="Aguardando dados...", font=("Arial", 12))
         self.lbl_status.grid(row=3, column=0, sticky="w", padx=15, pady=(20, 20))
 
@@ -130,13 +122,11 @@ class DashboardTab(ctk.CTkFrame):
         self.atualizar_view()
 
     def _atualizar_graficos(self, dados):
-        # Limpa gráficos antigos
         for c in self.canvas_list: 
             try: c.get_tk_widget().destroy()
             except: pass
         self.canvas_list = []
 
-        # Gera gráficos (usando charts.py)
         fig1 = gerar_grafico_evolucao(dados)
         self._embed_chart(fig1, self.chart_box_evolucao)
 
@@ -192,7 +182,6 @@ class DashboardTab(ctk.CTkFrame):
         self._criar_card(idx, titulo_extra, stats_extra, destaque_titulo=True, padx=5)
 
     def _criar_card(self, col, titulo, dados, destaque_titulo=False, padx=5):
-        # ADICIONADO: border_width=2 para criar o quadrado de demarcação
         frame = ctk.CTkFrame(self.container_cards, border_width=2, border_color="#404040")
         frame.grid(row=1, column=col, padx=padx, sticky="ew")
         

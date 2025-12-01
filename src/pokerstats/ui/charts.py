@@ -3,7 +3,6 @@ from matplotlib.figure import Figure
 import pandas as pd
 import matplotlib.dates as mdates
 
-# Estilo Global
 plt.style.use('dark_background')
 COR_VERDE = '#2ecc71'
 COR_VERMELHO = '#e74c3c'

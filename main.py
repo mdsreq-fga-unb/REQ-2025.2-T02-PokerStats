@@ -26,7 +26,6 @@ class BodogApp(ctk.CTk):
         self.mgmt_view = ManagementTab(self.tab_data, self.service, self.notificar_mudancas, self)
         self.mgmt_view.pack(fill="both", expand=True)
 
-        # 1. Inicia o loop de verificação para o Loading
         self.after(200, self._check_maximized_and_start)
 
     def _maximizar(self):
@@ -39,12 +38,9 @@ class BodogApp(ctk.CTk):
         """
         self.update_idletasks()
         
-        # Usando um valor grande como heurística
         if self.winfo_width() > 1200:
-            # Janela maximizada -> Inicia o Loading
             self.carregar_dash_inicial()
         else:
-            # Ainda não maximizou: Tenta novamente em 100ms
             self.after(100, self._check_maximized_and_start)
 
     def carregar_dash_inicial(self):

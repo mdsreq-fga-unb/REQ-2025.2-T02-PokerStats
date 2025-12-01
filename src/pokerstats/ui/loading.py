@@ -11,7 +11,6 @@ class AsyncLoading:
         self.result = None
         self.error = None
         
-        # 1. Cria o Popup
         self.popup = ctk.CTkToplevel(self.master)
         self.popup.title("")
         self.popup.geometry("300x120")
@@ -68,18 +67,14 @@ class AsyncLoading:
         self.master.after(0, self._finish)
 
     def _finish(self):
-        # 1. DESTRÓI O LOADING E LIBERA O GRAB IMEDIATAMENTE
         try:
             self.popup.grab_release()
             self.popup.destroy()
         except:
             pass
 
-        # 2. AGENDA O CALLBACK com um pequeno delay (10ms)
-        # Isso garante que a destruição da janela seja processada antes de desenhar o conteúdo.
         if self.callback:
             self.master.after(10, lambda: self.callback(self.result, self.error))
 
 def executar_com_loading(master, tarefa, sucesso):
-    # Usamos 1.0s de duração mínima, que garante feedback visual claro
     AsyncLoading(master, tarefa, sucesso, min_duration=1.0)
