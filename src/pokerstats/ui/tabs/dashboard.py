@@ -9,6 +9,7 @@ from ..charts import (
     gerar_grafico_itm, 
     gerar_grafico_scatter
 )
+import os
 
 class DashboardTab(ctk.CTkFrame):
     def __init__(self, master, service, update_callback, app_instance):
@@ -66,13 +67,13 @@ class DashboardTab(ctk.CTkFrame):
         self.btn_limpar.pack()
 
         self.frame_stats = ctk.CTkFrame(self.scroll_page)
-        self.frame_stats.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
+        self.frame_stats.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
         
         self.container_cards = ctk.CTkFrame(self.frame_stats, fg_color="transparent")
         self.container_cards.pack(fill="x", padx=5, pady=10)
 
         self.frame_charts_container = ctk.CTkFrame(self.scroll_page, fg_color="transparent")
-        self.frame_charts_container.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        self.frame_charts_container.grid(row=3, column=0, padx=10, pady=10, sticky="ew")
         
         self.frame_charts_container.grid_columnconfigure(0, weight=1)
         self.frame_charts_container.grid_columnconfigure(1, weight=1)
@@ -92,7 +93,7 @@ class DashboardTab(ctk.CTkFrame):
         self.chart_box_scatter.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
 
         self.lbl_status = ctk.CTkLabel(self.scroll_page, text="Aguardando dados...", font=("Arial", 12))
-        self.lbl_status.grid(row=3, column=0, sticky="w", padx=15, pady=(20, 20))
+        self.lbl_status.grid(row=1, column=0, sticky="w", padx=15, pady=(20, 20))
 
 
     def atualizar_view(self):
@@ -211,11 +212,15 @@ class DashboardTab(ctk.CTkFrame):
         def fim(res, err):
             if err: messagebox.showerror("Erro", str(err)); return
             if not res: return
+            caminhos_processados = []
             if res['duplicados'] > 0:
                 if not messagebox.askyesno("Duplicidade", f"{res['duplicados']} registros existem. Atualizar?"): return
             if res['dados']:
                 self.buffer_transacoes.extend(res['dados'])
                 self.arquivos_importados.update(res['caminhos'])
+                caminhos_processados = res['caminhos']
+            if caminhos_processados:
+                self._notificar_adicao(caminhos_processados, "Transação")
             self._atualizar_ui_fila()
         executar_com_loading(self.app, tarefa, fim)
 
@@ -227,16 +232,39 @@ class DashboardTab(ctk.CTkFrame):
         def tarefa():
             novos = [c for c in caminhos if c not in self.arquivos_importados]
             if not novos: return None
-            return self.service.processar_hhs(novos)
+            dados = self.service.processar_hhs(novos)
+            return {"dados": dados, "caminhos": novos}  
         def fim(res, err):
             if err: messagebox.showerror("Erro", str(err)); return
             if not res: return
-            dados, _ = res
+            dados, _ = res['dados']  
+            caminhos_processados = []
             if dados:
                 self.buffer_hhs.extend(dados)
-                self.arquivos_importados.update(caminhos)
+                self.arquivos_importados.update(res['caminhos'])
+                caminhos_processados = res['caminhos']  
+            if caminhos_processados:  
+                self._notificar_adicao(caminhos_processados, "Hand History")
             self._atualizar_ui_fila()
         executar_com_loading(self.app, tarefa, fim)
+
+    def _notificar_adicao(self, caminhos_processados: list, tipo_dado: str):
+        qtd_sucesso = len(caminhos_processados)
+        if qtd_sucesso == 0:
+            self.lbl_status.configure(text=f"Nenhum arquivo de {tipo_dado} válido foi adicionado.")
+            return
+
+        primeiro_arquivo = os.path.basename(caminhos_processados[0])
+        
+        if qtd_sucesso == 1:
+            texto_status = f"✅ {tipo_dado}: '{primeiro_arquivo}' adicionado à fila."
+        else:
+            texto_status = f"✅ {tipo_dado}: {qtd_sucesso} arquivos adicionados ('{primeiro_arquivo} e mais {qtd_sucesso}')."
+            
+        self.lbl_status.configure(text=texto_status, text_color="#2ecc71")
+        self.after(5000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+        
+        self._atualizar_ui_fila()
 
     def _atualizar_ui_fila(self):
         self.lbl_count_tr.configure(text=f"{len(self.buffer_transacoes)} registros em fila")
