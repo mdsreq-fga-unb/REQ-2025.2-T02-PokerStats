@@ -19,7 +19,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install customtkinter sqlalchemy pandas openpyxl pyinstaller
+        pip install -r requirements.txt
+        pip install pyinstaller
 
     - name: Build EXE
       shell: pwsh
@@ -27,13 +28,28 @@ jobs:
         $CTK_INFO = pip show customtkinter
         $CTK_LOC = ($CTK_INFO | Select-String "Location:").ToString().Split(": ")[1].Trim()
         $CTK_PATH = Join-Path $CTK_LOC "customtkinter"
-        
+
         echo "CustomTkinter encontrado em: $CTK_PATH"
 
-        pyinstaller --noconfirm --onedir --windowed --name "BodogManager" --add-data "$CTK_PATH;customtkinter/" main.py
+        $MATP_INFO = pip show matplotlib
+        $MATP_LOC = ($MATP_INFO | Select-String "Location:").ToString().Split(": ")[1].Trim()
+        $MATP_DATA = Join-Path $MATP_LOC "matplotlib\mpl-data"
+
+        echo "Matplotlib data encontrado em: $MATP_DATA"
+
+        pyinstaller --noconfirm --onefile --windowed --name "PokerStats" `
+          --hidden-import matplotlib `
+          --hidden-import matplotlib.backends.backend_tkagg `
+          --hidden-import matplotlib.backends.backend_agg `
+          --hidden-import matplotlib.pyplot `
+          --hidden-import matplotlib.figure `
+          --hidden-import matplotlib.dates `
+          --add-data "$CTK_PATH;customtkinter/" `
+          --add-data "$MATP_DATA;matplotlib/mpl-data" `
+          main.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: BodogManager-Windows-Dev
-        path: dist/BodogManager
+        name: PokerStats-Windows-Dev
+        path: dist/PokerStats.exe
