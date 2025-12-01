@@ -125,7 +125,10 @@ class BodogService:
         return sucesso
 
     def gerar_relatorio_roi_itm(self) -> Dict:
-        dados = self.obter_historico_banco()
+        """
+        Processa dados para ROI e ITM (In The Money), corrigindo a classificação de órfãos.
+        """
+        todos_torneios = self.obter_historico_banco()
         
         stats = {
             "Geral": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0},
@@ -134,7 +137,7 @@ class BodogService:
             "Outros": {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
         }
 
-        for t in dados:
+        for t in todos_torneios:
             inv = t.buy_in or 0.0
             ret = t.premio or 0.0
             
@@ -143,13 +146,22 @@ class BodogService:
             stats["Geral"]["total"] += 1
             if ret > 0: stats["Geral"]["itm"] += 1
             
-            nome = (t.nome_torneio or "").upper()
-            if inv == 0 and ret > 0: categoria = "Outros"
-            elif "SIT" in nome and "GO" in nome: categoria = "Sit & Go"
-            elif "SNG" in nome: categoria = "Sit & Go"
-            elif "MTT" in nome or "GUARANTEED" in nome or "GTD" in nome: categoria = "MTT"
-            elif "CASH" in nome: categoria = "Outros"
-            else: categoria = "MTT" 
+            nome = (t.nome_torneio or "DESCONHECIDO").upper()
+            
+            if inv == 0 and ret > 0:
+                categoria = "Outros" 
+            elif "DESCONHECIDO" in nome or "SELECAO" in nome:
+                categoria = "Outros"
+            elif "SIT" in nome and "GO" in nome:
+                categoria = "Sit & Go"
+            elif "SNG" in nome:
+                categoria = "Sit & Go"
+            elif "MTT" in nome or "GUARANTEED" in nome or "GTD" in nome:
+                categoria = "MTT"
+            elif "CASH" in nome:
+                categoria = "Outros"
+            else:
+                categoria = "MTT"
 
             if categoria not in stats: stats[categoria] = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
             stats[categoria]["investido"] += inv

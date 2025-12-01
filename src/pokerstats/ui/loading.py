@@ -12,15 +12,11 @@ class AsyncLoading:
         self.error = None
         
         self.popup = ctk.CTkToplevel(self.master)
-        self.popup.withdraw() 
-        
         self.popup.title("")
         self.popup.geometry("300x120")
         self.popup.resizable(False, False)
-        
-        self.popup.transient(self.master)
-        
         self.popup.overrideredirect(True)
+        self.popup.attributes("-topmost", True)
         
         self.center_popup()
 
@@ -33,9 +29,8 @@ class AsyncLoading:
         self.progress.pack(pady=15)
         self.progress.start()
         
-        self.popup.deiconify() 
-        self.popup.lift()      
-        self.popup.update_idletasks()
+        self.popup.update_idletasks() 
+        self.popup.deiconify()
         
         try:
             self.popup.grab_set() 
@@ -75,12 +70,11 @@ class AsyncLoading:
         try:
             self.popup.grab_release()
             self.popup.destroy()
-            self.master.update_idletasks()
         except:
             pass
 
         if self.callback:
-            self.callback(self.result, self.error)
+            self.master.after(10, lambda: self.callback(self.result, self.error))
 
-def executar_com_loading(master, tarefa, sucesso, close_early=False):
+def executar_com_loading(master, tarefa, sucesso):
     AsyncLoading(master, tarefa, sucesso, min_duration=1.0)

@@ -9,8 +9,9 @@ class BodogApp(ctk.CTk):
         super().__init__()
         
         self.service = BodogService()
-        self.title("Bodog Manager v2.0")
+        self.title("Poker Stats")
         self.geometry("1100x800")
+        
         self.after(0, self._maximizar)
 
         self.tabview = ctk.CTkTabview(self, command=self._ao_mudar_aba)
@@ -25,42 +26,48 @@ class BodogApp(ctk.CTk):
         self.mgmt_view = ManagementTab(self.tab_data, self.service, self.notificar_mudancas, self)
         self.mgmt_view.pack(fill="both", expand=True)
 
-        self.after(500, self.boot_load)
+        self.after(200, self._check_maximized_and_start)
 
     def _maximizar(self):
         try: self.attributes('-zoomed', True)
         except: self.state('zoomed')
 
-    def _ao_mudar_aba(self):
-        aba = self.tabview.get()
-        if aba == "Gerenciar Registros":
-            self.mgmt_view.ao_exibir_aba()
-        elif aba == "Dashboard & Importação":
-            self.dash_view.ao_exibir_aba()
+    def _check_maximized_and_start(self):
+        """
+        Verifica se a janela atingiu um tamanho suficiente (maximizada) e só então inicia o loading.
+        """
+        self.update_idletasks()
+        
+        if self.winfo_width() > 1200:
+            self.carregar_dash_inicial()
+        else:
+            self.after(100, self._check_maximized_and_start)
 
-    def boot_load(self):
+    def carregar_dash_inicial(self):
+        """Hard Refresh: Vai ao banco e popula o cache"""
         def tarefa():
             self.service.recarregar_cache_banco()
         
         def fim(res, err):
             if not err:
                 self.notificar_mudancas()
-
+                
         executar_com_loading(self, tarefa, fim)
 
-    def notificar_mudancas(self):
-        """
-        Soft Refresh: Chamado quando uma aba altera os dados.
-        """
+    def _ao_mudar_aba(self):
         aba_atual = self.tabview.get()
-        
-        # Atualiza o Dashboard visualmente (memória)
+        if aba_atual == "Gerenciar Registros":
+            self.mgmt_view.ao_exibir_aba()
+        elif aba_atual == "Dashboard & Importação":
+            self.dash_view.atualizar_view()
+
+    def notificar_mudancas(self):
+        """Redesenha a interface (sem loading) com os dados novos da memória"""
         self.dash_view.atualizar_view()
-        
-        # Se a gestão já carregou dados antes, atualiza a tabela visualmente
-        if self.mgmt_view.ja_carregou:
-            # Chama o método que acabamos de criar
+        if self.tabview.get() == "Gerenciar Registros":
             self.mgmt_view.atualizar_tabela_visual()
+        else:
+            self.mgmt_view.ja_carregou = False
 
 if __name__ == "__main__":
     app = BodogApp()

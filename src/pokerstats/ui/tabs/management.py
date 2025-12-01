@@ -22,6 +22,7 @@ class ManagementTab(ctk.CTkFrame):
         self._setup_ui()
 
     def ao_exibir_aba(self):
+        self._aplicar_tema_treeview()
         self.recarregar_dados()
 
     def _setup_ui(self):
@@ -304,3 +305,46 @@ class ManagementTab(ctk.CTkFrame):
             top.focus_force(); 
         except: 
             pass
+        
+    def _aplicar_tema_treeview(self):
+        tema = ctk.get_appearance_mode()
+        estilo = ttk.Style()
+
+        estilo.theme_use("default")
+
+        if tema == "Dark":
+            estilo.configure(
+                "Treeview",
+                background="#2a2d2e",
+                foreground="#ffffff",
+                fieldbackground="#2a2d2e",
+                bordercolor="#2a2d2e",
+                rowheight=26
+            )
+            estilo.map(
+                "Treeview",
+                background=[("selected", "#3a3f47")]
+            )
+            estilo.configure(
+                "Treeview.Heading",
+                background="#2f3234",
+                foreground="#ffffff"
+            )
+        else:
+            estilo.configure(
+                "Treeview",
+                background="#ffffff",
+                foreground="#000000",
+                fieldbackground="#ffffff",
+                bordercolor="#d9d9d9",
+                rowheight=26
+            )
+            estilo.map(
+                "Treeview",
+                background=[("selected", "#cce6ff")]
+            )
+            estilo.configure(
+                "Treeview.Heading",
+                background="#f0f0f0",
+                foreground="#000000"
+            )
