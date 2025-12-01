@@ -7,7 +7,16 @@
 - **Brainstrom**: o print  uma reunião que foi um momento de geração ativa de ideias, não apenas a decisão final ou uma anotação isolada.
 
 ![Reunião de Brain storm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/08_09_ReuniaoDeBrainstorm.png)
+
 ![Quadro gerado na reuniao de brainStorm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/QuadroGeradoNaReuniaoDeBrainStorm.png)
+
+<iframe 
+    style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+    width="800" 
+    height="450" 
+    src="https://embed.figma.com/design/3lLGO9DloKixcD9EEa0RuK/PokerStats?node-id=5-91&embed-host=share" 
+    allowfullscreen>
+</iframe>
 
 - **Entrevista**s: Prints de reuniões onde foram apresentados e validados os requisitos definidos ao longo da disciplina para o cliente elem de definidos novos requisitos
 
