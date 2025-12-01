@@ -146,13 +146,12 @@ class BodogService:
             stats["Geral"]["total"] += 1
             if ret > 0: stats["Geral"]["itm"] += 1
             
-            # --- LÓGICA DE CLASSIFICAÇÃO CORRIGIDA ---
             nome = (t.nome_torneio or "DESCONHECIDO").upper()
             
             if inv == 0 and ret > 0:
-                categoria = "Outros" # Freeroll Rule (0 custo)
+                categoria = "Outros" 
             elif "DESCONHECIDO" in nome or "SELECAO" in nome:
-                categoria = "Outros" # FIX: Unclassifed paid tournaments go to Others
+                categoria = "Outros"
             elif "SIT" in nome and "GO" in nome:
                 categoria = "Sit & Go"
             elif "SNG" in nome:
@@ -162,7 +161,7 @@ class BodogService:
             elif "CASH" in nome:
                 categoria = "Outros"
             else:
-                categoria = "MTT" # Assumed remaining named tournaments are MTT
+                categoria = "MTT"
 
             if categoria not in stats: stats[categoria] = {"investido": 0.0, "retorno": 0.0, "total": 0, "itm": 0}
             stats[categoria]["investido"] += inv
