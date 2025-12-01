@@ -100,7 +100,7 @@ class DashboardTab(ctk.CTkFrame):
         relatorio = self.service.gerar_relatorio_roi_itm()
         
         stats_extra = None
-        titulo_extra = "SELECAO"
+        titulo_extra = "Selecione um Torneio"
         
         if self.torneio_selecionado and self.torneio_selecionado != "Selecione..." and self.torneio_selecionado != "Sem dados":
             stats_extra = self.service.calcular_stats_por_nome(self.torneio_selecionado)
@@ -116,7 +116,7 @@ class DashboardTab(ctk.CTkFrame):
         self.update_idletasks()
 
     def _ao_selecionar_torneio(self, escolha):
-        if escolha == "Selecione..." or escolha == "Sem dados":
+        if escolha == "Selecione" or escolha == "Sem dados":
             self.torneio_selecionado = None
         else:
             self.torneio_selecionado = escolha
@@ -155,7 +155,7 @@ class DashboardTab(ctk.CTkFrame):
         for i in range(cols): self.container_cards.grid_columnconfigure(i, weight=1)
 
         nomes = self.service.obter_nomes_torneios()
-        valores_combo = nomes if nomes else ["Sem dados"]
+        valores_combo = ["Selecione"] + nomes if nomes else ["Selecione"]
         
         self.combo_torneios = ctk.CTkComboBox(
             self.container_cards, 
@@ -168,7 +168,7 @@ class DashboardTab(ctk.CTkFrame):
         if self.torneio_selecionado and self.torneio_selecionado in valores_combo:
             self.combo_torneios.set(self.torneio_selecionado)
         else:
-            self.combo_torneios.set("Selecione...")
+            self.combo_torneios.set("Selecione")
             
         self.combo_torneios.grid(row=0, column=4, padx=15, pady=(0, 5), sticky="ew")
 
@@ -282,7 +282,11 @@ class DashboardTab(ctk.CTkFrame):
         def fim(res, err):
             if err: messagebox.showerror("Erro", str(err)); return
             n, a, desc = res
-            messagebox.showinfo("Sucesso", f"Novos: {n}\nAtualizados: {a}\nDescartados: {desc}")
+            mensagem = f"\n{' '*70}\n"
+            mensagem += f"  Registros Novos:      {n}\n\n"
+            mensagem += f"  Registros Atualizados: {a}\n\n"
+            mensagem += f"  Registros Descartados: {desc}\n\n"
+            messagebox.showinfo(" Processamento Concluído", mensagem)
             self.limpar_fila()
             self.atualizar_view()
             if self.on_data_change: self.on_data_change()
