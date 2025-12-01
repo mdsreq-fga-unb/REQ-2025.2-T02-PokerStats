@@ -1,12 +1,12 @@
-# **ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE**
+# 3. **ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE**
 
-## **Estratégia Priorizada**
+## 3.1 **Estratégia Priorizada**
 
 **Abordagem:** Ágil  
 	**Ciclo de Vida:** Ágil  
 	**Processo:** Kanban \+ Práticas XP
 
-## **Quadro Comparativo**
+## 3.2 **Quadro Comparativo**
 
 Apresenta-se um quadro comparando o processo Kanban \+ Práticas XP escolhido com o processo RAD  \+  Scrum.
 
@@ -20,7 +20,7 @@ Apresenta-se um quadro comparando o processo Kanban \+ Práticas XP escolhido co
 | Adequação para Equipes com Horários Variados | **Ideal.** O Kanban é um método inerentemente assíncrono, perfeito para horários flexíveis. As práticas do XP garantem a disciplina técnica sem exigir rituais de sincronização diários.. | Baixa. A abordagem depende de rituais que exigem sincronia, como as reuniões diárias do Scrum e os workshops do RAD, sendo pouco eficiente para equipes assíncronas. |
 | Foco Principal: | Eficiência do fluxo e qualidade técnica. O Kanban otimiza a velocidade e a previsibilidade da entrega, enquanto as práticas do XP garantem que o produto construído seja tecnicamente robusto, seguro e de alta qualidade. | Velocidade na entrega de valor em ciclos. O Scrum organiza o trabalho em Sprints para garantir entregas de valor previsíveis e periódicas, enquanto o RAD acelera a construção e validação dessas entregas através de prototipagem rápida e intensa colaboração com o cliente. |
 
-## **Justificativa**
+## 3.3 **Justificativa**
 
 Com base nas características do projeto e nos desafios enfrentados, a combinação de **Kanban e Práticas XP** é o processo mais adequado pelos seguintes motivos:
 

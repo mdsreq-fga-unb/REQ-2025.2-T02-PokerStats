@@ -1,6 +1,6 @@
-#  **CRONOGRAMA E ENTREGAS**
+#  5. **CRONOGRAMA E ENTREGAS**
 
-## 5. CRONOGRAMA E ENTREGAS
+## 5.1 CRONOGRAMA E ENTREGAS
 
 | Número do Ciclo | Data de Início | Data de Fim | Objetivo Principal | Resultados esperados para o final do Ciclo|
 |---:|:---:|:---:|:---|:---|
