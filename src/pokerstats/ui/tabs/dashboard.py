@@ -1,7 +1,14 @@
 import customtkinter as ctk
 from tkinter import filedialog, messagebox
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from ..utils import formatar_moeda, formatar_pct
 from ..loading import executar_com_loading
+from ..charts import (
+    gerar_grafico_evolucao, 
+    gerar_grafico_modalidades, 
+    gerar_grafico_itm, 
+    gerar_grafico_scatter
+)
 
 class DashboardTab(ctk.CTkFrame):
     def __init__(self, master, service, update_callback, app_instance):
@@ -16,6 +23,8 @@ class DashboardTab(ctk.CTkFrame):
         
         self.dados_dashboard_cache = None
         self.torneio_selecionado = None
+        
+        self.canvas_list = []
 
         self._setup_ui()
         
@@ -25,10 +34,17 @@ class DashboardTab(ctk.CTkFrame):
         self.atualizar_view()
 
     def _setup_ui(self):
+        # Grid Principal
         self.grid_columnconfigure(0, weight=1)
-        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        
+        # Scrollable Page
+        self.scroll_page = ctk.CTkScrollableFrame(self, fg_color="transparent")
+        self.scroll_page.grid(row=0, column=0, sticky="nsew")
+        self.scroll_page.grid_columnconfigure(0, weight=1)
 
-        frame_top = ctk.CTkFrame(self)
+        # --- 1. Painel de Controle ---
+        frame_top = ctk.CTkFrame(self.scroll_page)
         frame_top.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
         
         frame_tr = ctk.CTkFrame(frame_top, fg_color="transparent")
@@ -37,14 +53,14 @@ class DashboardTab(ctk.CTkFrame):
         self.btn_transacao.pack(pady=2)
         self.lbl_count_tr = ctk.CTkLabel(frame_tr, text="0 registros em fila", font=("Arial", 11), text_color="gray")
         self.lbl_count_tr.pack()
-
+        
         frame_hh = ctk.CTkFrame(frame_top, fg_color="transparent")
         frame_hh.pack(side="left", padx=10, pady=10)
         self.btn_hhs = ctk.CTkButton(frame_hh, text="Adicionar Hand History (+)", fg_color="green", command=self.add_hhs)
         self.btn_hhs.pack(pady=2)
         self.lbl_count_hh = ctk.CTkLabel(frame_hh, text="0 arquivos em fila", font=("Arial", 11), text_color="gray")
         self.lbl_count_hh.pack()
-
+        
         frame_actions = ctk.CTkFrame(frame_top, fg_color="transparent")
         frame_actions.pack(side="right", padx=10, pady=10)
         self.btn_consolidar = ctk.CTkButton(frame_actions, text="Processar Dados", fg_color="orange", command=self.consolidar, state="disabled")
@@ -52,18 +68,40 @@ class DashboardTab(ctk.CTkFrame):
         self.btn_limpar = ctk.CTkButton(frame_actions, text="Cancelar", fg_color="#c0392b", width=80, command=self.limpar_fila, state="disabled")
         self.btn_limpar.pack()
 
-        self.frame_stats = ctk.CTkFrame(self)
+        self.frame_stats = ctk.CTkFrame(self.scroll_page)
         self.frame_stats.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
         
         self.container_cards = ctk.CTkFrame(self.frame_stats, fg_color="transparent")
         self.container_cards.pack(fill="x", padx=5, pady=10)
 
-        self.lbl_status = ctk.CTkLabel(self, text="Aguardando dados...", font=("Arial", 12))
-        self.lbl_status.grid(row=2, column=0, sticky="w", padx=15)
+        # --- 3. Área de Gráficos (Demarcados 50/50) ---
+        self.frame_charts_container = ctk.CTkFrame(self.scroll_page, fg_color="transparent")
+        self.frame_charts_container.grid(row=2, column=0, padx=10, pady=10, sticky="ew")
+        
+        # Grid 2x2 com Row e Col Expandindo
+        self.frame_charts_container.grid_columnconfigure(0, weight=1)
+        self.frame_charts_container.grid_columnconfigure(1, weight=1)
+        self.frame_charts_container.grid_rowconfigure(0, weight=1) 
+        self.frame_charts_container.grid_rowconfigure(1, weight=1)
+        
+        # Linha 1: Evolução | Rosca
+        self.chart_box_evolucao = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
+        self.chart_box_evolucao.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
+        
+        self.chart_box_itm = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
+        self.chart_box_itm.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
 
-        self.tabela_preview = ctk.CTkScrollableFrame(self, label_text="Previa do que sera salvo")
-        self.tabela_preview.grid(row=3, column=0, padx=10, pady=5, sticky="nsew")
-        self.tabela_preview.grid_columnconfigure((0,1,2,3), weight=1)
+        # Linha 2: Barras | Scatter
+        self.chart_box_modalidade = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
+        self.chart_box_modalidade.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
+
+        self.chart_box_scatter = ctk.CTkFrame(self.frame_charts_container, border_width=2, border_color="#404040", height=300)
+        self.chart_box_scatter.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")
+
+        # --- 4. Status ---
+        self.lbl_status = ctk.CTkLabel(self.scroll_page, text="Aguardando dados...", font=("Arial", 12))
+        self.lbl_status.grid(row=3, column=0, sticky="w", padx=15, pady=(20, 20))
+
 
     def atualizar_view(self):
         relatorio = self.service.gerar_relatorio_roi_itm()
@@ -79,6 +117,9 @@ class DashboardTab(ctk.CTkFrame):
             stats_extra = {"investido": 0.0, "retorno": 0.0, "lucro": 0.0, "roi": 0.0, "total_count": 0, "itm_count": 0, "itm_pct": 0.0}
 
         self._renderizar_cards_completos(relatorio, stats_extra, titulo_extra)
+        
+        dados_raw = self.service.obter_historico_banco()
+        self._atualizar_graficos(dados_raw)
         self.update_idletasks()
 
     def _ao_selecionar_torneio(self, escolha):
@@ -88,12 +129,39 @@ class DashboardTab(ctk.CTkFrame):
             self.torneio_selecionado = escolha
         self.atualizar_view()
 
+    def _atualizar_graficos(self, dados):
+        # Limpa gráficos antigos
+        for c in self.canvas_list: 
+            try: c.get_tk_widget().destroy()
+            except: pass
+        self.canvas_list = []
+
+        # Gera gráficos (usando charts.py)
+        fig1 = gerar_grafico_evolucao(dados)
+        self._embed_chart(fig1, self.chart_box_evolucao)
+
+        fig2 = gerar_grafico_itm(dados)
+        self._embed_chart(fig2, self.chart_box_itm)
+
+        fig3 = gerar_grafico_modalidades(dados)
+        self._embed_chart(fig3, self.chart_box_modalidade)
+
+        fig4 = gerar_grafico_scatter(dados)
+        self._embed_chart(fig4, self.chart_box_scatter)
+
+    def _embed_chart(self, fig, parent):
+        fig.tight_layout()
+        canvas = FigureCanvasTkAgg(fig, master=parent)
+        canvas.draw()
+        widget = canvas.get_tk_widget()
+        widget.pack(fill="both", expand=True, padx=2, pady=2)
+        self.canvas_list.append(canvas)
+
     def _renderizar_cards_completos(self, relatorio, stats_extra, titulo_extra):
         for w in self.container_cards.winfo_children(): w.destroy()
         
         cols = 5
-        for i in range(cols): 
-            self.container_cards.grid_columnconfigure(i, weight=1)
+        for i in range(cols): self.container_cards.grid_columnconfigure(i, weight=1)
 
         nomes = self.service.obter_nomes_torneios()
         valores_combo = nomes if nomes else ["Sem dados"]
@@ -118,20 +186,20 @@ class DashboardTab(ctk.CTkFrame):
         
         for key in ordem:
             if key in relatorio:
-                self._criar_card(idx, key, relatorio[key], padx=15)
+                self._criar_card(idx, key, relatorio[key], padx=5)
             idx += 1
         
-        self._criar_card(idx, titulo_extra, stats_extra, destaque_titulo=True, padx=15)
+        self._criar_card(idx, titulo_extra, stats_extra, destaque_titulo=True, padx=5)
 
-    def _criar_card(self, col, titulo, dados, destaque_titulo=False, padx=10):
-        frame = ctk.CTkFrame(self.container_cards)
+    def _criar_card(self, col, titulo, dados, destaque_titulo=False, padx=5):
+        # ADICIONADO: border_width=2 para criar o quadrado de demarcação
+        frame = ctk.CTkFrame(self.container_cards, border_width=2, border_color="#404040")
         frame.grid(row=1, column=col, padx=padx, sticky="ew")
         
         cor_val = "#2ecc71" if dados['lucro'] > 0 else ("#e74c3c" if dados['lucro'] < 0 else "gray")
         cor_tit = "#3498db" if destaque_titulo else "gray"
         
         ctk.CTkLabel(frame, text=titulo.upper(), font=("Arial", 11, "bold"), text_color=cor_tit).pack(pady=(8,0))
-        
         ctk.CTkLabel(frame, text=formatar_pct(dados['roi']), font=("Arial", 22, "bold"), text_color=cor_val).pack()
         ctk.CTkLabel(frame, text="ROI", font=("Arial", 9), text_color="gray").pack()
         
@@ -187,12 +255,6 @@ class DashboardTab(ctk.CTkFrame):
         state = "normal" if (self.buffer_transacoes or self.buffer_hhs) else "disabled"
         self.btn_consolidar.configure(state=state)
         self.btn_limpar.configure(state=state)
-        if self.buffer_transacoes or self.buffer_hhs:
-            self.configure(cursor="watch"); self.update()
-            prev, _ = self.service.consolidar_dados(self.buffer_transacoes, self.buffer_hhs)
-            self._renderizar_preview(prev)
-            self.configure(cursor="")
-        else: self._renderizar_preview([])
 
     def consolidar(self):
         if not self.buffer_transacoes and not self.buffer_hhs: return
@@ -218,16 +280,3 @@ class DashboardTab(ctk.CTkFrame):
     def reiniciar_fluxo(self):
         self.limpar_fila()
         self.atualizar_view()
-
-    def _renderizar_preview(self, lista):
-        for w in self.tabela_preview.winfo_children(): w.destroy()
-        cols = ["Data", "Torneio", "Status", "Lucro"]
-        for i, c in enumerate(cols): ctk.CTkLabel(self.tabela_preview, text=c, font=("Arial",12,"bold")).grid(row=0, column=i, sticky="w", padx=5)
-        to_show = [x for x in lista if x.status == "VINCULADO"] + [x for x in lista if x.status != "VINCULADO"]
-        for idx, item in enumerate(to_show[:50]):
-            r = item.resumo
-            ctk.CTkLabel(self.tabela_preview, text=r['Data'].strftime("%d/%m")).grid(row=idx+1, column=0, padx=5, sticky="w")
-            ctk.CTkLabel(self.tabela_preview, text=r['Torneio'][:25]).grid(row=idx+1, column=1, padx=5, sticky="w")
-            cor = "blue" if r['Status'] == "VINCULADO" else "gray"
-            ctk.CTkLabel(self.tabela_preview, text=r['Status'], text_color=cor, font=("Arial", 10)).grid(row=idx+1, column=2, padx=5, sticky="w")
-            ctk.CTkLabel(self.tabela_preview, text=formatar_moeda(r['Lucro'])).grid(row=idx+1, column=3, padx=5, sticky="w")
