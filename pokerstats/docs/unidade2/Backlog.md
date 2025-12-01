@@ -1,12 +1,12 @@
-# Backlog
+# 8. Backlog
 
-## Backlog Geral
+## 8.1 Backlog Geral
 
 - O backlog geral contém todas as funcionalidades e melhorias planejadas para o software. Cada item é 
 detalhado e priorizado para garantir uma visão clara do que será desenvolvido ao longo do projeto. 
 
 
-### Histórias do Usuário
+### 8.1.1 Histórias do Usuário
 
 - US01 - Eu como usuário quero importar histórico de partidas extraídos da plataforma Bodog para que seja possível consolidar dados de diversas partidas em um único lugar. 
 
@@ -28,7 +28,7 @@ detalhado e priorizado para garantir uma visão clara do que será desenvolvido 
 
 - US10 - Eu como usuários quero ver o número de vezes que terminei em uma posição premiada para que eu possa ter uma visão ampla do meu desempenho. 
 
-## Priorização do Backlog Geral
+## 8.2 Priorização do Backlog Geral
 
 - A definição do escopo e da ordem de desenvolvimento do Poker Stats partiu de uma priorização baseada em duas análises complementares: **Valor de Negócio** e **Complexidade Técnica.**
 
@@ -36,12 +36,12 @@ detalhado e priorizado para garantir uma visão clara do que será desenvolvido 
 2. Análise de Complexidade Técnica: Em paralelo, a complexidade de cada requisito foi estimada pela equipe de desenvolvimento, utilizando uma escala de Story Points que representa o esforço, a incerteza e o risco envolvidos na implementação.
 
 
-### Legenda de Prioridade (Valor de Negócio):
+### 8.2.1 Legenda de Prioridade (Valor de Negócio):
 - Must have: Requisitos essenciais sem os quais o produto não funciona ou não entrega seu valor principal.
 - Should have: Requisitos importantes que agregam valor significativo, mas não são vitais para a primeira entrega.
 - Could have: Requisitos desejáveis, que podem ser incluídos se o tempo e os recursos permitirem.
 
-### Legenda de Complexidade (Story Points):
+### 8.2.2 Legenda de Complexidade (Story Points):
 
 - MB (Muito Baixo - 1 pt): Funcionalidade idêntica ou extremamente semelhante a algo já feito pela equipe.
 - B (Baixo - 2 pts): Funcionalidade simples e bem compreendida.

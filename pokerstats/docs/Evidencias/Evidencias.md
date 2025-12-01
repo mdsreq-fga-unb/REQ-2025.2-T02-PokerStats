@@ -4,12 +4,21 @@
 
 ### Elicitação e descoberta
 
-- Brainstrom: o print  uma reunião que foi um momento de geração ativa de ideias, não apenas a decisão final ou uma anotação isolada.
+- **Brainstrom**: o print  uma reunião que foi um momento de geração ativa de ideias, não apenas a decisão final ou uma anotação isolada.
 
 ![Reunião de Brain storm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/08_09_ReuniaoDeBrainstorm.png)
+
 ![Quadro gerado na reuniao de brainStorm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/QuadroGeradoNaReuniaoDeBrainStorm.png)
 
-- Entrevistas: Prints de reuniões onde foram apresentados e validados os requisitos definidos ao longo da disciplina para o cliente elem de definidos novos requisitos
+<iframe 
+    style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+    width="800" 
+    height="450" 
+    src="https://embed.figma.com/design/3lLGO9DloKixcD9EEa0RuK/PokerStats?node-id=5-91&embed-host=share" 
+    allowfullscreen>
+</iframe>
+
+- **Entrevista**s: Prints de reuniões onde foram apresentados e validados os requisitos definidos ao longo da disciplina para o cliente elem de definidos novos requisitos
 
 ![Entrevista de Validação 04/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/04_10.png)
 
@@ -17,19 +26,18 @@
 
 ![Entrevista de Validação 20/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/20_10.png)
 
+![Entrevista de Validação 01/11](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/01_11.png)
+
 
 - Análise de concorrentes: Uma analise do Mercado e de produtos similares
 
-![Analise](../img/Evidencias/1_Licitação%20e%20Descoberta/3Analise_de_concorrentes/Analise.png)
+(**Eviendicia no tópico 2.4 na aba "solução proposta"**)
 
 ### Analise e consenso
 
 - Analise de Custo/Beneficio:
 
-![Analise Custo/Beneficio](../img/Evidencias/2_AnaliseEConsenso/1Custo_BeneficioMVP/Analise%20Complexidade%20e%20Valor%20de%20Negocio.png)
-
-![Analise Custo/Beneficio](../img/Evidencias/2_AnaliseEConsenso/1Custo_BeneficioMVP/Tabela%20com%20MVP.png)
-
+(**Eviendicia no tópico 8.2 na aba "Backlog"**)
 
 - Resolução de Conflito: Algumas conversas da equipe no Software de conversa oficial da equipe Discord para resolver conflitos
 
@@ -48,6 +56,8 @@
 
 - User Storys: As historias de usuarios utilizadas para declarar os Requisitos 
 
+(**Eviendicia no tópico 8.1.1 na aba "Backlog"**)
+
 ### Respresentação:
 
 - Protótipos: Prototipos visuais feitos para mostrar ao cliente o que vai ser implementado antes de ser implementado
@@ -56,8 +66,7 @@
 
 - Dor e Dod: O DoR e DoD
 
-![DoR e DoD](../img/Evidencias/5_VerificarEValidacao/1VerificacaoDeDoREDoD/DoD.png)
-![DoR e DoD](../img/Evidencias/5_VerificarEValidacao/1VerificacaoDeDoREDoD/DoR.png)
+(**Eviendicia no tópico 7.1 e 7.2 na aba "DoR&DoD"**)
 
 - FeedBack do Cliente: Um forms completo com feedbacks do cliente sobre o produto
 
@@ -72,7 +81,8 @@
 
 - User points
 
-![Analise](../img/Evidencias/6_OrganizacaoEAtualizacao/2User%20Points/User%20Points.png)
+(**Eviendicia no tópico 8.2.2 na aba "Backlog"**)
+
 
 
 ## Evidencias Kanban/XP

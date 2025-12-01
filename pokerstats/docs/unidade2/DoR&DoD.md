@@ -1,6 +1,6 @@
-# "**DoR e DoD:**
+# 7. "**DoR e DoD:**
 
-### **Definition of Ready (DoR)**
+## 7.1 **Definition of Ready (DoR)**
 
 O DoR é um acordo da equipe que define quando um requisito está preparado para ser puxado para o desenvolvimento. Garante que a equipe tenha as informações necessárias antes de iniciar. Um requisito está 'Ready' quando:
 
@@ -10,7 +10,7 @@ O DoR é um acordo da equipe que define quando um requisito está preparado para
 - **Interface Mapeada (se aplicável)**: Protótipos ou wireframes existem e foram alinhados.
 - **Dependências Conhecidas**: Dependências técnicas (ex: bibliotecas específicas) ou de outros requisitos foram identificadas.
 
-### **Definition of Done (DoD)**
+## 7.2 **Definition of Done (DoD)**
 
 O DoD é o acordo da equipe que demonstra a qualidade do trabalho realizado, definindo quando uma funcionalidade está realmente completa. Um requisito está 'Done' quando:
 

@@ -1,6 +1,6 @@
-# CENÁRIO ATUAL DO CLIENTE E DO NEGÓCIO
+# 1. CENÁRIO ATUAL DO CLIENTE E DO NEGÓCIO
 
-## Introdução ao negócio e contexto
+## 1.1 Introdução ao negócio e contexto
 
 O mercado de poker online reúne operadores e grupos de jogadores que realizam partidas regulares em plataformas centralizadas. Nesse contexto, Eduardo administra um grupo de jogadores que atua exclusivamente na plataforma Bodog, concentrando toda a geração de relatórios e registros dessa operação em uma única fonte.
 
@@ -8,7 +8,7 @@ O grupo realiza várias sessões de jogo ao longo do mês, produzindo documentos
 
 Ao final do mês, com o grande volume de jogos, Eduardo enfrenta o desafio de analisar o que foi mais lucrativo e rentável para o grupo. Ele recebe planilhas da plataforma, mas a organização e a análise se tornam difíceis devido ao grande volume de torneios, às limitações dos dados presentes nessas planilhas e à complexidade de calcular métricas importantes como win rate e lucro de forma manual. Essa dificuldade o impede de focar nas escolhas certas para a gestão do grupo.
 
-## Identificação da oportunidade ou problema
+## 1.2 Identificação da oportunidade ou problema
 
 A principal oportunidade identificada no cenário do cliente reside na falta de ferramentas de análise de desempenho que se adequem às preferências e ao contexto específico do grupo de Eduardo. Embora existam ferramentas de rastreamento e análise de desempenho no mercado (geralmente soluções terceirizadas como o PokerTracker), elas não atendem à necessidade do usuário por uma plataforma personalizada, minimalista e focada em suas métricas de interesse. O cliente e seu grupo, que participam dos jogos, são forçados a operar com pouca compreensão clara de seu histórico financeiro e de performance, pois as soluções existentes não lhes proporcionam a visão desejada ou sobrecarregam com informações irrelevantes.
 
@@ -25,7 +25,7 @@ O "Poker Stats" surge para iluminar esse cenário, oferecendo uma plataforma per
 
 ![alt text](../imagens/DiagramaIshikawa.jpg)
 
-## Desafios do Projeto
+## 1.3 Desafios do Projeto
 
 O desenvolvimento do "Poker Stats" apresenta desafios técnicos e operacionais significativos que exigem planejamento cuidadoso e soluções robustas para garantir a entrega de uma ferramenta eficaz e confiável. Os principais obstáculos a serem superados incluem:
 
@@ -53,7 +53,7 @@ O desenvolvimento do "Poker Stats" apresenta desafios técnicos e operacionais s
   * Concorrência e Diferenciação: Embora o problema de falta de métricas seja claro, o mercado pode ter outras soluções (mesmo que parciais ou mais complexas). O desafio é manter o "Poker Stats" relevante e diferenciado.  
   * Suporte aos Usuários: Fornecer suporte adequado aos usuários para garantir a utilização eficaz da ferramenta e resolver eventuais problemas.
 
-## **Segmentação do cliente**
+## 1.4 **Segmentação do cliente**
 
 O público-alvo do "Poker Stats" é Eduardo, que busca aprimorar sua compreensão sobre seus próprios resultados por meio de métricas e estatísticas detalhadas. A ferramenta foi concebida para ser acessível a ele e, embora seus amigos estejam envolvidos nos jogos, o foco principal da solução é atender às necessidades de análise de Eduardo.
 

@@ -1,6 +1,6 @@
-# Interação entre Equipe e Cliente
+# 6. Interação entre Equipe e Cliente
 
-## Composição da Equipe
+## 6.1 Composição da Equipe
 
 <font size="3"><p style="text-align: left">**Tabela 1** - Composição da Equipe.</p></font>
 
@@ -12,7 +12,7 @@
 | Design de Interfaces   | Criar e organizar os epro e interativos da aplicação, garantindo que o protótipo seja claro, consistente, intuitivo e agradável para o usuário. | Ricardo          | Carlos Henrique                               |
 | Analista de Requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos.               | Renan            | Ricardo, Felipe de Jesus, Thales, Felipe Júnior e Carlos Henrique |
 
-## Comunicação
+## 6.2 Comunicação
 
 ### Ferramentas de comunicação
 
@@ -27,10 +27,10 @@
 
 ### Frequência de interação com o cliente
 
-- **Reuniões formais**: a cada 2 semanas, garantindo acompanhamento do progresso do projeto e alinhamento das entregas com o cronograma definido.  
+- **Reuniões formais**: a cada 2 ou 3 semanas, para garantir acompanhamento do progresso do projeto e alinhamento das entregas com o cronograma definido.  
 - **Interações adicionais via Discord**: utilizadas para iterações rápidas, feedback informal e resolução de dúvidas emergentes ao longo do desenvolvimento. Essas interações complementam as reuniões formais e permitem maior agilidade na comunicação.  
 
-## Processo de Validação
+## 6.3 Processo de Validação
 
 - **Validação de entrega (Delivery Validation)**: o cliente revisa e aprova a entrega final de cada incremento ou funcionalidade implementada. Essa validação garante que o produto atende aos requisitos especificados, está funcionalmente correto e pronto para implantação ou uso.  
 

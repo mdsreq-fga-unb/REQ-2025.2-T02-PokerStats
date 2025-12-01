@@ -1,4 +1,4 @@
-# Engenharia de Requisitos
+# 4. Engenharia de Requisitos
 
 
 - Engenharia de Requisitos alinhada às Fases / Marcos de Execução do XP: A Engenharia de Requisitos, quando aplicada dentro de um processo ágil como o Extreme Programming (XP), distribui suas atividades ao longo dos marcos naturais do ciclo de vida do XP. A seguir, as atividades, técnicas, evidências e artefatos do projeto “Poker Stats” são organizados conforme as fases:

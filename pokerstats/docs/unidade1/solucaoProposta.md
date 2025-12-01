@@ -1,13 +1,13 @@
-# **SOLUÇÃO PROPOSTA**
+# 2. **SOLUÇÃO PROPOSTA**
 
-## **Objetivo do Produto**
+## 2.1 **Objetivo do Produto**
 
 O objetivo do "Poker Stats" é otimizar a operação de Eduardo e sua equipe através da automação da análise de dados, com dois focos principais:
 
 1. **Eficiência Operacional:** Reduzir drasticamente o tempo gasto com a consolidação manual de históricos de jogo.  
 2. **Inteligência Estratégica:** Fornecer métricas de desempenho precisas e insights (como ROI e ITM), que não são facilmente calculáveis manualmente, para possibilitar uma tomada de decisão que maximize a lucratividade.
 
-## **Características da Solução**
+## 2.2 **Características da Solução**
 
 A solução proposta para o "Poker Stats" terá as seguintes características principais:
 
@@ -19,7 +19,7 @@ A solução proposta para o "Poker Stats" terá as seguintes características pr
 * **\[C06\]** A aplicação permitirá o registro e a visualização do histórico de transações financeiras (depósitos e saques), auxiliando na gestão de banca do jogador.
 
 
-## **Tecnologias a Serem Utilizadas**
+## 2.3 **Tecnologias a Serem Utilizadas**
 
 O “Poker Stats” será desenvolvido utilizando a linguagem Python como base, aproveitando sua robustez e ampla disponibilidade de recursos para análise de dados, construção de interfaces e integração com diferentes formatos de arquivos.  
 Para viabilizar as funcionalidades propostas, serão empregadas tecnologias que atendam às seguintes necessidades:
@@ -32,7 +32,7 @@ Para viabilizar as funcionalidades propostas, serão empregadas tecnologias que 
 
 Essa abordagem garante flexibilidade na escolha das ferramentas durante o desenvolvimento, permitindo ajustes conforme novas necessidades ou oportunidades tecnológicas surgirem.
 
-## **Pesquisa de Mercado e Análise Competitiva** 
+## 2.4 **Pesquisa de Mercado e Análise Competitiva** 
 
 O mercado de poker online, avaliado em US$ 57,01 bilhões em 2024 e com projeção de crescimento para US$ 141,1 bilhões até 2033, demonstra um cenário robusto e em expansão. No Brasil, o poker é reconhecido como "esporte da mente" desde 2010, indicando um ambiente favorável ao desenvolvimento de ferramentas de apoio aos jogadores.  
 A principal oportunidade identificada reside na lacuna de ferramentas de análise de desempenho personalizadas para jogadores casuais, como Eduardo, que buscam métricas claras e consolidadas sem a complexidade de soluções profissionais.  
@@ -53,13 +53,13 @@ O "Poker Stats" se posiciona de forma única ao oferecer:
 * **Acessibilidade e Usabilidade:** Interface simples e intuitiva, desenvolvida para jogadores casuais com familiaridade tecnológica básica, sem a complexidade de softwares profissionais.  
 * **Foco na Plataforma Bodog:** Otimizado para a coleta e análise de dados da plataforma Bodog, atendendo a uma necessidade específica do público-alvo.
 
-## **Análise de Viabilidade**
+## 2.5 **Análise de Viabilidade**
 
 A viabilidade técnica do projeto é alta, uma vez que a equipe de desenvolvimento possui experiência comprovada nas tecnologias que serão utilizadas, principalmente Python. O aplicativo será entregue em formato executável (.exe), garantindo facilidade de instalação e uso no ambiente do cliente.  
 O prazo estimado para o desenvolvimento é de pouco mais de dois meses, considerado viável diante da complexidade do projeto e da experiência da equipe. O cronograma prevê a entrega do produto completo dentro do período estipulado, com etapas de validação interna para garantir qualidade e estabilidade.  
 Embora a entrega do software ocorra ao término do desenvolvimento, o cliente acompanhará o andamento do projeto em cada etapa, recebendo apresentações periódicas sobre o progresso. Isso permitirá maior transparência e a oportunidade de sugerir ajustes enquanto o desenvolvimento estiver em curso.
 
-## **Impacto da Solução**
+## 2.6 **Impacto da Solução**
 
 Espera-se que o “Poker Stats” traga benefícios diretos e indiretos para o grupo de jogadores administrado por Eduardo, impactando tanto a eficiência da gestão quanto a qualidade das decisões tomadas:
 
