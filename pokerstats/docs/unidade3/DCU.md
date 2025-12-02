@@ -1,18 +1,26 @@
-# Diagrama de Caso de Uso
+## Especificações de Casos de Uso
 
-## Introdução
+- [Manter Perfil do Paciente](ManterPerfildoPaciente.md)
+- [Buscar Serviços de Saúde](BuscarServicosdeSaude.md)
+- [Monitorar Desempenho do Sistema](MonitorarDesempenhoDoSistema.md)
+- [Agendar Consulta](CasoUsoAgendarConsulta.md)
+- [texto do link](arquivo.md)
+
+## Diagrama de Caso de Uso
+
+### Introdução
 
 O presente documento apresenta o modelo de casos de uso para o aplicativo "ConnectCare". Este sistema foi idealizado no contexto da comunidade remota "Vila Esperança", onde o acesso a serviços de saúde é restrito devido a barreiras como falta de transporte e infraestrutura limitada. O "ConnectCare" surge como uma solução tecnológica desenvolvida por um grupo de ativistas e desenvolvedores para conectar moradores a cuidados médicos, aproveitando a rede colaborativa da comunidade. O objetivo deste trabalho é representar formalmente as interações entre os usuários e o sistema através da modelagem de casos de uso.
 
-## Escopo do Sistema
+### Escopo do Sistema
 
 O objetivo principal do sistema "ConnectCare" é reduzir as desigualdades no acesso à saúde em comunidades vulneráveis, facilitando a conexão entre pacientes, profissionais e serviços. O escopo do aplicativo abrange funcionalidades para localizar serviços de saúde próximos, agendar consultas (online e presenciais) e gerenciar o histórico digital de saúde dos pacientes.
 Além disso, o sistema visa apoiar a divulgação de campanhas comunitárias, como vacinação, e fornecer ferramentas para organizações parceiras monitorarem o impacto social das ações realizadas. O sistema também inclui funcionalidades administrativas para garantir a segurança e monitorar o desempenho da plataforma.
 
 
-## Modelagem de casos de uso
+### Modelagem de casos de uso
 
-### Identificação dos atores
+#### Identificação dos atores
 
 A seguir, são identificados os atores que interagem com o sistema "ConnectCare", descrevendo seus respectivos papéis e responsabilidades conforme o cenário da comunidade Vila Esperança.
 
@@ -26,7 +34,7 @@ A seguir, são identificados os atores que interagem com o sistema "ConnectCare"
 
 - Administrador do Sistema: Responsável pela manutenção técnica e operacional da plataforma. Suas funções incluem monitorar indicadores de desempenho (como usuários ativos), garantir a segurança dos dados, corrigir erros e integrar novos serviços ou parceiros ao sistema.
 
-### Lista de Casos de Uso
+#### Lista de Casos de Uso
 
 Abaixo estão listados os Casos de Uso (UC) identificados para o sistema, representando as funcionalidades oferecidas aos atores:
 
