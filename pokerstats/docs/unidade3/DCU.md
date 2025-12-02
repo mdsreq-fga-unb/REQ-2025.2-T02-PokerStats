@@ -4,7 +4,7 @@
 - [Buscar Serviços de Saúde](BuscarServicosdeSaude.md)
 - [Monitorar Desempenho do Sistema](MonitorarDesempenhoDoSistema.md)
 - [Agendar Consulta](CasoUsoAgendarConsulta.md)
-- [texto do link](arquivo.md)
+- [Gerenciar Campanha](GerenciarCampanha.md)
 
 ## Diagrama de Caso de Uso
 

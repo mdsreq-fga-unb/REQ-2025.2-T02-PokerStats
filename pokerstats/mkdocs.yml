@@ -32,13 +32,16 @@ nav:
       - Buscar Serviços de Saúde: unidade3/BuscarServicosdeSaude.md
       - Monitorar Desempenho do Sistema: unidade3/MonitorarDesempenhoDoSistema.md
       - Agendar Consulta: unidade3/CasoUsoAgendarConsulta
+      - Gerenciar Campanha: unidade3/GerenciarCampanha.md
   - Lições Aprendidas:
       - Unidade 1: unidade1/licoesAprendidas.md
       - Unidade 2: unidade2/licoesAprendidas.md
+      - unidade 3: unidade3/licoesAprendidas.md
   - Evidencias: Evidencias/Evidencias.md
   - Entregas:
     - Unidade 1: entregas/videoApresentacao.md
     - Unidade 2: entregas/videoApresentacao2.md
+    - Unidade 3: entregas/videoApresentacao3.md
 
 theme:
   name: material

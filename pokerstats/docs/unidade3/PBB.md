@@ -4,6 +4,8 @@
 
 - Aqui vamos descrever um Product Backlog Building (PBB) um método e um Canvas que auxilia na elaboração e no refinamento colaborativo de um Product Backlog, buscando um entendimento compartilhado do produto e alinhando os envolvidos para um trabalho ágil e eficaz. A atividade aqui descrita utiliza o PBB para estruturar a solução para a "InovaHub", uma rede de inovação e empreendedorismo, abordando seus desafios e propondo funcionalidades integradas. Primeiro introduziramos o estudo de caso, após isso mostraremos o PBB como um todo focando na estrutura e por fim cada parte do PBB.
 
+- **O PBB interativo se encontra no final do documento**
+
 ## Introdução Estudo de Caso
 
 A "InovaHub" é uma rede nacional que conecta incubadoras, parques tecnológicos, startups e aceleradoras, com o objetivo de fomentar o desenvolvimento de negócios inovadores e fortalecer o ecossistema de colaboração entre universidades, empresas e governos.
