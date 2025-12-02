@@ -4,46 +4,75 @@
 
 ### 1.1 Breve Descrição:
 
-- Permite que a organização parceira cadastre, edite ou remova iniciativas de saúde (como vacinação, mutirões ou ações educativas) na plataforma. O objetivo é registrar os detalhes da ação e definir o público-alvo para que o sistema possa divulgar a campanha para os pacientes adequados.
-
+- Este caso de uso permite que a Organização Parceira cadastre, altere, exclua e visualize iniciativas de saúde (como campanhas de vacinação, mutirões ou palestras). O objetivo é definir os detalhes da ação e o público-alvo para que o sistema possa, posteriormente, divulgar a campanha para os pacientes elegíveis na comunidade
 ### 1.2 Atores
 
 - Ator Principal: Organização Parceira (ONGs, hospitais, instituições governamentais).
-- Atores Secundários: Não aplicável (o sistema processa internamente).
+- Atores Secundários: Não se aplica
 
 
 ## 2. Fluxo de Eventos
 
 ### 2.1 Fluxo Principal 
-2.1.1. A Organização Parceira seleciona a opção de gerenciar campanhas no menu principal. 
-2.1.2. O Sistema exibe a lista de campanhas já cadastradas pela organização e a opção de "Nova Campanha".
-2.1.3. A Organização Parceira seleciona a opção "Nova Campanha".
-2.1.4. O Sistema apresenta o formulário de cadastro solicitando: título, descrição, tipo de ação, local, data/hora e critérios de segmentação (faixa etária, localização, condições de saúde).
-2.1.5. A Organização Parceira preenche as informações da campanha (ex: Mutirão de Oftalmologia para maiores de 40 anos). 
-2.1.6. A Organização Parceira solicita a confirmação do cadastro. 
-2.1.7. O Sistema valida os dados inseridos.
- 2.1.8. O Sistema registra a campanha no banco de dados. 
-2.1.9. O Sistema exibe uma mensagem de sucesso confirmando que a campanha foi criada e está pronta para divulgação.
+ 2.1.1. A Organização Parceira acessa a área de gestão de campanhas no sistema. 
+ 2.1.2. O Sistema exibe a lista de campanhas ativas e o histórico de ações anteriores. 
+ 2.1.3. A Organização Parceira seleciona a opção "Criar Nova Campanha". 
+ 2.1.4. O Sistema solicita os dados da campanha: Título, Descrição, Tipo de Ação (ex: vacinação, exame), Localização, Data/Hora e Duração.
+2.1.5. O Sistema solicita a definição do público-alvo (critérios de segmentação: faixa etária, localização geográfica, condições de saúde).
+2.1.6. A Organização Parceira insere as informações (Ex: "Exames oftalmológicos para maiores de 40 anos"). 
+2.1.7. A Organização Parceira confirma o cadastro. 
+2.1.8. O Sistema valida se os critérios de segmentação e dados obrigatórios estão preenchidos (referência [RN01]). 
+2.1.9. O Sistema registra a campanha e agenda a divulgação automática para os usuários relevantes. 
+2.1.10. O caso de uso termina.
 
 ### 2.2 Fluxos Alternativos
 
-[FA01] Editar Campanha Existente
+[FA01] Alterar Campanha
     Origem: Passo 2.1.2.
-    Descrição: A Organização Parceira seleciona uma campanha existente na lista e escolhe a opção "Editar". O Sistema carrega os dados atuais (passo 2.1.4). A Organização altera as informações necessárias.
-    Retorno: O fluxo retorna ao passo 2.1.6 (Solicitar confirmação).
-[FA02] Excluir Campanha
+    Descrição: A Organização seleciona uma campanha existente e escolhe "Editar". O Sistema carrega os dados atuais. O Ator modifica as informações (como data ou local) e confirma.
+    Retorno: O sistema valida e atualiza o registro, retornando ao passo 2.1.2.
+[FA02] Cancelar/Excluir Campanha
     Origem: Passo 2.1.2.
-    Descrição: A Organização Parceira seleciona uma campanha e escolhe a opção "Excluir". O Sistema solicita uma confirmação de segurança. A Organização confirma a exclusão. O Sistema remove a campanha e atualiza a lista.
-    Retorno: O caso de uso encerra
+    Descrição: A Organização seleciona uma campanha e escolhe "Excluir". O sistema solicita confirmação e verifica se a campanha já ocorreu.
+    Retorno: O sistema remove a campanha da lista de divulgação e encerra o caso de uso.
 
 
 ### 2.3 Fluxos de Exceção
 
-[FE01] Dados Obrigatórios Incompletos
-    Disparo: Passo 2.1.7 (Validação).
-    Descrição: O Sistema identifica que campos obrigatórios (como Local ou Data) não foram preenchidos.
-    Ação do Sistema: O Sistema exibe uma mensagem de alerta indicando quais campos faltam e mantém os dados já preenchidos para correção.
-[FE02] Data Inválida
-    Disparo: Passo 2.1.7 (Validação).
-    Descrição: O Sistema identifica que a data informada para a campanha é anterior à data atual (passado).
-    Ação do Sistema: O Sistema informa que a campanha deve ser agendada para uma data futura e solicita a correção.
+[FE01] Dados Incompletos
+    Disparo: Passo 2.1.8 (Validação).
+    Ação: O Sistema identifica que campos obrigatórios (como Local ou Data) estão vazios. Exibe mensagem de erro "Campos obrigatórios não preenchidos" e mantém os dados na tela para correção.
+[FE02] Critérios de Segmentação Inválidos
+    Disparo: Passo 2.1.8 (Validação).
+    Ação: O Sistema identifica que os critérios de público-alvo são conflitantes ou inexistentes (ex: idade negativa). Exibe alerta e solicita revisão dos filtros.
+
+
+## 3. Requisitos Especiais
+
+- O sistema deve permitir a geolocalização do local da campanha para facilitar o acesso dos pacientes via mapa.
+- A interface de segmentação deve permitir filtros combinados (ex: "Mulheres" + "Acima de 40 anos" + "Região Vila Esperança").
+
+
+## 4. Regras de Negócio
+
+[RN01] Validação de Data: A data de início da campanha deve ser sempre posterior à data atual (futuro).
+[RN02] Segmentação de Público: A campanha só será visível para usuários que atendam aos critérios de faixa etária, localização e condições de saúde definidos no cadastro.
+
+
+## 5. Precondições
+
+- A Organização Parceira deve estar autenticada no sistema.
+- A Organização deve ter seu perfil validado pelo Administrador.
+
+
+## 6. Pós-condições
+
+- A campanha é persistida no banco de dados.
+- O sistema dispara o processo de notificação para os usuários que se enquadram no perfil definido (caso de uso relacionado à divulgação).
+
+
+## 7. Pontos de Extensão
+
+Não se aplica (baseado no diagrama fornecido, este UC não possui extends ou includes conectados a ele diretamente).
+
+
