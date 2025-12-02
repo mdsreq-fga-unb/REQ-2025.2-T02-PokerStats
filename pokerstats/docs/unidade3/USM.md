@@ -4,6 +4,9 @@
 
 Este documento apresenta a estruturação de requisitos para o projeto "HealthConnect" utilizando a técnica de User Story Mapping (USM). O USM é uma ferramenta visual que organiza o Product Backlog como uma narrativa da jornada do usuário, permitindo o entendimento compartilhado e a definição de Releases de forma incremental e orientada a valor.
 
+- **O USM interativo se encontra no final do documento**
+
+
 ---
 
 ## Introdução ao Estudo de Caso: HealthConnect

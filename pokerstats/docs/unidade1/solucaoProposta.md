@@ -84,6 +84,8 @@ Espera-se que o “Poker Stats” traga benefícios diretos e indiretos para o g
 7. **Diferenciação e Adequação ao Contexto do Cliente**  
     Ao contrário das ferramentas genéricas disponíveis no mercado, o “Poker Stats” é personalizado para as métricas de maior interesse do grupo, oferecendo simplicidade, foco e relevância, sem sobrecarga de informações desnecessárias.
 
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVJ7Qr530=/?embedMode=view_only_without_ui&moveToViewport=-20410,-8961,9289,3479&embedId=744138488557" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+
 ## Histórico de Versões
 
 <font size="3"><p style="text-align: left">**Tabela 1** - Histórico de versões.</p></font>

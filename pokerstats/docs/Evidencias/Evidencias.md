@@ -22,28 +22,31 @@
 
 ![Entrevista de Validação 04/09](../img/Evidencias/1_Licitação%20e%20Descoberta/1Entrevistas/04_09.png)
 
-- Entregas dia 29/09
+- Entrevista de validação 29/09
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N3UHlOIR5hU?si=pModmn6tvhfMztN4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+- Entrevista de Validação 04/10
 ![Entrevista de Validação 04/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/04_10.png)
 
+- Entrevista de Validação 12/10
 ![Entrevista de Validação 12/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/12_10.png)
 
+- Entrevista de Validação 20/10
 ![Entrevista de Validação 20/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/20_10.png)
 
+- Entrevista de Validação 01/11
 ![Entrevista de Validação 01/11](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/01_11.png)
 
+- Entrevista de Validação 01/12
 ![Entrevista de Validação 01/12](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/1_12.png)
 
 
 - Análise de concorrentes: Uma analise do Mercado e de produtos similares
-
 (**Eviendicia no tópico 2.4 na aba "solução proposta"**)
 
 ### Analise e consenso
 
 - Analise de Custo/Beneficio:
-
 (**Eviendicia no tópico 8.2 na aba "Backlog"**)
 
 - Resolução de Conflito: Algumas conversas da equipe no Software de conversa oficial da equipe Discord para resolver conflitos
@@ -82,8 +85,7 @@
 (**Eviendicia no tópico 7.1 e 7.2 na aba "DoR&DoD"**)
 
 - FeedBack do Cliente: Evidencia de validação do produto final do software pelo cliente
-
-- Evidencia no video de entrega na unidade 3 na aba **Entregas**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PHZwVH9bYmk?si=LqKCEMkLWa8FfVWe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Organização e atualização
@@ -106,7 +108,6 @@
 
 
 - User points
-
 (**Eviendicia no tópico 8.2.2 na aba "Backlog"**)
 
 
@@ -133,11 +134,9 @@
 
 - XP foca em práticas ágeis de desenvolvimento, então as evidências devem mostrar que aplicamos algumas das práticas XP:
 
-- **Iterações curtas/ciclos**: Prints de reuinões que foram marco para ciclo documentado mostrando que houve iterações curtas com entregas iterativas. 
+- **Iterações curtas/ciclos**: Prints de reuinões que foram marco para ciclo documentado mostrando que houve iterações curtas com entregas iterativas.  
+(**As evidências são Prints de reuniões na parte de Elicitação e Descoberto**)
 
-...
-
-(Prints de reuniões na parte de Elicitação e Descoberto)
 
 - **Testes Unitarios**:
 
@@ -152,8 +151,8 @@
 ![Testes](../img/Testes/5.png)
 
 
-- **Demonstração incremental ao cliente**: A cada ciclo/iteração, o que foi implementado foi incrementalmente integrado e apresentado ao cliente.
+- **Demonstração incremental ao cliente**: A cada ciclo/iteração, o que foi implementado foi incrementalmente integrado e apresentado ao cliente. 
+( **as evidências são os Prints de reuniões na parte de Elicitação e Descoberto**)
 
-...
 
-(Prints de reuniões na parte de Elicitação e Descoberto)
+
