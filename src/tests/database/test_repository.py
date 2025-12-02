@@ -49,5 +49,8 @@ def test_prevencao_duplicidade_lote(db_session):
     
     novos, atualizados = repo.salvar_consolidacao([item, item])
     
-    assert novos == 1 
-    assert atualizados == 0
+    assert novos == 1
+    assert atualizados == 1  
+    
+    total = db_session.query(TransacaoDB).count()
+    assert total == 1

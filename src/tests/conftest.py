@@ -4,7 +4,11 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+src_dir = os.path.dirname(current_dir)
+
+sys.path.insert(0, src_dir)
 
 from pokerstats.database.config import Base
 from pokerstats.database.schemas import TransacaoDB, ResultadoDB

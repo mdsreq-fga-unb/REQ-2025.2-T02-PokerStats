@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from pokerstats.core.service import BodogService
 from pokerstats.core.models import TransacaoDTO, HandHistoryDTO
 
@@ -30,11 +30,6 @@ def test_match_recusado_valor_diferente():
 
 def test_match_global_melhor_candidato():
     service = BodogService()
-    
-    # Cenário: 
-    # Transação às 14:00
-    # HH1 às 14:25 (Diferença 25 min) -> Seria aceito pela janela, mas é pior
-    # HH2 às 14:01 (Diferença 1 min) -> O melhor candidato
     
     t_alvo = TransacaoDTO("T_ALVO", datetime(2025, 10, 20, 14, 0, 0), 11.0, 0.0)
     

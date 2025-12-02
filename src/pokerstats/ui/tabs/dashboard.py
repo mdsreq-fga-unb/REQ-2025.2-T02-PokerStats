@@ -205,25 +205,43 @@ class DashboardTab(ctk.CTkFrame):
     def add_transacoes(self):
         caminhos = filedialog.askopenfilenames(parent=self, title="Transacoes", filetypes=[("Excel/CSV", "*.xlsx *.xls *.csv")])
         if not caminhos: return
+        
         def tarefa():
             novos = [c for c in caminhos if c not in self.arquivos_importados]
             if not novos: return None
             dados, erros = self.service.ler_lote_transacoes(novos)
             duplicados = self.service.verificar_duplicidade(dados) if dados else 0
             return {"dados": dados, "erros": erros, "caminhos": novos, "duplicados": duplicados}
+        
         def fim(res, err):
-            if err: messagebox.showerror("Erro", str(err)); return
-            if not res: return
-            caminhos_processados = []
+            if err: messagebox.showerror("Erro Crítico", str(err)); return
+            if not res: 
+                self.lbl_status.configure(text="⚠️ Arquivos já adicionados.", text_color="orange")
+                self.after(3000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+                return
+            total_tentado = len(res['caminhos'])
+            qtd_erros = res['erros']
+            
+            if qtd_erros > 0:
+                msg_erro = f"⚠️ Atenção: {qtd_erros} de {total_tentado} arquivos falharam.\nVerifique o formato."
+                messagebox.showwarning("Erro na Importação", msg_erro)
+            
             if res['duplicados'] > 0:
-                if not messagebox.askyesno("Duplicidade", f"{res['duplicados']} registros existem. Atualizar?"): return
+                if not messagebox.askyesno("Duplicidade", f"{res['duplicados']} registros já existem. Atualizar?"): return 
+            
             if res['dados']:
                 self.buffer_transacoes.extend(res['dados'])
                 self.arquivos_importados.update(res['caminhos'])
-                caminhos_processados = res['caminhos']
-            if caminhos_processados:
-                self._notificar_adicao(caminhos_processados, "Transação")
+                
+                qtd_real_sucesso = total_tentado - qtd_erros
+                self._notificar_adicao(res['caminhos'], "Transação", qtd_personalizada=qtd_real_sucesso)
+            else:
+                 if qtd_erros == total_tentado:
+                     self.lbl_status.configure(text="❌ Falha: Nenhum arquivo válido.", text_color="#e74c3c")
+                     self.after(3000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+            
             self._atualizar_ui_fila()
+
         executar_com_loading(self.app, tarefa, fim)
 
     def add_hhs(self):
@@ -231,29 +249,45 @@ class DashboardTab(ctk.CTkFrame):
             messagebox.showwarning("Aviso", "Adicione transacoes primeiro."); return
         caminhos = filedialog.askopenfilenames(parent=self, title="Hand History", filetypes=[("Texto", "*.txt")])
         if not caminhos: return
+        
         def tarefa():
             novos = [c for c in caminhos if c not in self.arquivos_importados]
             if not novos: return None
-            dados = self.service.processar_hhs(novos)
-            return {"dados": dados, "caminhos": novos}  
+            return self.service.processar_hhs(novos), novos
+        
         def fim(res, err):
-            if err: messagebox.showerror("Erro", str(err)); return
-            if not res: return
-            dados, _ = res['dados']  
-            caminhos_processados = []
+            if err: messagebox.showerror("Erro Crítico", str(err)); return
+            if not res:
+                self.lbl_status.configure(text="⚠️ Arquivos já adicionados.", text_color="orange")
+                self.after(3000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+                return
+            
+            (dados, relatorio), caminhos_novos = res
+            total_tentado = len(caminhos_novos)
+            
+            if relatorio.falhas > 0:
+                 msg = f"⚠️ {relatorio.falhas} de {total_tentado} arquivos falharam."
+                 messagebox.showwarning("Aviso de Formato", msg)
+
             if dados:
                 self.buffer_hhs.extend(dados)
-                self.arquivos_importados.update(res['caminhos'])
-                caminhos_processados = res['caminhos']  
-            if caminhos_processados:  
-                self._notificar_adicao(caminhos_processados, "Hand History")
+                self.arquivos_importados.update(caminhos_novos)
+                
+                qtd_real_sucesso = total_tentado - relatorio.falhas
+                self._notificar_adicao(caminhos_novos, "HH", qtd_personalizada=qtd_real_sucesso)
+            else:
+                if relatorio.falhas == total_tentado:
+                     self.lbl_status.configure(text="❌ Nenhum HH válido encontrado.", text_color="#e74c3c")
+                     self.after(3000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+            
             self._atualizar_ui_fila()
+            
         executar_com_loading(self.app, tarefa, fim)
 
-    def _notificar_adicao(self, caminhos_processados: list, tipo_dado: str):
-        qtd_sucesso = len(caminhos_processados)
-        if qtd_sucesso == 0:
-            self.lbl_status.configure(text=f"Nenhum arquivo de {tipo_dado} válido foi adicionado.")
+    def _notificar_adicao(self, caminhos_processados: list, tipo_dado: str, qtd_personalizada=None):
+        qtd_sucesso = qtd_personalizada if qtd_personalizada is not None else len(caminhos_processados)
+        
+        if qtd_sucesso <= 0:
             return
 
         primeiro_arquivo = os.path.basename(caminhos_processados[0])
@@ -261,10 +295,10 @@ class DashboardTab(ctk.CTkFrame):
         if qtd_sucesso == 1:
             texto_status = f"✅ {tipo_dado}: '{primeiro_arquivo}' adicionado à fila."
         else:
-            texto_status = f"✅ {tipo_dado}: {qtd_sucesso} arquivos adicionados ('{primeiro_arquivo} e mais {qtd_sucesso}')."
+            texto_status = f"✅ {tipo_dado}: {qtd_sucesso} arquivos adicionados com sucesso."
             
         self.lbl_status.configure(text=texto_status, text_color="#2ecc71")
-        self.after(5000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
+        self.after(3000, lambda: self.lbl_status.configure(text="Aguardando dados...", text_color="gray"))
         
         self._atualizar_ui_fila()
 
