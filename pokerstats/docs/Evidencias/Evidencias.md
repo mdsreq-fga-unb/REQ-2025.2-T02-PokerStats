@@ -60,7 +60,7 @@
 
 
 ### Declaração
-
+ 
 - User Storys: As historias de usuarios utilizadas para declarar os Requisitos 
 
 (**Eviendicia no tópico 8.1.1 na aba "Backlog"**)
