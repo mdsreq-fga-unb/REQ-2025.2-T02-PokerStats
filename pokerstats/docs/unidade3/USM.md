@@ -270,3 +270,14 @@ Esta seção detalha as tarefas para o fluxo do Diretor de Tecnologia, que super
 * Gerar trilhas de auditoria (LGPD)
 * Gerar relatórios regulatórios
 * Gerenciar APIs de integração com parceiros (labs, operadoras)
+
+
+<iframe 
+    width="768" 
+    height="432" 
+    src="https://miro.com/app/live-embed/uXjVJn9oRFI=/?embedMode=view_only_without_ui&moveToViewport=17,-1239,2368,1144&embedId=389042383097" 
+    frameborder="0" 
+    scrolling="no" 
+    allow="fullscreen; clipboard-read; clipboard-write" 
+    allowfullscreen>
+</iframe>

@@ -6,7 +6,7 @@
 
 - **Brainstrom**: o print  uma reunião que foi um momento de geração ativa de ideias, não apenas a decisão final ou uma anotação isolada.
 
-![Reunião de Brain storm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/08_09_ReuniaoDeBrainstorm.png)
+![Reunião de Brain storm 08/09](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/08_09_ReuniaoDeBrainstorm.png)
 
 ![Quadro gerado na reuniao de brainStorm](../img/Evidencias/1_Licitação%20e%20Descoberta/1Brainstorm/QuadroGeradoNaReuniaoDeBrainStorm.png)
 
@@ -68,9 +68,9 @@
 
 (**Eviendicia no tópico 7.1 e 7.2 na aba "DoR&DoD"**)
 
-- FeedBack do Cliente: Um forms completo com feedbacks do cliente sobre o produto
+- FeedBack do Cliente: Evidencia de validação do produto final do software pelo cliente
 
-![Avaliação do Cliente]()
+- Evidencia no video de entrega na unidade 3 na aba **Entregas**
 
 
 ### Organização e atualização
@@ -78,6 +78,16 @@
 - Priorização MOSCOW
 
 ![Analise](../img/Evidencias/6_OrganizacaoEAtualizacao/1PriorizacaoMoscow/MOSCOW.png)
+
+<iframe 
+    width="768" 
+    height="432" 
+    src="https://miro.com/app/live-embed/uXjVJ7Qr530=/?embedMode=view_only_without_ui&moveToViewport=-7421,-12032,15906,7682&embedId=787674520772" 
+    frameborder="0" 
+    scrolling="no" 
+    allow="fullscreen; clipboard-read; clipboard-write" 
+    allowfullscreen>
+</iframe>
 
 - User points
 

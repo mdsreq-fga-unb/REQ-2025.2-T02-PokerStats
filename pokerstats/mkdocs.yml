@@ -27,6 +27,11 @@ nav:
   - Estudo de Caso:
       - Estudo de caso PBB: unidade3/PBB.md
       - Estudo de caso USM: unidade3/USM.md
+      - Estudo de caso DCU: unidade3/DCU.md
+      - Manter Perfil do Paciente: unidade3/ManterPerfildoPaciente.md
+      - Buscar Serviços de Saúde: unidade3/BuscarServicosdeSaude.md
+      - Monitorar Desempenho do Sistema: unidade3/MonitorarDesempenhoDoSistema.md
+      - Agendar Consulta: unidade3/CasoUsoAgendarConsulta
   - Lições Aprendidas:
       - Unidade 1: unidade1/licoesAprendidas.md
       - Unidade 2: unidade2/licoesAprendidas.md

@@ -175,3 +175,14 @@ A prioridade de cada PBI é calculada somando-se as pontuações dos critérios:
 Prioridade = Frequência de Uso + Valor de Negócio
 
 *(Onde a pontuação máxima é 8 e a mínima é 2.)*
+
+
+<iframe 
+    width="768" 
+    height="432" 
+    src="https://miro.com/app/live-embed/uXjVJlCQj6s=/?embedMode=view_only_without_ui&moveToViewport=36667,-782,10219,4935&embedId=45701294125" 
+    frameborder="0" 
+    scrolling="no" 
+    allow="fullscreen; clipboard-read; clipboard-write" 
+    allowfullscreen>
+</iframe>
