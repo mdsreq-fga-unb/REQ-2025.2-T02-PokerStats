@@ -20,6 +20,11 @@
 
 - **Entrevista**s: Prints de reuniões onde foram apresentados e validados os requisitos definidos ao longo da disciplina para o cliente elem de definidos novos requisitos
 
+![Entrevista de Validação 04/09](../img/Evidencias/1_Licitação%20e%20Descoberta/1Entrevistas/04_09.png)
+
+- Entregas dia 29/09
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N3UHlOIR5hU?si=pModmn6tvhfMztN4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ![Entrevista de Validação 04/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/04_10.png)
 
 ![Entrevista de Validação 12/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/12_10.png)
@@ -27,6 +32,8 @@
 ![Entrevista de Validação 20/10](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/20_10.png)
 
 ![Entrevista de Validação 01/11](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/01_11.png)
+
+![Entrevista de Validação 01/12](../img/Evidencias/1_Licitação%20e%20Descoberta/2Entrevistas/1_12.png)
 
 
 - Análise de concorrentes: Uma analise do Mercado e de produtos similares
@@ -62,6 +69,12 @@
 
 - Protótipos: Prototipos visuais feitos para mostrar ao cliente o que vai ser implementado antes de ser implementado
 
+![Prototipo 1](../img/Evidencias/4_Representacao/Protoripos/protoripo1.jpg)
+
+
+![Prototipo 2](../img/Evidencias/4_Representacao/Protoripos/Prototipo2.jpg)
+
+
 ### Verificação e validação
 
 - Dor e Dod: O DoR e DoD
@@ -79,15 +92,18 @@
 
 ![Analise](../img/Evidencias/6_OrganizacaoEAtualizacao/1PriorizacaoMoscow/MOSCOW.png)
 
-<iframe 
-    width="768" 
-    height="432" 
-    src="https://miro.com/app/live-embed/uXjVJ7Qr530=/?embedMode=view_only_without_ui&moveToViewport=-7421,-12032,15906,7682&embedId=787674520772" 
-    frameborder="0" 
-    scrolling="no" 
-    allow="fullscreen; clipboard-read; clipboard-write" 
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://miro.com/app/live-embed/uXjVJ7Qr530=/?embedMode=view_only_without_ui&moveToViewport=-4196,-10896,19952,9636&embedId=420385946116"
+    style="position:absolute;left:0;top:0;width:100%;height:100%;border:0;"
+    allow="fullscreen; clipboard-read; clipboard-write"
     allowfullscreen>
-</iframe>
+  </iframe>
+</div>
+
+> Se o iframe não carregar, abra no navegador:  
+> https://miro.com/app/live-embed/uXjVJ7Qr530=/?embedMode=view_only_without_ui&moveToViewport=-4196,-10896,19952,9636&embedId=420385946116
+
 
 - User points
 
@@ -123,7 +139,17 @@
 
 (Prints de reuniões na parte de Elicitação e Descoberto)
 
-- **Test-Driven Development (TDD)**: Prints de código com testes automatizados antes da implementação. Tabela de cobertura de teste.
+- **Testes Unitarios**:
+
+![Testes](../img/Testes/1.png)
+
+![Testes](../img/Testes/2.png)
+
+![Testes](../img/Testes/3.png)
+
+![Testes](../img/Testes/4.png)
+
+![Testes](../img/Testes/5.png)
 
 
 - **Demonstração incremental ao cliente**: A cada ciclo/iteração, o que foi implementado foi incrementalmente integrado e apresentado ao cliente.
