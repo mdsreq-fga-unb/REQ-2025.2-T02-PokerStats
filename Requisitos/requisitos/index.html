@@ -1,0 +1,1649 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Repositório de documentos de Requisitos de Software">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Página 1 - Poker Stats</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="claro" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pagina-1" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Poker Stats" class="md-header__button md-logo" aria-label="Poker Stats" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poker Stats
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Página 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="claro" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    REQ-2025.2-T02-PokerStats
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Poker Stats" class="md-nav__button md-logo" aria-label="Poker Stats" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Poker Stats
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    REQ-2025.2-T02-PokerStats
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GuiaDeContribuicao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de Contribuição
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/cenarioAtual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cenário Atual do Cliente e do Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/solucaoProposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/estrategiaES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias de Engenharia de Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/EngenhariaDeRequisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/cronogramaEntregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cronograma e Entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/interacaoEquipeCliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/REQUISITOS_DE_SOFTWARE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REQUISITOS DE SOFTWARE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/DoR%26DoD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DoR&DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/Backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de Caso
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Estudo de Caso
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/PBB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso PBB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/USM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso USM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/DCU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso DCU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/ManterPerfildoPaciente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manter Perfil do Paciente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/BuscarServicosdeSaude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buscar Serviços de Saúde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/MonitorarDesempenhoDoSistema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitorar Desempenho do Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/CasoUsoAgendarConsulta" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agendar Consulta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/GerenciarCampanha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gerenciar Campanha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lições Aprendidas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade3/licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    unidade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Evidencias/Evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entregas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entregas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pagina-1">Página 1</h1>
+<h1 id="requisitos-do-sistema-poker-stats">Requisitos do Sistema Poker Stats</h1>
+<h2 id="1-requisitos-funcionais-rfs">1. Requisitos Funcionais (RFs)</h2>
+<h3 id="11-importacao-de-dados">1.1 Importação de Dados</h3>
+<p><strong>RF001:</strong> O sistema deve permitir a importação de arquivos de histórico de transações da plataforma Bodog.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Essencial para a coleta de dados e funcionamento do sistema.<br />
+- <strong>Características:</strong> O sistema deve ser capaz de processar arquivos em formato CSV (ou similar, conforme disponibilizado pela Bodog).  </p>
+<hr />
+<h3 id="12-resumos-financeiros">1.2 Resumos Financeiros</h3>
+<p><strong>RF002:</strong> O sistema deve gerar um resumo financeiro geral.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Atende à necessidade principal do usuário de ter uma visão financeira consolidada.<br />
+- <strong>Características:</strong> Deve incluir Período das transações, Saldo Inicial, Saldo Final e ROI Geral.  </p>
+<p><strong>RF003:</strong> O sistema deve gerar um resumo financeiro para torneios Sit &amp; Go.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Fornece análise específica para um tipo de jogo relevante para o usuário.<br />
+- <strong>Características:</strong> Deve incluir quantidade de torneios, ITM (In The Money), Lucros Sit &amp; Go e ROI Sit &amp; Go.  </p>
+<p><strong>RF004:</strong> O sistema deve gerar um resumo financeiro para torneios programados.  </p>
+<hr />
+<h1 id="pagina-2">Página 2</h1>
+<h3 id="13-performance-dos-jogos">1.3 Performance dos Jogos</h3>
+<p><strong>RF005:</strong> O sistema deve apresentar a performance geral dos jogos.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Permite ao usuário identificar padrões de desempenho.<br />
+- <strong>Características:</strong> Deve incluir total de torneios e ITM.  </p>
+<p><strong>RF006:</strong> O sistema deve apresentar o desempenho por torneio individual.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Detalha o desempenho em cada torneio para análise aprofundada.<br />
+- <strong>Características:</strong> Deve incluir Nome do torneio, Valor (buy-in/premiação), Horário, Quantidade de partidas, ITM e Lucro.  </p>
+<hr />
+<h3 id="14-transacoes-e-transferencias">1.4 Transações e Transferências</h3>
+<p><strong>RF007:</strong> O sistema deve registrar e exibir transferências realizadas e recebidas.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Importante para o controle financeiro completo da banca.<br />
+- <strong>Características:</strong> Deve incluir Data, Valor e Referência da transação.  </p>
+<hr />
+<h3 id="15-visualizacao-e-filtragem">1.5 Visualização e Filtragem</h3>
+<p><strong>RF008:</strong> O sistema deve permitir a visualização de métricas essenciais (lucro, ROI, % vitórias) em relatórios rápidos e confiáveis.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Atende ao objetivo de eliminar a “cegueira estatística”.<br />
+- <strong>Características:</strong> Relatórios devem ser gerados em menos de 60 segundos em 90% dos casos.  </p>
+<hr />
+<h1 id="pagina-3">Página 3</h1>
+<p><strong>RF009:</strong> O sistema deve permitir a aplicação de filtros de análise por modalidade e tipo de torneio.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Ajuda na identificação de padrões de desempenho.<br />
+- <strong>Características:</strong> Filtros devem ser intuitivos e de fácil uso.  </p>
+<p><strong>RF010:</strong> O sistema deve fornecer comparativos históricos para acompanhar a evolução do jogador ao longo do tempo.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Permite ao jogador ajustar estratégias com base em dados concretos.<br />
+- <strong>Características:</strong> Deve permitir a comparação de métricas (lucro, ROI, % vitórias) em diferentes períodos.  </p>
+<hr />
+<h1 id="2-requisitos-nao-funcionais-rnfs">2. Requisitos Não Funcionais (RNFs)</h1>
+<h3 id="21-usabilidade">2.1 Usabilidade</h3>
+<p><strong>RNF001:</strong> O sistema deve possuir uma interface de usuário intuitiva e de fácil compreensão.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> O público-alvo (jogadores casuais) busca uma solução minimalista e acessível.<br />
+- <strong>Características:</strong> Foco em UI/UX simples, sem sobrecarga de informações.  </p>
+<p><strong>RNF002:</strong> O sistema deve ser acessível para usuários com familiaridade tecnológica básica.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Amplia a base de usuários e facilita a adoção.  </p>
+<hr />
+<h1 id="pagina-4">Página 4</h1>
+<h3 id="22-desempenho">2.2 Desempenho</h3>
+<p><strong>RNF003:</strong> O sistema deve processar grandes volumes de dados de forma rápida e eficiente.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Crucial para a experiência do usuário e credibilidade das estatísticas.<br />
+- <strong>Características:</strong> Geração de relatórios em menos de 60 segundos em 90% dos casos.  </p>
+<p><strong>RNF004:</strong> A arquitetura do sistema deve ser escalável para suportar um número crescente de usuários e volume de dados.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Garante a sustentabilidade e crescimento futuro do produto.  </p>
+<hr />
+<h3 id="23-confiabilidade">2.3 Confiabilidade</h3>
+<p><strong>RNF005:</strong> O sistema deve ser resiliente a incompletudes ou erros nos arquivos de origem da Bodog.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Os dados da plataforma podem ser limitados ou inconsistentes.<br />
+- <strong>Características:</strong> Métodos inteligentes para inferir ou complementar informações ausentes.  </p>
+<p><strong>RNF006:</strong> O sistema deve garantir a integridade, precisão e ausência de duplicações nos dados processados.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Fundamental para a credibilidade das estatísticas geradas.  </p>
+<hr />
+<h3 id="24-manutenibilidade-e-adaptabilidade">2.4 Manutenibilidade e Adaptabilidade</h3>
+<p><strong>RNF007:</strong> O sistema deve ser flexível para se adaptar a mudanças nos formatos de logs ou interfaces da plataforma Bodog.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Garante a continuidade da coleta e processamento de dados a longo prazo.  </p>
+<hr />
+<h1 id="pagina-5">Página 5</h1>
+<h3 id="25-requisitos-de-implementacao">2.5 Requisitos de Implementação</h3>
+<p><strong>RNF008:</strong> O sistema deve ser desenvolvido utilizando a linguagem Python.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Experiência da equipe e robustez da linguagem para análise de dados.  </p>
+<p><strong>RNF009:</strong> O sistema deve ser empacotado como um executável (.exe) para Windows.<br />
+- <strong>Prioridade:</strong> Alta<br />
+- <strong>Justificativa:</strong> Facilidade de instalação e uso no ambiente do cliente (Windows).  </p>
+<p><strong>RNF010:</strong> O sistema deve utilizar tecnologias leves de banco de dados para armazenamento local.<br />
+- <strong>Prioridade:</strong> Média<br />
+- <strong>Justificativa:</strong> Manter histórico de importações e relatórios de forma eficiente.  </p>
+<hr />
+<h1 id="3-dados-e-relatorios-exigidos">3. Dados e Relatórios Exigidos</h1>
+<h3 id="31-dados-de-entrada">3.1 Dados de Entrada</h3>
+<p><strong>DE001:</strong> Arquivos de histórico de transações da plataforma Bodog (formato CSV ou similar).<br />
+- <strong>Campos esperados:</strong> Data, Descrição, Referência, Cash Amount, Bonus Amount, Points, Cash Before, Cash After.  </p>
+<h3 id="32-relatorios-e-metricas-de-saida">3.2 Relatórios e Métricas de Saída</h3>
+<p><strong>RS001:</strong> Resumo Financeiro Geral<br />
+- Métricas: Período das transações, Saldo Inicial, Saldo Final, ROI Geral.  </p>
+<p><strong>RS002:</strong> Resumo Financeiro Sit &amp; Go<br />
+- Métricas: Quantidade de torneios, ITM, Lucros Sit &amp; Go, ROI Sit &amp; Go.  </p>
+<p><strong>RS003:</strong> Resumo Financeiro Torneios Programados<br />
+- Métricas: ITM, Lucros, ROI.  </p>
+<p><strong>RS004:</strong> Performance Geral dos Jogos<br />
+- Métricas: Total de torneios, ITM.  </p>
+<p><strong>RS005:</strong> Desempenho por Torneio Individual<br />
+- Métricas: Nome, Valor (buy-in/premiação), Horário, Quantidade de partidas, ITM, Lucro.  </p>
+<p><strong>RS006:</strong> Histórico de Transferências<br />
+- Métricas: Data, Valor, Referência.  </p>
+<hr />
+<h1 id="pagina-6">Página 6</h1>
+<h1 id="4-historias-de-usuario-exemplos">4. Histórias de Usuário (Exemplos)</h1>
+<p><strong>HU001:</strong> Como jogador, eu quero importar meus históricos de transações da Bodog para que eu possa consolidar todos os meus dados em um só lugar.<br />
+- <strong>Critérios de Aceitação:</strong><br />
+  - O sistema deve aceitar arquivos CSV exportados da Bodog.<br />
+  - O sistema deve processar o arquivo e exibir uma confirmação de importação bem-sucedida.<br />
+  - Os dados importados devem ser refletidos nos resumos financeiros.  </p>
+<p><strong>HU002:</strong> Como jogador, eu quero visualizar um resumo financeiro geral para que eu possa entender meu desempenho financeiro total em um período.<br />
+- <strong>Critérios de Aceitação:</strong><br />
+  - O sistema deve exibir o saldo inicial e final do período selecionado.<br />
+  - O sistema deve calcular e exibir o ROI geral para o período.<br />
+  - O sistema deve permitir a seleção de diferentes períodos para o resumo.  </p>
+<hr />
+<h1 id="pagina-7">Página 7</h1>
+<h1 id="7-requisitos-de-software">7. REQUISITOS DE SOFTWARE</h1>
+<p>Esta seção descreve os requisitos necessários para o desenvolvimento do software. Ela está dividida em requisitos funcionais e não funcionais, que apresentam as funcionalidades do sistema e as qualidades que ele deve possuir para atender às expectativas dos usuários.</p>
+<h2 id="71-lista-de-requisitos-funcionais">7.1 Lista de Requisitos Funcionais</h2>
+<p>Os requisitos funcionais descrevem as funcionalidades funcionais que o sistema deve implementar para atender às necessidades do negócio. Eles incluem integrações, processos e interações do usuário com o sistema.</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Rastreabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF01</td>
+<td>Importar e Consolidar Histórico</td>
+<td>O sistema deve permitir a importação de arquivos de histórico e consolidar os dados em uma base local.</td>
+<td>C01</td>
+</tr>
+<tr>
+<td>RF02</td>
+<td>Calcular Lucro Total</td>
+<td>O sistema deve calcular o lucro total dos jogos importados.</td>
+<td>C03</td>
+</tr>
+<tr>
+<td>RF03</td>
+<td>Calcular ROI</td>
+<td>O sistema deve calcular o Retorno Sobre o Investimento (ROI) dos jogos importados.</td>
+<td>C03</td>
+</tr>
+<tr>
+<td>RF04</td>
+<td>Calcular Taxa de Vitórias</td>
+<td>O sistema deve calcular a porcentagem de vitórias do jogador nos torneios.</td>
+<td>C03</td>
+</tr>
+<tr>
+<td>RF05</td>
+<td>Segmentar Análises por jogador</td>
+<td>O sistema deve permitir a segmentação das análises de desempenho com base no jogador.</td>
+<td>C02</td>
+</tr>
+<tr>
+<td>RF06</td>
+<td>Segmentar Análises por tipo de torneio</td>
+<td>O sistema deve permitir a segmentação das análises de desempenho com base no tipo de torneio.</td>
+<td>C02</td>
+</tr>
+<tr>
+<td>RF07</td>
+<td>Visualizar Gráfico de Linha de Evolução</td>
+<td>O sistema deve gerar um gráfico de linha que exibe a evolução de uma métrica selecionada ao longo do tempo.</td>
+<td>C04</td>
+</tr>
+<tr>
+<td>RF08</td>
+<td>Listar Histórico de Importações</td>
+<td>O sistema deve listar todos os arquivos de histórico já importados. A lista deve conter, para cada arquivo: nome, data e quantidade.</td>
+<td>C01</td>
+</tr>
+<tr>
+<td>RF09</td>
+<td>Exibir Histórico de Transações</td>
+<td>O sistema deve registrar e exibir o histórico de transações da conta do jogador (depósitos e saques).</td>
+<td>C06</td>
+</tr>
+<tr>
+<td>RF10</td>
+<td>Calcular ITM (In The Money)</td>
+<td>O sistema deve calcular a porcentagem de vezes que o jogador termina em uma posição premiada (ITM).</td>
+<td>C03</td>
+</tr>
+</tbody>
+</table>
+<h2 id="72-lista-de-requisitos-nao-funcionais">7.2 Lista de Requisitos Não Funcionais</h2>
+<p>Os requisitos não funcionais especificam as qualidades e restrições do sistema, como desempenho, segurança e usabilidade, que não estão diretamente relacionadas às funcionalidades oferecidas, mas são essenciais para garantir a qualidade do software. A classificação segue o modelo de usabilidade, confiabilidade, desempenho, suportabilidade e restrições.</p>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Código</th>
+<th>Descrição</th>
+<th>Rastreabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desempenho</td>
+<td>RNF01</td>
+<td>O sistema deve processar um lote de 100 arquivos de histórico e gerar as análises correspondentes em menos de 10 segundos.</td>
+<td>C05</td>
+</tr>
+<tr>
+<td>Usabilidade</td>
+<td>RNF02</td>
+<td>As operações de importação de arquivos e visualização das métricas devem ser concluídas em, no máximo, 3 ações do usuário.</td>
+<td>C05</td>
+</tr>
+<tr>
+<td>Confiabilidade</td>
+<td>RNF03</td>
+<td>O sistema deve garantir a consistência e a integridade dos dados durante os processos de importação, padronização e cálculo.</td>
+<td>C01, C03, C05</td>
+</tr>
+<tr>
+<td>Suportabilidade</td>
+<td>RNF04</td>
+<td>A aplicação deve ser compatível e executável no sistema operacional Windows.</td>
+<td>C05</td>
+</tr>
+<tr>
+<td>Implementação</td>
+<td>RNF05</td>
+<td>O sistema deve ser desenvolvido em linguagem Python e distribuído como um arquivo executável (.exe).</td>
+<td>C05, C01</td>
+</tr>
+<tr>
+<td>Interface</td>
+<td>RNF06</td>
+<td>O sistema deve utilizar um banco de dados local para armazenar o histórico de importações e os dados processados.</td>
+<td>C05</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="pagina-8-e-9">Página 8 e 9</h1>
+<h1 id="5-rastreabilidade-dos-requisitos">5. Rastreabilidade dos Requisitos</h1>
+<h1 id="rastreabilidade-dos-requisitos">Rastreabilidade dos Requisitos</h1>
+<table>
+<thead>
+<tr>
+<th>ID Requisito</th>
+<th>Origem (Documento/Seção)</th>
+<th>Objetivo(s) Atendido(s)</th>
+<th>História(s) de Usuário Relacionada(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF001</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (1.3.1, 2.2)</td>
+<td>OE1</td>
+<td>HU001</td>
+</tr>
+<tr>
+<td>RF002</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (2.1)</td>
+<td>OE1, OE3</td>
+<td>HU002</td>
+</tr>
+<tr>
+<td>RF003</td>
+<td>Prompt do Usuário</td>
+<td>OE2</td>
+<td>HU003</td>
+</tr>
+<tr>
+<td>RF004</td>
+<td>Prompt do Usuário</td>
+<td>OE2</td>
+<td>HU003</td>
+</tr>
+<tr>
+<td>RF005</td>
+<td>Prompt do Usuário</td>
+<td>OE2</td>
+<td>HU003</td>
+</tr>
+<tr>
+<td>RF006</td>
+<td>Prompt do Usuário</td>
+<td>OE2</td>
+<td>HU004</td>
+</tr>
+<tr>
+<td>RF007</td>
+<td>Prompt do Usuário</td>
+<td>OE1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RF008</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (2.1, 2.2)</td>
+<td>OE3</td>
+<td>HU002</td>
+</tr>
+<tr>
+<td>RF009</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (2.2)</td>
+<td>OE2</td>
+<td>HU003</td>
+</tr>
+<tr>
+<td>RF010</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (2.1, 2.2)</td>
+<td>OE4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RNF001</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (1.3.3, 2.3)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RNF002</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (1.4, 2.3)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RNF003</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (1.3.2, 2.1)</td>
+<td>OE3</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RNF004</td>
+<td>VisãoDoProdutoeProjetoPokerStats.md (1.3.2)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "felipe"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

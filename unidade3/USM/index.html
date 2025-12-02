@@ -1,0 +1,1871 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Repositório de documentos de Requisitos de Software">
+      
+      
+      
+      
+        <link rel="prev" href="../PBB/">
+      
+      
+        <link rel="next" href="../DCU/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../None">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Estudo de caso USM - Poker Stats</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="claro" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#usm" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Poker Stats" class="md-header__button md-logo" aria-label="Poker Stats" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Poker Stats
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Estudo de caso USM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="claro" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    REQ-2025.2-T02-PokerStats
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Poker Stats" class="md-nav__button md-logo" aria-label="Poker Stats" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Poker Stats
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/REQ-2025.2-T02-PokerStats" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    REQ-2025.2-T02-PokerStats
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GuiaDeContribuicao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de Contribuição
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão do Produto e Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visão do Produto e Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/cenarioAtual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cenário Atual do Cliente e do Negócio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/solucaoProposta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solução Proposta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/estrategiaES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégias de Engenharia de Software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/EngenhariaDeRequisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de Requisitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/cronogramaEntregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cronograma e Entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/interacaoEquipeCliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interação entre Equipe e Cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/REQUISITOS_DE_SOFTWARE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REQUISITOS DE SOFTWARE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/DoR%26DoD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DoR&DoD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/Backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de Caso
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Estudo de Caso
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PBB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso PBB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso USM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso USM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao-ao-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introdução ao Documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducao-ao-estudo-de-caso-healthconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introdução ao Estudo de Caso: HealthConnect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicacao-da-estrutura-do-user-story-mapping-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicação da Estrutura do User Story Mapping (USM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-de-historias-e-priorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de Histórias e Priorização
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapeamento de Histórias e Priorização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-personas-e-obejetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Personas e obejetivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-acoesatividades-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ações/Atividades (Backbone)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-historias-de-usuario-tarefas-e-detalhes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Histórias de Usuário (Tarefas e Detalhes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Histórias de Usuário (Tarefas e Detalhes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-dos-pacientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas dos Pacientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-da-recepcionista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas da Recepcionista
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-do-medico-clinico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas do Médico Clínico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-do-coordenador-de-agendamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas do Coordenador de Agendamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DCU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudo de caso DCU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ManterPerfildoPaciente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manter Perfil do Paciente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BuscarServicosdeSaude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buscar Serviços de Saúde
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MonitorarDesempenhoDoSistema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitorar Desempenho do Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CasoUsoAgendarConsulta" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agendar Consulta
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GerenciarCampanha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gerenciar Campanha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lições Aprendidas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lições Aprendidas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade1/licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unidade2/licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../licoesAprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    unidade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Evidencias/Evidencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entregas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entregas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/videoApresentacao3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidade 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao-ao-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introdução ao Documento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducao-ao-estudo-de-caso-healthconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introdução ao Estudo de Caso: HealthConnect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicacao-da-estrutura-do-user-story-mapping-usm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicação da Estrutura do User Story Mapping (USM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-de-historias-e-priorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de Histórias e Priorização
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapeamento de Histórias e Priorização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-personas-e-obejetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Personas e obejetivos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-acoesatividades-backbone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ações/Atividades (Backbone)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-historias-de-usuario-tarefas-e-detalhes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Histórias de Usuário (Tarefas e Detalhes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Histórias de Usuário (Tarefas e Detalhes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-dos-pacientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas dos Pacientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-da-recepcionista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas da Recepcionista
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-do-medico-clinico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas do Médico Clínico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefas-do-coordenador-de-agendamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tarefas do Coordenador de Agendamento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="usm">USM</h1>
+<h2 id="introducao-ao-documento">Introdução ao Documento</h2>
+<p>Este documento apresenta a estruturação de requisitos para o projeto "HealthConnect" utilizando a técnica de User Story Mapping (USM). O USM é uma ferramenta visual que organiza o Product Backlog como uma narrativa da jornada do usuário, permitindo o entendimento compartilhado e a definição de Releases de forma incremental e orientada a valor.</p>
+<ul>
+<li><strong>O USM interativo se encontra no final do documento</strong></li>
+</ul>
+<hr />
+<h2 id="introducao-ao-estudo-de-caso-healthconnect">Introdução ao Estudo de Caso: HealthConnect</h2>
+<p>A <strong>HealthConnect</strong> é uma empresa no setor de saúde que busca unificar e transformar a experiência digital em sua rede de clínicas e hospitais. O desafio é superar a <strong>fragmentação</strong> de sistemas legados, a <strong>redundância</strong> de processos (como prontuários incomunicáveis e prescrições manuscritas) e a <strong>baixa interoperabilidade</strong> entre as unidades e parceiros externos. A missão do novo produto é entregar uma plataforma unificada de gestão do cuidado, combinando prontuário eletrônico, agendamento, prescrições eletrônicas e painéis gerenciais, com foco em segurança, usabilidade e interoperabilidade.</p>
+<hr />
+<h2 id="explicacao-da-estrutura-do-user-story-mapping-usm">Explicação da Estrutura do User Story Mapping (USM)</h2>
+<p><img alt="Personas" src="../../img/USM/USM.png" /></p>
+<p>O User Story Mapping transforma uma lista plana de requisitos em uma estrutura visual hierárquica para facilitar o entendimento e a priorização:</p>
+<ul>
+<li>
+<p><strong>Eixo Horizontal (Backbone / Fluxo da Narrativa):</strong> Representa o tempo e a sequência lógica das atividades do usuário.</p>
+<ul>
+<li><strong>Atividades:</strong> Os grandes passos ou grupos de tarefas que o usuário realiza para alcançar um objetivo maior (a espinha dorsal do mapa).</li>
+<li><strong>Tarefas do Usuário:</strong> Ações de alto nível que compõem a história completa, sequenciadas da esquerda para a direita.</li>
+</ul>
+</li>
+<li>
+<p><strong>Eixo Vertical (Detalhe / Prioridade):</strong> Representa o detalhamento e a importância.</p>
+<ul>
+<li><strong>Histórias de Usuário (User Stories):</strong> Detalhes da Feature/Tarefa de alto nível. São escritas na perspectiva do usuário (<code>Eu, como &lt;papel&gt; quero &lt;ação&gt; para &lt;valor&gt;</code>) e colocadas verticalmente abaixo da Tarefa que detalham.</li>
+<li><strong>Release Slices (Fatias de Entrega):</strong> As linhas horizontais inferiores definem lançamentos incrementais. O nível superior representa o Mínimo Produto Viável (MVP), contendo o menor número de tarefas essenciais para o usuário atingir seu objetivo.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="mapeamento-de-historias-e-priorizacao">Mapeamento de Histórias e Priorização</h2>
+<h3 id="1-personas-e-obejetivos">1. Personas e obejetivos</h3>
+<p><img alt="Personas" src="../../img/USM/Personas.png" /></p>
+<p><img alt="Objectives" src="../../img/USM/Objetivos.png" /></p>
+<p>Esta seção relaciona cada ator do sistema com o principal objetivo de negócio ou a meta que ele busca alcançar ao utilizar a nova plataforma HealthConnect:</p>
+<ul>
+<li><strong>Paciente</strong>: Realizar Consultas Médicas. O paciente busca autonomia, clareza e segurança no acompanhamento de sua condição crônica.</li>
+<li><strong>Recepcionista</strong>: Gestão de Pacientes. A Recepcionista é o primeiro contato e é responsável pelo cadastro, atualização de dados e orientação de fluxo.</li>
+<li><strong>Médico Clínico</strong>: Consultar o Paciente. O Médico precisa de visão clínica integrada e apoio à decisão para registro ágil no atendimento de alta demanda.</li>
+<li><strong>Farmacêutica</strong>: Gestão de Medicamentos. Responsável por validar prescrições, dispensar medicamentos e orientar o paciente.</li>
+<li><strong>Coordenador de Agendamento</strong>: Gestão de Agendas dos Médicos. Orquestra agendas de múltiplos especialistas e unidades, buscando equilíbrio entre demanda e capacidade.</li>
+<li><strong>Gestora de Operações Clínicas</strong>: Administrar indicadores de desempenho das clínicas. Acompanha indicadores assistenciais e operacionais para atuar em melhoria contínua de processos.</li>
+<li><strong>Diretor de Tecnologia</strong>: Supervisiona a infraestrutura tecnológica. Responsável por garantir a disponibilidade, segurança, conformidade e o roadmap tecnológico da rede.</li>
+</ul>
+<h3 id="2-acoesatividades-backbone">2. Ações/Atividades (Backbone)</h3>
+<p><img alt="Atividades" src="../../img/USM/Atividades.png" /></p>
+<p>Esta seção lista as principais atividades (Tarefas de Usuário - blocos azuis) que compõem o <em>Backbone</em> para cada Persona e Objetivo no fluxo da narrativa:</p>
+<ul>
+<li>
+<p><strong>Paciente - Objetivo: Realizar Consultas Médicas</strong></p>
+<ul>
+<li>Buscar atendimento</li>
+<li>Agendar Consulta</li>
+<li>Preparar-se para consulta</li>
+<li>Acompanhar histórico</li>
+</ul>
+</li>
+<li>
+<p><strong>Recepcionista - Objetivo: Gestão de Pacientes</strong></p>
+<ul>
+<li>Buscar/Cadastrar Paciente</li>
+<li>Realizar Check-in da Consulta</li>
+<li>Gerenciar Fluxo de Espera</li>
+</ul>
+</li>
+<li>
+<p><strong>Médico Clínico - Objetivo: Consultar o Paciente</strong></p>
+<ul>
+<li>Revisar Agenda</li>
+<li>Analisar Prontuário 360º</li>
+<li>Registrar Atendimento</li>
+<li>Finalizar Consulta</li>
+</ul>
+</li>
+<li>
+<p><strong>Farmacêutica - Objetivo: Gestão de Medicamentos</strong></p>
+<ul>
+<li>Receber e Validar Prescrição</li>
+<li>Realizar Dispensação</li>
+<li>Gerenciar Estoque</li>
+</ul>
+</li>
+<li>
+<p><strong>Coordenador de Agendamento - Objetivo: Gestão de Agendas dos Médicos</strong></p>
+<ul>
+<li>Configurar Agendas</li>
+<li>Gerenciar Fluxo Diário</li>
+<li>Analisar Indicadores</li>
+</ul>
+</li>
+<li>
+<p><strong>Gestora de Operações Clínicas - Objetivo: Administrar indicadores de desempenho das clínicas</strong></p>
+<ul>
+<li>Garantir Qualidade das Clínicas</li>
+<li>Monitorar Dashboards Operacionais</li>
+<li>Analisar Gargalos</li>
+</ul>
+</li>
+<li>
+<p><strong>Diretor de Tecnologia - Objetivo: Supervisionar a infraestrutura tecnológica</strong></p>
+<ul>
+<li>Gerenciar Acessos e Perfis</li>
+<li>Monitorar Segurança do Sistema</li>
+<li>Garantir Conformidade e Integração</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-historias-de-usuario-tarefas-e-detalhes">3. Histórias de Usuário (Tarefas e Detalhes)</h3>
+<p><img alt="US" src="../../img/USM/Tarefas.png" /></p>
+<h4 id="tarefas-dos-pacientes">Tarefas dos Pacientes</h4>
+<p>Esta seção detalha as tarefas e as regras de negócio/critérios de aceite para o fluxo do Paciente.</p>
+<p><strong>A. Atividade: Buscar atendimento</strong>
+* <strong>Buscar por especialidade e Unidade</strong>
+    * <em>Listagem de Opções:</em> O campo de especialidade deve apresentar todas as especialidades cadastradas na rede.
+    * <em>Seleção de Unidade:</em> O usuário deve poder selecionar uma unidade específica ou a opção "Todas".
+* <strong>Buscar por nome do médico</strong>
+* <strong>Filtrar por convênio</strong>
+* <strong>Ver perfil do médico</strong></p>
+<p><strong>B. Atividade: Agendar Consulta</strong>
+* <strong>Visualizar horários disponíveis</strong>
+    * <em>Exibição de Livres:</em> O sistema deve exibir, na lista de resultados, apenas os horários que estão vagos.
+    * <em>Ocultação de Ocupados:</em> Horários já agendados ou bloqueados não devem aparecer na lista para o paciente.
+    * <em>Ordenação:</em> Os horários devem ser mostrados em ordem cronológica (do mais próximo para o mais distante).
+    * <em>Informações do Card:</em> Cada horário disponível deve mostrar o nome do médico e a data correspondente.
+* <strong>Selecionar horário</strong>
+* <strong>Selecionar modalidade (Presencial/Tele)</strong>
+* <strong>Confirmar (com login/cadastro)</strong>
+* <strong>Receber confirmação</strong>
+* <strong>Efetuar pagamento</strong></p>
+<p><strong>C. Atividade: Preparar-se para consulta</strong>
+* <strong>Visualizar instruções de preparo</strong>
+* <strong>Receber lembrete da consulta</strong>
+    * <em>Automação do Envio:</em> O sistema deve enviar o lembrete automaticamente (sem ação humana) um período definido antes da consulta (ex: 24h ou 48h).
+    * <em>Conteúdo da Mensagem:</em> A notificação deve exibir claramente a data, o horário e o endereço (unidade) da consulta.
+    * <em>Botões de Ação:</em> O lembrete deve possuir botões que permitam "Confirmar Presença" ou "Cancelar Agendamento" com apenas um clique.
+* <strong>Mensagens seguras com equipe</strong></p>
+<p><strong>D. Atividade: Acompanhar histórico</strong>
+* <strong>Acessar histórico de consultas</strong>
+* <strong>Visualizar prescrições</strong>
+    * <em>Ordenação Cronológica:</em> As receitas devem ser listadas da mais recente para a mais antiga.
+    * <em>Detalhes Essenciais:</em> O card da prescrição deve exibir claramente o Nome do Medicamento, Dosagem e Posologia (como tomar).
+    * <em>Status de Validade:</em> O sistema deve indicar visualmente se a receita ainda está "Ativa" ou se está "Vencida".
+    * <em>Opção de Download:</em> Deve haver um botão funcional para baixar a receita oficial assinada digitalmente (PDF) para uso em farmácias externas.
+* <strong>Acessar resultados de exames</strong>
+    * <em>Centralização:</em> A lista deve exibir exames realizados em qualquer unidade da rede HealthConnect (interoperabilidade).
+    * <em>Indicador de Status:</em> Exames em não processados pelo laboratório devem aparecer com o status "Em Análise" e sem link de acesso.
+    * <em>Acesso ao Laudo:</em> Para exames concluídos, o clique deve abrir o laudo técnico (visualização ou PDF).
+    * <em>Data de Realização:</em> Cada item da lista deve mostrar a data em que o exame foi coletado.0 </p>
+<h4 id="tarefas-da-recepcionista">Tarefas da Recepcionista</h4>
+<p>Esta seção detalha as tarefas e as regras de negócio/critérios de aceite para o fluxo da Recepcionista, que realiza a Gestão de Pacientes:</p>
+<p><strong>A. Atividade: Buscar/Cadastrar Paciente</strong>
+* <strong>Buscar paciente por CPF</strong>
+    * <em>Busca Global:</em> A pesquisa pelo CPF deve varrer a base de dados de <strong>todas</strong> as unidades da rede, e não apenas da clínica local.
+    * <em>Identificação Positiva:</em> O resultado da busca deve exibir Nome Completo, Data de Nascimento e Nome da Mãe para garantir que é a pessoa correta.
+    * <em>Tratamento de Erro:</em> Caso o CPF não seja encontrado, o sistema deve exibir a mensagem "Paciente não encontrado" e habilitar um botão de atalho para "Cadastrar Novo".
+    * <em>Busca Alternativa:</em> O sistema deve permitir a busca por Nome Completo + Data de Nascimento caso o paciente não saiba o CPF.
+* <strong>Cadastrar novo paciente</strong>
+    * <em>Campos Obrigatórios:</em> O botão "Salvar" deve permanecer desabilitado até que Nome, CPF, Data de Nascimento e Telefone sejam preenchidos.
+    * <em>Bloqueio de Duplicidade:</em> O sistema deve impedir a criação de um novo registro se o CPF informado já existir na base ativa.
+* <strong>Atualizar dados cadastrais</strong></p>
+<p><strong>B. Atividade: Realizar Check-in da Consulta</strong>
+* <strong>Registrar a "chegada" do paciente</strong>
+    * <em>Mudança de Status:</em> Ao clicar em "Confirmar Chegada", o status do agendamento deve mudar imediatamente de "Agendado" para "Em Espera" (ou "Aguardando Triagem").
+    * <em>Bloqueio de Ação:</em> O sistema não deve permitir registrar a chegada se a consulta estiver com status "Cancelada" ou se a data do agendamento não for a data atual (hoje).
+    * <em>Atualização de Listagem:</em> O nome do paciente deve aparecer imediatamente na lista de "Pacientes na Unidade" ou no painel do Médico.
+* <strong>Confirmar dados da consulta agendada</strong>
+* <strong>Digitalizar e anexar documentos</strong>
+* <strong>Validar e coletar assinatura de consentimentos (LGPD)</strong></p>
+<p><strong>C. Atividade: Gerenciar Fluxo de Espera</strong>
+* <strong>Visualizar fila de espera da recepção e triagem</strong>
+* <strong>Gerar senhas ou QR code de atendimento</strong>
+* <strong>Encaminhar paciente para a triagem</strong>
+* <strong>Enviar mensagens de boas-vindas/instruções</strong></p>
+<h4 id="tarefas-do-medico-clinico">Tarefas do Médico Clínico</h4>
+<p>Esta seção detalha as tarefas e as regras de negócio/critérios de aceite para o fluxo do Médico Clínico, que realiza a Consulta do Paciente:</p>
+<p><strong>A. Atividade: Revisar Agenda</strong>
+* <strong>Visualizar lista de pacientes do dia</strong>
+* <strong>Verificar status do paciente</strong></p>
+<p><strong>B. Atividade: Analisar Prontuário 360º</strong>
+* <strong>Visualizar histórico consolidado (de todas as unidades)</strong>
+    * <em>Conteúdo das Notas:</em> A listagem deve exibir o texto da evolução clínica, a data do atendimento e o nome do profissional que realizou o registro.
+    * <em>Integração de Unidades:</em> O histórico deve carregar automaticamente as anotações feitas em <strong>qualquer</strong> clínica da rede HealthConnect, não apenas na atual.
+    * <em>Ordenação Temporal:</em> Os registros devem ser apresentados obrigatoriamente em ordem cronológica decrescente (do mais recente para o mais antigo).
+    * <em>Identificação da Especialidade:</em> Cada item da lista deve identificar claramente qual foi a especialidade daquela consulta (ex: "Cardiologia", "Clínica Médica").
+* <strong>Ver alertas de alergias e interações medicamentosas</strong>
+* <strong>Visualizar exames e imagens anteriores</strong></p>
+<p><strong>C. Atividade: Registrar Atendimento</strong>
+* <strong>Registrar evolução clínica</strong>
+* <strong>Anexar arquivos/fotos ao prontuário</strong>
+* <strong>Inserir diagnóstico (com busca de CID)</strong></p>
+<p><strong>D. Atividade: Finalizar Consulta</strong>
+* <strong>Criar prescrição eletrônica</strong>
+    * <em>Seleção de Medicamentos:</em> O sistema deve permitir buscar e selecionar medicamentos a partir de uma base de dados oficial padronizada (evitando digitação livre do nome da droga).
+    * <em>Dados da Posologia:</em> O sistema deve obrigar o preenchimento dos campos: Dosagem, Via de Administração e Frequência de uso antes de permitir salvar.
+    * <em>Edição de Itens:</em> O médico deve conseguir adicionar, remover ou editar medicamentos na lista da prescrição atual antes de finalizar o documento.
+    * <em>Geração do Documento:</em> Ao finalizar, o sistema deve gerar o PDF da receita conforme o padrão visual da HealthConnect.
+* <strong>Solicitar novos exames</strong>
+* <strong>Programar retorno do paciente</strong>
+* <strong>Criar atestado ou relatório médico</strong></p>
+<h4 id="tarefas-do-coordenador-de-agendamento">Tarefas do Coordenador de Agendamento</h4>
+<p>Esta seção detalha as tarefas para o fluxo do Coordenador de Agendamento, que realiza a Gestão de Agendas dos Médicos:</p>
+<p><strong>A. Atividade: Configurar Agendas</strong>
+* Definir horários/bloqueios por médico
+* Definir horários/bloqueios por unidade
+* Configurar regras de atendimento por convênio</p>
+<p><strong>B. Atividade: Gerenciar Fluxo Diário</strong>
+* Visualizar agenda unificada (médicos/unidades)
+* Gerenciar encaixes e realocações
+* Gerenciar fila de espera por vagas
+* Configurar notificações automáticas (lembretes, preparo)</p>
+<p><strong>C. Atividade: Analisar Indicadores</strong>
+* Visualizar dashboard de taxa de ocupação
+* Visualizar dashboard de taxa de faltas (no-show)
+* Visualizar dashboard de tempo médio de agendamento</p>
+<h1 id="mapeamento-de-historias-e-priorizacao_1">Mapeamento de Histórias e Priorização</h1>
+<h3 id="1-personas-e-objetivos">1. Personas e Objetivos</h3>
+<p><em>(Conteúdo omitido, mas mantém-se na estrutura do documento.)</em></p>
+<h3 id="2-atividades-backbone">2. Atividades (Backbone)</h3>
+<p><em>(Conteúdo omitido, mas mantém-se na estrutura do documento.)</em></p>
+<h3 id="3-historias-de-usuario-tarefas-e-detalhes_1">3. Histórias de Usuário (Tarefas e Detalhes)</h3>
+<h4 id="tarefas-da-gestora-de-operacoes-clinicas">Tarefas da Gestora de Operações Clínicas</h4>
+<p>Esta seção detalha as tarefas para o fluxo da Gestora de Operações Clínicas, que administra indicadores de desempenho das clínicas:</p>
+<p><strong>A. Atividade: Garantir Qualidade das Clínicas</strong>
+* Visualizar dashboard de tempo de espera (recepção, atendimento)
+* Visualizar dashboard de produtividade (consultas/dia)
+* Visualizar dashboard de satisfação do paciente (NPS)</p>
+<p><strong>B. Atividade: Monitorar Dashboards Operacionais</strong>
+* Visualizar alertas de gargalos em tempo real
+* Gerar relatório de taxa de faltas
+* Gerar relatório de volume de reagendamentos</p>
+<p><strong>C. Atividade: Analisar Gargalos</strong>
+* Gerar relatórios de segurança do paciente e incidentes
+* Rastrear jornada do paciente (ponta a ponta)
+* Acessar ferramentas de padronização de protocolos</p>
+<h4 id="tarefas-do-diretor-de-tecnologia">Tarefas do Diretor de Tecnologia</h4>
+<p>Esta seção detalha as tarefas para o fluxo do Diretor de Tecnologia, que supervisiona a infraestrutura tecnológica:</p>
+<p><strong>A. Atividade: Gerenciar Acessos e Perfis</strong>
+* Criar/Desativar contas de usuário
+* Definir perfis de acesso (Princípio do Menor Privilégio)</p>
+<p><strong>B. Atividade: Monitorar Segurança do Sistema</strong>
+* Monitorar logs de performance e disponibilidade
+* Monitorar logs de segurança (tentativas de acesso indevido)
+* Gerenciar backups e planos de continuidade</p>
+<p><strong>C. Atividade: Garantir Conformidade e Integração</strong>
+* Gerar trilhas de auditoria (LGPD)
+* Gerar relatórios regulatórios
+* Gerenciar APIs de integração com parceiros (labs, operadoras)</p>
+<iframe width="768" height="432"
+  src="https://miro.com/app/live-embed/uXjVJn9oRFI=/?embedMode=view_only_without_ui&moveToViewport=-3184,-1085,2955,1427&embedId=684877445259"
+  frameborder="0" scrolling="no"
+  allow="fullscreen; clipboard-read; clipboard-write"
+  allowfullscreen>
+</iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": {"provider": "felipe"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
