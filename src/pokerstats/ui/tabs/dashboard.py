@@ -11,6 +11,8 @@ from ..charts import (
 )
 import os
 
+ctk.set_appearance_mode("Dark")
+
 class DashboardTab(ctk.CTkFrame):
     def __init__(self, master, service, update_callback, app_instance):
         super().__init__(master)

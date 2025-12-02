@@ -4,6 +4,8 @@ from ..utils import formatar_moeda
 from ..loading import executar_com_loading
 from ..styles import aplicar_estilo_treeview
 
+ctk.set_appearance_mode("Dark")
+
 class ManagementTab(ctk.CTkFrame):
     def __init__(self, master, service, update_callback, app_instance):
         super().__init__(master)
